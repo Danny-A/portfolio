@@ -1,3 +1,19 @@
-node_modules/
+# Dependency directories
+node_modules
+jspm_packages
+
+### OSX template
 .DS_Store
+.AppleDouble
+.LSOverride
+
+### CraftCMS template
+# Craft Storage (cache) [http://buildwithcraft.com/help/craft-storage-gitignore]
+/craft/storage/*
+!/craft/storage/logo/*### Example user template template
+
 dummy-host2.example.com-*
+
+### Sass template
+.sass-cache/
+*.css.map
