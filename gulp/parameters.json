@@ -1,0 +1,15 @@
+{
+    "parameters": {
+        "environment_id": "DEV",
+        "locale": "en",
+        "host": "dannyarntz.nl",
+        "assets_version": 1,
+        "hostname": "",
+        "username": "",
+        "password": "",
+        "path": "/public_html/_subdomains/dev.dannyarntz.nl/",
+        "ftp_hostname": "ftp.dannyarntz.nl",
+        "ftp_username": "dannya1q",
+        "ftp_password": "e$apegebahU%"
+    }
+}

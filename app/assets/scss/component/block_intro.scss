@@ -1,0 +1,15 @@
+
+.block__intro {
+
+}
+
+.block__intro--title {
+
+}
+
+.block__intro--intro {
+	color: $base-color-2;
+	font-family: 'Noto serif', serif;
+	font-size: calc(18px + 11 * ((100vw - 320px) / 1360));
+	line-height: 1.8;
+}
