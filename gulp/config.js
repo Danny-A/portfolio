@@ -128,8 +128,8 @@ module.exports = {
         }
     },
 
-    // sync options
-    rsync: {
+    // ftp options
+    ftp: {
         hostname: configJson.parameters.ftp_hostname,
         username: configJson.parameters.ftp_username,
         password: configJson.parameters.ftp_password,

@@ -1,10 +1,19 @@
 
 .block__intro {
+	margin: auto;
+	max-width: 320px;
+	padding: 0 20px;
 
+	@include respond-to(sm) {
+		max-width: none;
+		width: 80%;
+	}
 }
 
 .block__intro--title {
-
+	color: $white;
+	font-size: calc(36px + 11 * ((100vw - 320px) / 1360));
+	transition: all .2s;
 }
 
 .block__intro--intro {
@@ -12,4 +21,5 @@
 	font-family: 'Noto serif', serif;
 	font-size: calc(18px + 11 * ((100vw - 320px) / 1360));
 	line-height: 1.8;
+	transition: all .2s;
 }
