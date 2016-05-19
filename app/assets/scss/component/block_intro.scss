@@ -22,4 +22,8 @@
 	font-size: calc(18px + 11 * ((100vw - 320px) / 1360));
 	line-height: 1.8;
 	transition: all .2s;
+
+	@include respond-to(sm) {
+		max-width: 66%;
+	}
 }

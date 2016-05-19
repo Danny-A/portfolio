@@ -53,6 +53,25 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: none;
 }
 
+.navigation {
+  left: 20px;
+  position: fixed;
+  top: 20px;
+}
+
+.navigation__item {
+  color: #ffffff;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navigation__item + .navigation__item {
+  margin-left: 20px;
+}
+
 .block__intro {
   margin: auto;
   max-width: 320px;
@@ -82,6 +101,12 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.8;
   -webkit-transition: all .2s;
   transition: all .2s;
+}
+
+@media only screen and (min-width: 737px) {
+  .block__intro--intro {
+    max-width: 66%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

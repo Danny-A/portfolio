@@ -1,0 +1,19 @@
+
+.navigation {
+	left: 20px;
+	position: fixed;
+	top: 20px;
+}
+
+.navigation__item {
+	color: $white;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	& + .navigation__item {
+		margin-left: 20px;
+	}
+}
