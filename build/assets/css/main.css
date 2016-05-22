@@ -25,6 +25,8 @@ table {
   width: 100%;
 }
 
+/***[ responsive media queries ]***********************************************/
+/***[ typography ]***********************************************/
 html {
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
@@ -38,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
 }
 
-/***[ selection ]******************************************************************************************/
+/***[ selection ]***********************************************/
 ::-moz-selection {
   background: red;
   color: #ffffff;
@@ -53,8 +55,9 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: none;
 }
 
+/***[ navigation ]***********************************************/
 .navigation {
-  left: 20px;
+  right: 20px;
   position: fixed;
   top: 20px;
 }
@@ -72,6 +75,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 20px;
 }
 
+/***[ block intro ]***********************************************/
 .block__intro {
   margin: auto;
   max-width: 320px;
@@ -96,15 +100,16 @@ h1, h2, h3, h4, h5, h6 {
 .block__intro--intro {
   color: #999999;
   font-family: 'Noto serif', serif;
-  font-size: -webkit-calc(18px + 11 * ((100vw - 320px) / 1360));
-  font-size: calc(18px + 11 * ((100vw - 320px) / 1360));
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 28px;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
 @media only screen and (min-width: 737px) {
   .block__intro--intro {
+    font-size: 22px;
+    line-height: 38px;
     max-width: 66%;
   }
 }
