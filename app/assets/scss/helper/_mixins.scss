@@ -1,11 +1,11 @@
 
-// media querie values
+/***[ responsive media queries ]***********************************************/
+
 $break-small: 736px;
 $break-large: 1279px;
 $break-large-2: 1439px;
 $break-large-3: 1600px;
 
-// responsive media queries
 @mixin respond-to($media) {
     @if $media == xs {
         @media only screen and (max-width: $break-small) {
