@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var beep = require('beepbeep');
 var browsersync = require('browser-sync');
 var config = require('../../config');
 
@@ -7,7 +8,7 @@ var reload = browsersync.reload;
 
 // error function
 var onError = function(err) {
-    $.gutil.beep();
+    beep();
     console.log(err);
 
     this.emit('end');
