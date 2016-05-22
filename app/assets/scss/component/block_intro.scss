@@ -1,4 +1,6 @@
 
+/***[ block intro ]***********************************************/
+
 .block__intro {
 	margin: auto;
 	max-width: 320px;
@@ -19,11 +21,13 @@
 .block__intro--intro {
 	color: $base-color-2;
 	font-family: 'Noto serif', serif;
-	font-size: calc(18px + 11 * ((100vw - 320px) / 1360));
-	line-height: 1.8;
+	font-size: 16px;
+	line-height: 28px;
 	transition: all .2s;
 
 	@include respond-to(sm) {
+		font-size: 22px;
+		line-height: 38px;
 		max-width: 66%;
 	}
 }
