@@ -2,7 +2,7 @@
     "parameters": {
         "environment_id": "DEV",
         "locale": "en",
-        "host": "dannyarntz.nl",
+        "host": "dev.dannyarntz.nl",
         "assets_version": 1,
         "hostname": "",
         "username": "",
