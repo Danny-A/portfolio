@@ -1,0 +1,30 @@
+
+/***[ block general components ]***********************************************/
+
+.block__section {
+	margin: auto;
+	max-width: 320px;
+	padding: 50px 30px 0;
+	transition: all .5s;
+
+	@include respond-to(sm) {
+		margin: 0;
+		max-width: none;
+		padding: 130px 80px 0;
+		width: 80%;
+	}
+}
+
+.block__seperator--yellow {
+	background-color: $base-color-3;
+	height: 2px;
+	margin-top: 16px;
+	max-width: 260px;
+	transition: all .2s;
+	width: 100%;
+
+	@include respond-to(md) {
+		margin-top: 36px;
+		max-width: 380px;
+	}
+}

@@ -1,21 +1,43 @@
 
 /***[ block intro ]***********************************************/
 
-.block__intro {
-	margin: auto;
-	max-width: 320px;
-	padding: 0 20px;
+.block__intro--subtitle {
+	color: $base-color-2;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 24px;
 
-	@include respond-to(sm) {
-		max-width: none;
-		width: 80%;
+	@include respond-to(md) {
+		font-size: 22px;
+		line-height: 30px;
 	}
 }
 
 .block__intro--title {
 	color: $white;
-	font-size: calc(36px + 11 * ((100vw - 320px) / 1360));
-	transition: all .2s;
+	font-family: 'Roboto', sans-serif;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 48px;
+
+	@include respond-to(md) {
+		font-size: 48px;
+		line-height: 64px;
+	}
+}
+
+.block__intro--title-secundary {
+	color: $base-color-2;
+	font-family: 'Droid Serif', serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 20px;
+
+	@include respond-to(md) {
+		font-size: 18px;
+		line-height: 24px;
+	}
 }
 
 .block__intro--intro {
@@ -23,11 +45,14 @@
 	font-family: 'Noto serif', serif;
 	font-size: 16px;
 	line-height: 28px;
-	transition: all .2s;
+	margin-top: 40px;
 
 	@include respond-to(sm) {
-		font-size: 22px;
-		line-height: 38px;
-		max-width: 66%;
+		max-width: 500px;
+	}
+
+	@include respond-to(md) {
+		max-width: 680px;
+		margin-top: 80px;
 	}
 }

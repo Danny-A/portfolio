@@ -20,14 +20,25 @@
 {% extends "_layout" %}
 
 {% block content %}
-  <div class="block__intro">
+  <div class="block__section">
 
-    <h1 class="block__intro--title">
-      {{ entry.title }}
-    </h1>
+    <div class="block__intro">
+      <h2 class="block__intro--subtitle">
+        Front-end developer
+      </h2>
+      <h1 class="block__intro--title">
+        {{ entry.title }}
+      </h1>
 
-    <div class="block__intro--intro">
-      {{ entry.body }}
+      <div class="block__intro--title-secundary">
+        Curriculum Vitae
+      </div>
+
+      <div class="block__seperator--yellow"></div>
+
+      <div class="block__intro--intro">
+        {{ entry.body }}
+      </div>
     </div>
 
   </div>

@@ -1,0 +1,45 @@
+{#
+ # Experience index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/experience is
+ # requested, because it is located at static/experience.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title = "Experience" %}
+
+{% block content %}
+  <div class="block__section">
+
+    <h1 class="">
+      {{ entry.title }}
+    </h1>
+
+    <!-- row -->
+    <div class="block__table">
+
+      <div class="block__table--meta">
+        Front-end Developer
+        Amsterdam
+        January 2012 – Present
+      </div>
+
+      <div class="block__table--content">
+        <h2 class="block__table--title">
+          Bravoure
+        </h2>
+        <div class="block__table--body">
+          As Front-end developer in this multidisciplinary team, I have worked on award winning websites such as: Amsterdam Dance Event, CJP, Awakenings, Dekmantel, Brunel. Next to that I am responsible for our Email Marketing. Improving email templates for our clients and working on mobile solutions.
+         </div>
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock %}

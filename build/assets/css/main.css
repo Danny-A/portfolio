@@ -57,9 +57,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /***[ navigation ]***********************************************/
 .navigation {
-  right: 20px;
+  left: 80px;
   position: fixed;
-  top: 20px;
+  top: 45px;
 }
 
 .navigation__item {
@@ -75,26 +75,85 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 20px;
 }
 
-/***[ block intro ]***********************************************/
-.block__intro {
+/***[ block general components ]***********************************************/
+.block__section {
   margin: auto;
   max-width: 320px;
-  padding: 0 20px;
+  padding: 50px 30px 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
 
 @media only screen and (min-width: 737px) {
-  .block__intro {
+  .block__section {
+    margin: 0;
     max-width: none;
+    padding: 130px 80px 0;
     width: 80%;
+  }
+}
+
+.block__seperator--yellow {
+  background-color: #F8E71C;
+  height: 2px;
+  margin-top: 16px;
+  max-width: 260px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1279px) {
+  .block__seperator--yellow {
+    margin-top: 36px;
+    max-width: 380px;
+  }
+}
+
+/***[ block intro ]***********************************************/
+.block__intro--subtitle {
+  color: #999999;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+@media only screen and (min-width: 1279px) {
+  .block__intro--subtitle {
+    font-size: 22px;
+    line-height: 30px;
   }
 }
 
 .block__intro--title {
   color: #ffffff;
-  font-size: -webkit-calc(36px + 11 * ((100vw - 320px) / 1360));
-  font-size: calc(36px + 11 * ((100vw - 320px) / 1360));
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+@media only screen and (min-width: 1279px) {
+  .block__intro--title {
+    font-size: 48px;
+    line-height: 64px;
+  }
+}
+
+.block__intro--title-secundary {
+  color: #999999;
+  font-family: 'Droid Serif', serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 20px;
+}
+
+@media only screen and (min-width: 1279px) {
+  .block__intro--title-secundary {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
 
 .block__intro--intro {
@@ -102,15 +161,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Noto serif', serif;
   font-size: 16px;
   line-height: 28px;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  margin-top: 40px;
 }
 
 @media only screen and (min-width: 737px) {
   .block__intro--intro {
-    font-size: 22px;
-    line-height: 38px;
-    max-width: 66%;
+    max-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 1279px) {
+  .block__intro--intro {
+    max-width: 680px;
+    margin-top: 80px;
   }
 }
 
