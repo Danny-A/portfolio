@@ -9,4 +9,23 @@
 
 return array(
 
+    '*' => array(
+        // ...
+    ),
+
+    'http://dev.dannyarntz.nl' => array(
+        // ...
+
+        'environmentVariables' => array(
+            'baseUrl'  => 'http://dev.dannyarntz.nl',
+        )
+    ),
+
+    'http://www.dannyarntz.nl' => array(
+        // ...
+
+        'environmentVariables' => array(
+            'baseUrl'  => 'http://www.dannyarntz.nl',
+        )
+    )
 );

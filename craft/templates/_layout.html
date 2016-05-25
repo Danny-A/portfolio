@@ -10,12 +10,38 @@
 #}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-    <link rel="home" href="{{ siteUrl }}"/>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    <base href="{{ siteUrl }}">
+
+    <meta name="description" content="150 chars">
+    <meta name="robots" content="index,follow,noodp">
+    <meta name="googlebot" content="index,follow">
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="google-site-verification" content="verification_token">
+    <meta name="classification" content="business">
+    <meta name="url" content="{{ siteUrl }}">
+
+    <!-- facebook OG -->
+    <meta property="fb:app_id" content="">
+    <meta property="og:url" content="{{ siteUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Content Title">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Description Here">
+    <meta property="og:site_name" content="{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}">
+    <meta property="og:locale" content="en_US">
+
+    <!-- For IE 11, Chrome, Firefox, Safari, Opera -->
+    <link rel="icon" href="path/to/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="path/to/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="path/to/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="path/to/favicon-62.png" sizes="62x62" type="image/png">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700" rel="stylesheet" type="text/css">
     <link href="build/assets/css/main.css" rel="stylesheet" type="text/css">
@@ -43,10 +69,12 @@
       </header>
       #}
 
+      {% set entries = craft.entries.section('pages') %}
+
       <nav class="navigation">
-        <a href="" class="navigation__item" title="">About</a>
-        <a href="" class="navigation__item" title="">Experience</a>
-        <a href="" class="navigation__item" title="">Education</a>
+        {% nav entry in entries %}
+          <a href="{{ entry.url }}" class="navigation__item" title="">{{ entry.title }}</a>
+        {% endnav %}
       </nav>
 
       <main role="main">
