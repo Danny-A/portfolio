@@ -13,19 +13,17 @@ return array(
         // ...
     ),
 
-    'http://dev.dannyarntz.nl' => array(
-        // ...
-
+    'dev.dannyarntz.nl' => array(
         'environmentVariables' => array(
-            'baseUrl'  => 'http://dev.dannyarntz.nl',
-        )
+            'baseUrl'  => 'http://dev.dannyarntz.nl'
+        ),
+        'siteUrl'  => 'http://dev.dannyarntz.nl',
     ),
 
-    'http://www.dannyarntz.nl' => array(
-        // ...
-
+    'www.dannyarntz.nl' => array(
         'environmentVariables' => array(
-            'baseUrl'  => 'http://www.dannyarntz.nl',
-        )
+            'baseUrl'  => 'http://www.dannyarntz.nl'
+        ),
+        'siteUrl'  => 'http://www.dannyarntz.nl',
     )
 );
