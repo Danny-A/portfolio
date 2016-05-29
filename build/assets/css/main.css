@@ -67,12 +67,24 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   font-size: 18px;
   font-weight: 700;
+  position: relative;
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .navigation__item + .navigation__item {
   margin-left: 20px;
+}
+
+.navigation__item.navigation__item--active:before {
+  background-color: #F8E71C;
+  bottom: -3px;
+  content: ' ';
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
 }
 
 /***[ block general components ]***********************************************/

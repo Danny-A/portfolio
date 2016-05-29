@@ -12,10 +12,24 @@
 	display: inline-block;
 	font-size: 18px;
 	font-weight: 700;
+	position: relative;
 	text-decoration: none;
 	text-transform: uppercase;
 
 	& + .navigation__item {
 		margin-left: 20px;
+	}
+
+	&.navigation__item--active {
+		&:before {
+			background-color: $base-color-3;
+			bottom: -3px;
+			content: ' ';
+			height: 3px;
+			left: 0;
+			position: absolute;
+			right: 0;
+			width: 100%;
+		}
 	}
 }

@@ -62,7 +62,7 @@ gulp.task('javascript-local', function() {
                 comments: false
             }
         }).on('error', function(e) {
-            $.gutil.beep();
+            beep();
             console.log(e);
 
             this.emit('end');

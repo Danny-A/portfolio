@@ -40,9 +40,8 @@ module.exports = {
     // javascript
     javascript: {
         src: [
-            srcAssets + '/js/libs/jquery.min.js',
-            srcAssets + '/js/libs/bootstrap.js',
-            srcAssets + '/js/libs/*.js',
+            srcAssets + '/js/vendor/*.js',
+            srcAssets + '/js/component/**/*.js',
             srcAssets + '/js/*.js',
         ],
         dest: productionAssets + '/js',
