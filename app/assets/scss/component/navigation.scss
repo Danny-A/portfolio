@@ -2,9 +2,14 @@
 /***[ navigation ]***********************************************/
 
 .navigation {
-	left: 80px;
+	left: 31px;
 	position: fixed;
 	top: 45px;
+
+    @include respond-to(sm) {
+        left: 80px;
+        top: 45px;
+    }
 }
 
 .navigation__item {
@@ -15,6 +20,45 @@
 	position: relative;
 	text-decoration: none;
 	text-transform: uppercase;
+
+    @include respond-to(md) {
+        &:before {
+            color: $base-color-3;
+            content: attr(data-title);
+            display: block;
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+            white-space: nowrap;
+            width: 0;
+        }
+
+        &:after {
+            background-color: $base-color-3;
+            content: '';
+            height: 1px;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(-20px, 0);
+            visibility: hidden;
+            width: 5px;
+        }
+
+        &:hover {
+            &:before {
+                width: 100%;
+            }
+
+            &:after {
+                animation: line-through 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                animation-fill-mode: forwards;
+            }
+        }
+    }
 
 	& + .navigation__item {
 		margin-left: 20px;

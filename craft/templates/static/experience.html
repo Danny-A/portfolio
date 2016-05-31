@@ -16,17 +16,25 @@
 {% block content %}
   <div class="block__section">
 
-    <h1 class="">
-      {{ entry.title }}
-    </h1>
+    <div class="block__intro">
+      <h1 class="block__intro--title">
+        {{ entry.title }}
+      </h1>
+    </div>
 
     <!-- row -->
     <div class="block__table">
 
       <div class="block__table--meta">
-        Front-end Developer
-        Amsterdam
-        January 2012 – Present
+        <h2 class="block__table--meta-title">
+          Front-end Developer
+        </h2>
+        <h3 class="block__table--meta-location">
+          Amsterdam
+        </h3>
+        <div class="block__table--meta-duration">
+          January 2012 – Present
+        </div>
       </div>
 
       <div class="block__table--content">
