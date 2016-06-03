@@ -1,3 +1,4 @@
+
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 
@@ -9,6 +10,7 @@ gulp.task('serve', function(callback) {
         ['sass', 'javascript'],
         'scsslint',
         'watch',
+        'ftp-deploy-watch',
         'browsersync',
         //'images',
         //'copy:fonts'
