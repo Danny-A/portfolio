@@ -1,3 +1,7 @@
+
+# File contains sensitive data
+parameters.json
+
 # Dependency directories
 node_modules
 jspm_packages
