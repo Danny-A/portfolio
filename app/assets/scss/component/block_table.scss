@@ -2,7 +2,14 @@
 /***[ table ]***********************************************/
 
 .block__table {
+	border-bottom: 1px solid $base-color-4;
+	border-top: 1px solid $base-color-4;
+	padding: 20px 0;
 
+	@include respond-to(sm) {
+		@include clearfix();
+		padding: 40px 0;
+	}
 }
 
 // meta information
@@ -12,8 +19,8 @@
 
 .block__table--meta-title {
 	font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
+	font-size: 18px;
+	font-weight: 700;
 }
 
 .block__table--meta-location {
@@ -24,9 +31,9 @@
 }
 
 .block__table--meta-duration {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+	font-size: 13px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 
 // main information

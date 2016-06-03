@@ -235,6 +235,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /***[ table ]***********************************************/
+.block__table {
+  border-bottom: 1px solid #262626;
+  border-top: 1px solid #262626;
+  padding: 20px 0;
+}
+
+@media only screen and (min-width: 737px) {
+  .block__table {
+    padding: 40px 0;
+  }
+  .block__table {
+    *zoom: 1;
+  }
+  .block__table:before, .block__table:after {
+    content: ' ';
+    display: table;
+  }
+  .block__table:after {
+    clear: both;
+  }
+}
+
 .block__table--meta-title {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
