@@ -1,0 +1,15 @@
+{
+    "parameters": {
+        "environment_id": "DEV",
+        "locale": "en",
+        "host": "url",
+        "assets_version": 1,
+        "hostname": "",
+        "username": "",
+        "password": "",
+        "path": "remote ftp path",
+        "ftp_hostname": "",
+        "ftp_username": "",
+        "ftp_password": ""
+    }
+}
