@@ -67,10 +67,9 @@ module.exports = {
     autoprefixer: {
         browsers: [
             'last 2 versions',
-            'safari 7',
+            'safari 8',
             'ie 9',
-            'opera 12.1',
-            'ios 6',
+            'ios 7',
             'android 4'
         ],
         cascade: true
@@ -83,7 +82,7 @@ module.exports = {
         ],
         options: {
             'maxBuffer': 507200,
-            'config': 'gulp/scss-lint.yml',
+            'config': 'scss-lint.yml',
             'filePipeOutput': 'scssReport.json'
         }
     },

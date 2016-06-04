@@ -60,11 +60,19 @@ h1, h2, h3, h4, h5, h6 {
   left: 31px;
   position: fixed;
   top: 45px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
 @media only screen and (min-width: 737px) {
   .navigation {
-    left: 80px;
+    left: 41px;
+  }
+}
+
+@media only screen and (min-width: 1279px) {
+  .navigation {
+    left: 81px;
     top: 45px;
   }
 }
@@ -136,7 +144,6 @@ h1, h2, h3, h4, h5, h6 {
 /***[ block general components ]***********************************************/
 .block__section {
   margin: auto;
-  max-width: 320px;
   padding: 50px 30px 0;
   -webkit-transition: all .5s;
   transition: all .5s;
@@ -144,9 +151,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 737px) {
   .block__section {
+    box-sizing: border-box;
     margin: 0;
     max-width: none;
-    padding: 130px 80px 0;
+    padding: 130px 40px 0;
+  }
+}
+
+@media only screen and (min-width: 1279px) {
+  .block__section {
+    padding: 130px 0 0 80px;
     width: 80%;
   }
 }
@@ -239,6 +253,7 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid #262626;
   border-top: 1px solid #262626;
   padding: 20px 0;
+  width: 100%;
 }
 
 @media only screen and (min-width: 737px) {
@@ -254,6 +269,19 @@ h1, h2, h3, h4, h5, h6 {
   }
   .block__table:after {
     clear: both;
+  }
+}
+
+.block__table--meta {
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 737px) {
+  .block__table--meta {
+    box-sizing: border-box;
+    float: left;
+    padding-right: 40px;
+    width: 260px;
   }
 }
 
@@ -276,14 +304,33 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-.block__table--title {
+@media only screen and (min-width: 737px) {
+  .block__table--body {
+    box-sizing: border-box;
+    float: left;
+    padding-left: 40px;
+    position: relative;
+    width: calc(100% - 260px);
+  }
+  .block__table--body:before {
+    background-color: #262626;
+    bottom: 0;
+    content: ' ';
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
+}
+
+.block__table--body-title {
   font-family: 'Roboto', sans-serif;
   font-size: 36px;
   font-weight: 700;
   line-height: 48px;
 }
 
-.block__table--body {
+.block__table--body-text {
   color: #999999;
   font-family: 'Noto serif', serif;
   font-size: 16px;

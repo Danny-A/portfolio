@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var gutil = require( 'gulp-util' );
+var $ = require('gulp-load-plugins')();
 var ftp = require( 'vinyl-ftp' );
 var config = require('../../config');
 
@@ -22,7 +22,7 @@ function getFtpConnection() {
         user: user,
         password: password,
         parallel: 5,
-        log: gutil.log
+        //log: $.util.log
     });
 }
 
@@ -39,7 +39,8 @@ gulp.task('ftp-deploy', function() {
     return gulp.src(localFilesGlob, { base: '.', buffer: false })
         .pipe( conn.newer( remoteFolder ) ) // only upload newer files
         .pipe( conn.dest( remoteFolder ) )
-    ;
+        // displays file size
+        .pipe($.size());
 });
 
 /**
@@ -59,6 +60,7 @@ gulp.task('ftp-deploy-watch', function() {
       return gulp.src( [event.path], { base: '.', buffer: false } )
         .pipe( conn.newer( remoteFolder ) ) // only upload newer files
         .pipe( conn.dest( remoteFolder ) )
-      ;
+        // displays file size
+        .pipe($.size());
     });
 });

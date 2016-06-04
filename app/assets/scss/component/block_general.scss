@@ -3,14 +3,18 @@
 
 .block__section {
 	margin: auto;
-	max-width: 320px;
 	padding: 50px 30px 0;
 	transition: all .5s;
 
 	@include respond-to(sm) {
+		box-sizing: border-box;
 		margin: 0;
 		max-width: none;
-		padding: 130px 80px 0;
+		padding: 130px 40px 0;
+	}
+
+	@include respond-to(md) {
+		padding: 130px 0 0 80px;
 		width: 80%;
 	}
 }

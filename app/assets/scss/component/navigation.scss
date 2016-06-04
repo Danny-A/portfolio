@@ -5,9 +5,14 @@
 	left: 31px;
 	position: fixed;
 	top: 45px;
+	transition: all .2s;
 
 	@include respond-to(sm) {
-		left: 80px;
+		left: 41px;
+	}
+
+	@include respond-to(md) {
+		left: 81px;
 		top: 45px;
 	}
 }
