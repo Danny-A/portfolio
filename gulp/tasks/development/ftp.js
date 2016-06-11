@@ -37,10 +37,8 @@ gulp.task('ftp-deploy', function() {
     var conn = getFtpConnection();
 
     return gulp.src(localFilesGlob, { base: '.', buffer: false })
-        .pipe( conn.newer( remoteFolder ) ) // only upload newer files
-        .pipe( conn.dest( remoteFolder ) )
-        // displays file size
-        .pipe($.size());
+        .pipe(conn.newer(remoteFolder )) // only upload newer files
+        .pipe(conn.dest(remoteFolder ));
 });
 
 /**
@@ -58,9 +56,7 @@ gulp.task('ftp-deploy-watch', function() {
       console.log('Changes detected! Uploading file "' + event.path + '", ' + event.type);
 
       return gulp.src( [event.path], { base: '.', buffer: false } )
-        .pipe( conn.newer( remoteFolder ) ) // only upload newer files
-        .pipe( conn.dest( remoteFolder ) )
-        // displays file size
-        .pipe($.size());
+        .pipe(conn.newer(remoteFolder)) // only upload newer files
+        .pipe(conn.dest(remoteFolder));
     });
 });

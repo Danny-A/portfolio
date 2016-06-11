@@ -4,9 +4,9 @@ var config = require('../../config');
 
 /**
  * Lint SCSS files
- * `gem install scss-lint` needed
+ * `gem install scss_lint` needed
  */
-gulp.task('scsslint',['sass'], function() {
+gulp.task('scss-lint', function() {
     return gulp.src(config.scsslint.src)
         .pipe($.scssLint(config.scsslint.options));
 });

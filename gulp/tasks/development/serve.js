@@ -8,9 +8,9 @@ var runSequence = require('run-sequence');
 gulp.task('serve', function(callback) {
     runSequence(
         ['sass', 'javascript'],
-        'scsslint',
         'watch',
         'ftp-deploy-watch',
+        'scss-lint',
         'browsersync',
         //'images',
         //'copy:fonts'

@@ -83,7 +83,7 @@ module.exports = {
         options: {
             'maxBuffer': 507200,
             'config': 'scss-lint.yml',
-            'filePipeOutput': 'scssReport.json'
+            'filePipeOutput': 'scssReport.json',
         }
     },
     //js hint
