@@ -3,7 +3,7 @@
 
 .block__section {
 	margin: auto;
-	padding: 50px 30px 0;
+	padding: 110px 30px 0;
 	transition: all .5s;
 
 	@include respond-to(sm) {
@@ -24,11 +24,19 @@
 	height: 2px;
 	margin-top: 16px;
 	max-width: 260px;
-	transition: all .2s;
+	opacity: 0;
+	transform: translateX(-160px);
+	transition: all .5s;
 	width: 100%;
 
 	@include respond-to(md) {
 		margin-top: 36px;
 		max-width: 380px;
+		transform: translateX(-280px);
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translateX(0);
 	}
 }

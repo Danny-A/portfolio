@@ -7,10 +7,18 @@
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 24px;
+	opacity: 0;
+	transform: translateY(40px);
+	transition: all .4s;
 
 	@include respond-to(md) {
 		font-size: 22px;
 		line-height: 30px;
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
@@ -19,10 +27,18 @@
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 48px;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all .2s;
 
 	@include respond-to(md) {
 		font-size: 48px;
 		line-height: 64px;
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
@@ -45,6 +61,9 @@
 	font-size: 16px;
 	line-height: 28px;
 	margin-top: 40px;
+	opacity: 0;
+	transform: translateY(40px);
+	transition: all .4s .8s;
 
 	@include respond-to(sm) {
 		max-width: 500px;
@@ -53,5 +72,10 @@
 	@include respond-to(md) {
 		max-width: 680px;
 		margin-top: 80px;
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
