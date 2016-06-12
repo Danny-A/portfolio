@@ -1,13 +1,10 @@
 
 /***[ table ]***********************************************/
 
-.block__table {
+.table {
 	border-bottom: 1px solid $base-color-4;
 	border-top: 1px solid $base-color-4;
 	padding: 20px 0;
-	opacity: 0;
-	transform: translateY(100px);
-  transition: all .8s ease-out;
 	width: 100%;
 
 	@include respond-to(sm) {
@@ -15,18 +12,13 @@
 		padding: 40px 0;
 	}
 
-	& + .block__table {
+	& + .table {
 		border-top: none;
-	}
-
-	&.is-animated {
-    opacity: 1;
-    transform: translateY(0);
 	}
 }
 
 // meta information
-.block__table--meta {
+.table--meta {
 	margin-bottom: 20px;
 
 	@include respond-to(sm) {
@@ -37,27 +29,27 @@
 	}
 }
 
-.block__table--meta-title {
+.table--meta-title {
 	font-family: 'Roboto', sans-serif;
 	font-size: 18px;
 	font-weight: 700;
 }
 
-.block__table--meta-location {
+.table--meta-location {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 14px;
 	line-height: 20px;
 }
 
-.block__table--meta-duration {
+.table--meta-duration {
 	font-size: 13px;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 }
 
 // main information
-.block__table--body {
+.table--body {
 	@include respond-to(sm) {
 		box-sizing: border-box;
 		float: left;
@@ -77,14 +69,14 @@
 	}
 }
 
-.block__table--body-title {
+.table--body-title {
 	font-family: 'Roboto', sans-serif;
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 1;
 }
 
-.block__table--body-text {
+.table--body-text {
 	color: $base-color-2;
 	font-family: 'Noto serif', serif;
 	font-size: 16px;

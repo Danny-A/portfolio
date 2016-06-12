@@ -1,0 +1,15 @@
+
+.fadeInLeft {
+	opacity: 0;
+	transform: translate(-160px, 0);
+  transition: transform .7s $easeOutCubic 0s, opacity .5s $easeOutCubic 0s;
+
+	@include respond-to(md) {
+		transform: translate(-280px, 0);
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translate(0);
+	}
+}

@@ -1,7 +1,7 @@
 
-/***[ block intro ]***********************************************/
+/***[ intro ]***********************************************/
 
-.block__intro--subtitle {
+.intro--subtitle {
 	color: $base-color-2;
 	font-family: 'Roboto', sans-serif;
 	font-size: 18px;
@@ -9,40 +9,26 @@
 	line-height: 24px;
 	opacity: 0;
 	transform: translateY(40px);
-	transition: all .4s;
 
 	@include respond-to(md) {
 		font-size: 22px;
 		line-height: 30px;
 	}
-
-	&.is-animated {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
 
-.block__intro--title {
+.intro--title {
 	font-family: 'Roboto', sans-serif;
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 48px;
-	opacity: 0;
-	transform: translateY(20px);
-	transition: all .2s;
 
 	@include respond-to(md) {
 		font-size: 48px;
 		line-height: 64px;
 	}
-
-	&.is-animated {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
 
-.block__intro--title-secundary {
+.intro--title-secundary {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 14px;
@@ -55,7 +41,7 @@
 	}
 }
 
-.block__intro--intro {
+.intro--intro {
 	color: $base-color-2;
 	font-family: 'Noto serif', serif;
 	font-size: 16px;
@@ -63,7 +49,7 @@
 	margin-top: 40px;
 	opacity: 0;
 	transform: translateY(40px);
-	transition: all .4s .8s;
+  transition: transform .7s $easeOutCubic .3s, opacity .5s $easeOutCubic .3s;
 
 	@include respond-to(sm) {
 		max-width: 500px;
@@ -72,10 +58,5 @@
 	@include respond-to(md) {
 		max-width: 680px;
 		margin-top: 80px;
-	}
-
-	&.is-animated {
-		opacity: 1;
-		transform: translateY(0);
 	}
 }
