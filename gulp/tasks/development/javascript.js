@@ -44,35 +44,3 @@ gulp.task('javascript', function() {
         // notify that task was completed
         console.log('Compile Javascript task completed');
 });
-
-
-gulp.task('javascript-local', function() {
-    'use strict';
-
-    console.log('Compiling JavaScript');
-
-    // Minify and copy all JavaScript
-    gulp.src(config.src)
-        .pipe($.sourcemaps.init())
-        // compile minified javacsript
-        .pipe(uglify('app.min.js', {
-            outSourceMap: true,
-            output: {
-                beautify: true,
-                comments: false
-            }
-        }).on('error', function(e) {
-            beep();
-            console.log(e);
-
-            this.emit('end');
-        }))
-        .pipe($.sourcemaps.write())
-        // where to store minified javascript file
-        .pipe(gulp.dest(config.dest))
-        // displays file size
-        .pipe($.size());
-
-        // notify that task was completed
-        console.log('Compile Javascript task completed');
-});
