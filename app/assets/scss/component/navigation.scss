@@ -2,17 +2,17 @@
 /***[ navigation ]***********************************************/
 
 .navigation {
-	left: 31px;
+	background-color: $base-color-1;
+	box-sizing: border-box;
+	height: 60px;
+	padding-left: 31px;
 	position: fixed;
-	top: 35px;
 	transition: all .2s;
-
-	@include respond-to(sm) {
-		left: 41px;
-	}
+	width: 100%;
+	z-index: 100;
 
 	@include respond-to(md) {
-		left: 81px;
+		padding-left: 81px;
 	}
 }
 
@@ -21,6 +21,7 @@
 	display: inline-block;
 	font-size: 18px;
 	font-weight: 700;
+	padding-top: 20px;
 	position: relative;
 	text-decoration: none;
 	text-transform: uppercase;

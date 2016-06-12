@@ -179,22 +179,20 @@ h1, h2, h3, h4, h5, h6 {
 
 /***[ navigation ]***********************************************/
 .navigation {
-  left: 31px;
+  background-color: #171717;
+  box-sizing: border-box;
+  height: 60px;
+  padding-left: 31px;
   position: fixed;
-  top: 35px;
   -webkit-transition: all .2s;
   transition: all .2s;
-}
-
-@media only screen and (min-width: 737px) {
-  .navigation {
-    left: 41px;
-  }
+  width: 100%;
+  z-index: 100;
 }
 
 @media only screen and (min-width: 1279px) {
   .navigation {
-    left: 81px;
+    padding-left: 81px;
   }
 }
 
@@ -203,6 +201,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   font-size: 18px;
   font-weight: 700;
+  padding-top: 20px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -411,12 +410,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
-@media only screen and (min-width: 737px) {
+@media only screen and (min-width: 1279px) {
   .table--meta {
     box-sizing: border-box;
     float: left;
     padding-right: 40px;
-    width: 260px;
+    width: 320px;
   }
 }
 
@@ -439,13 +438,13 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-@media only screen and (min-width: 737px) {
+@media only screen and (min-width: 1279px) {
   .table--body {
     box-sizing: border-box;
     float: left;
     padding-left: 40px;
     position: relative;
-    width: calc(100% - 260px);
+    width: calc(100% - 320px);
   }
   .table--body:before {
     background-color: #262626;

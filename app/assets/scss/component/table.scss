@@ -21,11 +21,11 @@
 .table--meta {
 	margin-bottom: 20px;
 
-	@include respond-to(sm) {
+	@include respond-to(md) {
 		box-sizing: border-box;
 		float: left;
 		padding-right: 40px;
-		width: 260px;
+		width: 320px;
 	}
 }
 
@@ -50,12 +50,12 @@
 
 // main information
 .table--body {
-	@include respond-to(sm) {
+	@include respond-to(md) {
 		box-sizing: border-box;
 		float: left;
 		padding-left: 40px;
 		position: relative;
-		width: calc(100% - 260px);
+		width: calc(100% - 320px);
 
 		&:before {
 			background-color: $base-color-4;
