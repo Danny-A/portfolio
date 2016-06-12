@@ -1,0 +1,22 @@
+
+/***[ footer ]***********************************************/
+
+.footer {
+	color: $base-color-2;
+	font-family: 'Roboto', sans-serif;
+	margin: auto;
+	padding: 20px 30px;
+	transition: all .5s;
+
+	@include respond-to(sm) {
+		box-sizing: border-box;
+		margin: 0;
+		max-width: none;
+		padding: 30px 40px 0;
+	}
+
+	@include respond-to(md) {
+		padding: 40px 0 40px 80px;
+		width: 80%;
+	}
+}

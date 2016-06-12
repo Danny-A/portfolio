@@ -60,15 +60,18 @@
 
     <div class="container">
 
-      {% set entries = craft.entries.section() %}
       {% set uriSegment = craft.request.segment(1) %}
 
       <nav class="navigation">
-        {% nav entry in entries|reverse %}
-          <a href="{{ entry.url }}" class="navigation__item {{ uriSegment == entry.title|lower ? 'navigation__item--active' }}" title="{{ entry.title }}" data-title="{{ entry.title }}">
-            {{ entry.title }}
-          </a>
-        {% endnav %}
+        <a href="{{ siteUrl }}" class="navigation__item{{ uriSegment == '' ? ' navigation__item--active' }}" title="About" data-title="About">
+          About
+        </a>
+        <a href="{{ url('experience') }}" class="navigation__item{{ uriSegment == 'experience' ? ' navigation__item--active' }}" title="Experience" data-title="Experience">
+          Experience
+        </a>
+        <a href="{{ url('education') }}" class="navigation__item{{ uriSegment == 'education' ? ' navigation__item--active' }}" title="Education" data-title="Education">
+          Education
+        </a>
       </nav>
 
       <main role="main">
@@ -78,7 +81,7 @@
         {% endblock %}
       </main>
 
-      <footer>
+      <footer class="footer">
         This goes out to the whole wide website<br/>
         Copyright {{ now.year }} •  Built with <a href="http://craftcms.com">Craft</a>
       </footer>

@@ -4,7 +4,9 @@
 @import 'helper/_mixins';
 @import 'helper/_typography';
 
+@import 'component/animation/_animate';
 @import 'component/navigation';
 @import 'component/general';
-@import 'component/block_intro';
-@import 'component/block_table';
+@import 'component/intro';
+@import 'component/table';
+@import 'component/footer';

@@ -4,7 +4,7 @@
 .navigation {
 	left: 31px;
 	position: fixed;
-	top: 45px;
+	top: 35px;
 	transition: all .2s;
 
 	@include respond-to(sm) {
@@ -13,7 +13,6 @@
 
 	@include respond-to(md) {
 		left: 81px;
-		top: 45px;
 	}
 }
 
