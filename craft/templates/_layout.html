@@ -62,7 +62,7 @@
 
       {% set uriSegment = craft.request.segment(1) %}
 
-      <nav class="navigation">
+      <nav class="navigation js-header">
         <a href="{{ siteUrl }}" class="navigation__item{{ uriSegment == '' ? ' navigation__item--active' }}" title="About" data-title="About">
           About
         </a>
@@ -81,9 +81,9 @@
         {% endblock %}
       </main>
 
-      <footer class="footer">
+      <footer class="footer fadeInUp js-waypointitem">
         This goes out to the whole wide website<br/>
-        Copyright {{ now.year }} •  Built with <a href="http://craftcms.com">Craft</a>
+        Copyright {{ now.year }} • Built with <a href="http://craftcms.com">Craft</a>
       </footer>
     </div>
 

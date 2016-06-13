@@ -2,17 +2,32 @@
 /***[ navigation ]***********************************************/
 
 .navigation {
-	background-color: $base-color-1;
 	box-sizing: border-box;
 	height: 60px;
 	padding-left: 31px;
 	position: fixed;
-	transition: all .2s;
+	transition: background-color .35s, transform .35s;
 	width: 100%;
 	z-index: 100;
 
 	@include respond-to(md) {
 		padding-left: 81px;
+	}
+
+	&.is--unpinned {
+		transform: translate(0, -60px);
+	}
+
+	&.is--pinned {
+		background-color: $base-color-1;
+		border-bottom: 1px solid $base-color-4;
+		transform: translate(0);
+	}
+
+	&.is--top {
+		background-color: transparent;
+		border-bottom: 1px solid transparent;
+		transform: translate(0, 23px);
 	}
 }
 
@@ -21,7 +36,7 @@
 	display: inline-block;
 	font-size: 18px;
 	font-weight: 700;
-	padding-top: 20px;
+	padding-top: 17px;
 	position: relative;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -34,7 +49,7 @@
 			left: 0;
 			overflow: hidden;
 			position: absolute;
-			transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+			transition: width .25s cubic-bezier(.4, 0, .2, 1) .15s;
 			white-space: nowrap;
 			width: 0;
 		}
@@ -59,7 +74,7 @@
 			}
 
 			&:after {
-				animation: line-through 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				animation: line-through .2s cubic-bezier(.4, 0, .2, 1);
 				animation-fill-mode: forwards;
 			}
 		}

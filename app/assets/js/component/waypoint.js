@@ -1,9 +1,11 @@
 
+/***[ waypoint ]***********************************************/
+
 $(function() {
 
-    var waypoints = $('.js-waypointItem');
+    var waypoint = $('.js-waypointitem');
 
-    waypoints.each(function() {
+    waypoint.each(function() {
         new Waypoint.Inview({
             element: this,
             enter: function (direction) {
@@ -15,5 +17,5 @@ $(function() {
             offset: 'bottom-in-view'
         });
     });
-    
+
 });

@@ -1,6 +1,14 @@
 
 /***[ table ]***********************************************/
 
+.table__container {
+	margin-top: 30px;
+
+	@include respond-to(md) {
+		margin-top: 40px;
+	}
+}
+
 .table {
 	border-bottom: 1px solid $base-color-4;
 	border-top: 1px solid $base-color-4;
@@ -82,4 +90,8 @@
 	font-size: 16px;
 	line-height: 28px;
 	margin-top: 20px;
+
+	li {
+		list-style: none;
+	}
 }

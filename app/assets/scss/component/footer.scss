@@ -12,11 +12,15 @@
 		box-sizing: border-box;
 		margin: 0;
 		max-width: none;
-		padding: 30px 40px 0;
+		padding: 30px 40px;
 	}
 
 	@include respond-to(md) {
 		padding: 40px 0 40px 80px;
 		width: 80%;
+	}
+
+	a {
+		color: $base-color-2;
 	}
 }

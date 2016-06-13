@@ -179,13 +179,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /***[ navigation ]***********************************************/
 .navigation {
-  background-color: #171717;
   box-sizing: border-box;
   height: 60px;
   padding-left: 31px;
   position: fixed;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  -webkit-transition: background-color .35s, -webkit-transform .35s;
+  transition: background-color .35s, -webkit-transform .35s;
+  transition: background-color .35s, transform .35s;
+  transition: background-color .35s, transform .35s, -webkit-transform .35s;
   width: 100%;
   z-index: 100;
 }
@@ -196,12 +197,34 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.navigation.is--unpinned {
+  -webkit-transform: translate(0, -60px);
+      -ms-transform: translate(0, -60px);
+          transform: translate(0, -60px);
+}
+
+.navigation.is--pinned {
+  background-color: #171717;
+  border-bottom: 1px solid #272727;
+  -webkit-transform: translate(0);
+      -ms-transform: translate(0);
+          transform: translate(0);
+}
+
+.navigation.is--top {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-transform: translate(0, 23px);
+      -ms-transform: translate(0, 23px);
+          transform: translate(0, 23px);
+}
+
 .navigation__item {
   color: #ffffff;
   display: inline-block;
   font-size: 18px;
   font-weight: 700;
-  padding-top: 20px;
+  padding-top: 17px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -302,7 +325,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /***[ intro ]***********************************************/
 .intro--subtitle {
-  color: #999999;
+  color: #A9A9A9;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -335,7 +358,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro--title-secundary {
-  color: #999999;
+  color: #A9A9A9;
   font-family: 'Noto Serif', serif;
   font-size: 14px;
   font-style: italic;
@@ -350,7 +373,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro--intro {
-  color: #999999;
+  color: #A9A9A9;
   font-family: 'Noto serif', serif;
   font-size: 16px;
   line-height: 28px;
@@ -379,9 +402,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /***[ table ]***********************************************/
+.table__container {
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 1279px) {
+  .table__container {
+    margin-top: 40px;
+  }
+}
+
 .table {
-  border-bottom: 1px solid #262626;
-  border-top: 1px solid #262626;
+  border-bottom: 1px solid #272727;
+  border-top: 1px solid #272727;
   padding: 20px 0;
   width: 100%;
 }
@@ -426,7 +459,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table--meta-location {
-  color: #999999;
+  color: #A9A9A9;
   font-family: 'Noto Serif', serif;
   font-size: 14px;
   line-height: 20px;
@@ -447,7 +480,7 @@ h1, h2, h3, h4, h5, h6 {
     width: calc(100% - 320px);
   }
   .table--body:before {
-    background-color: #262626;
+    background-color: #272727;
     bottom: 0;
     content: ' ';
     left: 0;
@@ -465,16 +498,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table--body-text {
-  color: #999999;
+  color: #A9A9A9;
   font-family: 'Noto serif', serif;
   font-size: 16px;
   line-height: 28px;
   margin-top: 20px;
 }
 
+.table--body-text li {
+  list-style: none;
+}
+
 /***[ footer ]***********************************************/
 .footer {
-  color: #999999;
+  color: #A9A9A9;
   font-family: 'Roboto', sans-serif;
   margin: auto;
   padding: 20px 30px;
@@ -487,7 +524,7 @@ h1, h2, h3, h4, h5, h6 {
     box-sizing: border-box;
     margin: 0;
     max-width: none;
-    padding: 30px 40px 0;
+    padding: 30px 40px;
   }
 }
 
@@ -496,6 +533,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 40px 0 40px 80px;
     width: 80%;
   }
+}
+
+.footer a {
+  color: #A9A9A9;
 }
 
 /*# sourceMappingURL=main.css.map */
