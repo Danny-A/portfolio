@@ -3,7 +3,6 @@
 
 .intro--subtitle {
 	color: $base-color-2;
-	font-family: 'Roboto', sans-serif;
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 24px;
@@ -17,7 +16,6 @@
 }
 
 .intro--title {
-	font-family: 'Roboto', sans-serif;
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 48px;
@@ -41,9 +39,9 @@
 	}
 }
 
-.intro--intro {
+.intro--body {
 	color: $base-color-2;
-	font-family: 'Noto serif', serif;
+	font-family: 'Noto Serif', serif;
 	font-size: 16px;
 	line-height: 28px;
 	margin-top: 40px;

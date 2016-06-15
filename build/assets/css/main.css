@@ -326,7 +326,6 @@ h1, h2, h3, h4, h5, h6 {
 /***[ intro ]***********************************************/
 .intro--subtitle {
   color: #A9A9A9;
-  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -344,7 +343,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro--title {
-  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   font-weight: 700;
   line-height: 48px;
@@ -372,9 +370,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.intro--intro {
+.intro--body {
   color: #A9A9A9;
-  font-family: 'Noto serif', serif;
+  font-family: 'Noto Serif', serif;
   font-size: 16px;
   line-height: 28px;
   margin-top: 40px;
@@ -389,13 +387,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media only screen and (min-width: 737px) {
-  .intro--intro {
+  .intro--body {
     max-width: 500px;
   }
 }
 
 @media only screen and (min-width: 1279px) {
-  .intro--intro {
+  .intro--body {
     max-width: 680px;
     margin-top: 80px;
   }
@@ -453,7 +451,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table--meta-title {
-  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
@@ -491,7 +488,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table--body-title {
-  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   font-weight: 700;
   line-height: 1;
@@ -499,7 +495,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .table--body-text {
   color: #A9A9A9;
-  font-family: 'Noto serif', serif;
+  font-family: 'Noto Serif', serif;
   font-size: 16px;
   line-height: 28px;
   margin-top: 20px;
@@ -512,7 +508,6 @@ h1, h2, h3, h4, h5, h6 {
 /***[ footer ]***********************************************/
 .footer {
   color: #A9A9A9;
-  font-family: 'Roboto', sans-serif;
   margin: auto;
   padding: 20px 30px;
   -webkit-transition: all .5s;
