@@ -88,7 +88,7 @@ module.exports = {
     },
     //js hint
     jshint: {
-        src: productionAssets + '/js/**/*.js'
+        src: srcAssets + '/js/**/*.js'
     },
     // optimize
     optimize: {
@@ -105,7 +105,7 @@ module.exports = {
             options: {}
         },
         images: {
-            src: productionAssets + '/images/**/*.{jpg,jpeg,png,gif}',
+            src: srcAssets + '/images/**/*.{jpg,jpeg,png,gif}',
             dest: productionAssets + '/images/',
             options: {
                 optimizationLevel: 3,

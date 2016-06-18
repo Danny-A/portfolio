@@ -8,8 +8,8 @@ gulp.task('build-production', function(callback) {
     runSequence([
         'sass',
         'optimize:css',
-        //'scripts',
-        //'images',
+        'optimize:js',
+        'optimize:images',
         //'copy:fonts'
         ],
         //'base64',
