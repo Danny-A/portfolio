@@ -18,7 +18,7 @@
     <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
     <base href="{{ siteUrl }}">
 
-    <meta name="description" content="150 chars">
+    <meta name="description" content="Front-end developer from Utrecht">
     <meta name="robots" content="none">
     <meta name="googlebot" content="none">
     <meta name="google" content="nositelinkssearchbox">
@@ -27,20 +27,22 @@
     <meta name="url" content="{{ siteUrl }}">
 
     <!-- facebook OG -->
-    <meta property="fb:app_id" content="">
+    {#
+      <meta property="fb:app_id" content="">
+    #}
     <meta property="og:url" content="{{ siteUrl }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}">
-    <meta property="og:image" content="">
-    <meta property="og:description" content="Description Here">
+    <meta property="og:image" content="{{ siteUrl }}build/assets/images/share/share-image.png">
+    <meta property="og:description" content="Front-end developer from Utrecht">
     <meta property="og:site_name" content="{{ siteName }}">
     <meta property="og:locale" content="en_US">
 
     <!-- For IE 11, Chrome, Firefox, Safari, Opera -->
-    <link rel="icon" href="path/to/favicon-16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="path/to/favicon-32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="path/to/favicon-48.png" sizes="48x48" type="image/png">
-    <link rel="icon" href="path/to/favicon-62.png" sizes="62x62" type="image/png">
+    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-62.png" sizes="62x62" type="image/png">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700" rel="stylesheet" type="text/css">
@@ -63,13 +65,13 @@
       {% set uriSegment = craft.request.segment(1) %}
 
       <nav class="navigation js-header">
-        <a href="{{ siteUrl }}" class="navigation__item{{ uriSegment == '' ? ' navigation__item--active' }}" title="About" data-title="About">
+        <a href="{{ siteUrl }}" class="navigation__item {{ uriSegment == '' ? ' navigation__item--active' }}" title="About" data-title="About" data-event="ga" data-category="Navigation" data-action="Click" data-label="About">
           About
         </a>
-        <a href="{{ url('experience') }}" class="navigation__item{{ uriSegment == 'experience' ? ' navigation__item--active' }}" title="Experience" data-title="Experience">
+        <a href="{{ url('experience') }}" class="navigation__item {{ uriSegment == 'experience' ? ' navigation__item--active' }}" title="Experience" data-title="Experience" data-event="ga" data-category="Navigation" data-action="Click" data-label="Experience">
           Experience
         </a>
-        <a href="{{ url('education') }}" class="navigation__item{{ uriSegment == 'education' ? ' navigation__item--active' }}" title="Education" data-title="Education">
+        <a href="{{ url('education') }}" class="navigation__item {{ uriSegment == 'education' ? ' navigation__item--active' }}" title="Education" data-title="Education" data-event="ga" data-category="Navigation" data-action="Click" data-label="Education">
           Education
         </a>
       </nav>
@@ -83,7 +85,7 @@
 
       <footer class="footer fadeInUp js-waypointitem">
         This goes out to the whole wide website<br/>
-        Copyright {{ now.year }} • Built with <a href="http://craftcms.com">Craft</a>
+        Copyright {{ now.year }} • Built with <a href="http://craftcms.com" target="_blank" title="Craft">Craft</a>
       </footer>
     </div>
 
