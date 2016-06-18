@@ -34,12 +34,17 @@
 .navigation__item {
 	color: $white;
 	display: inline-block;
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: 700;
-	padding-top: 17px;
+	padding-top: 20px;
 	position: relative;
 	text-decoration: none;
 	text-transform: uppercase;
+
+	@include respond-to(sm) {
+		font-size: 18px;
+		padding-top: 20px;
+	}
 
 	@include respond-to(md) {
 		&:before {
