@@ -9,6 +9,7 @@ function trackView(url) {
 		  page: '/' + url
 		});
 
+    ga('send', 'pageview', '/' + url);
 }
 
 // track events in google analytics
