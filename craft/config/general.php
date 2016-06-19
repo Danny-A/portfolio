@@ -18,6 +18,7 @@ return array(
             'baseUrl'  => 'http://dev.dannyarntz.nl'
         ),
         'siteUrl'  => 'http://dev.dannyarntz.nl',
+        'addTrailingSlashesToUrls' => true,
     ),
 
     'www.dannyarntz.nl' => array(
@@ -25,5 +26,6 @@ return array(
             'baseUrl'  => 'http://www.dannyarntz.nl'
         ),
         'siteUrl'  => 'http://www.dannyarntz.nl',
+        'addTrailingSlashesToUrls' => true,
     )
 );
