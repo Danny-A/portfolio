@@ -8,10 +8,10 @@ var config = require('../../config');
  */
 gulp.task('optimize:js', function() {
     return gulp.src(config.optimize.js.src)
-        // optimize development javascript
-        .pipe(uglify(config.optimize.js.options))
-        // where to store production javascript
-        .pipe(gulp.dest(config.optimize.js.dest))
-        // displays file size
-        .pipe(size());
+    // optimize development javascript
+      .pipe(uglify(config.optimize.js.options))
+      // where to store production javascript
+      .pipe(gulp.dest(config.optimize.js.dest))
+      // displays file size
+      .pipe(size());
 });

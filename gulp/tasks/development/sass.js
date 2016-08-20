@@ -15,7 +15,7 @@ var onError = function(err) {
 };
 
 // compile sass
-gulp.task('sass', function() {
+gulp.task('sass', ['scss-lint'], function() {
     var sassConfig = config.sass.options;
 
     sassConfig.onError = browsersync.notify;

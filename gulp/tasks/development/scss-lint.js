@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+var scsslint = require('gulp-scss-lint');
 var config = require('../../config');
 
 /**
@@ -8,5 +8,5 @@ var config = require('../../config');
  */
 gulp.task('scss-lint', function() {
     return gulp.src(config.scsslint.src)
-        .pipe($.scssLint(config.scsslint.options));
+      .pipe(scsslint(config.scsslint.options));
 });
