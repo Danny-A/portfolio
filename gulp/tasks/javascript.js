@@ -42,7 +42,7 @@ gulp.task('js-watch', ['javascript'], function(done) {
 });
 
 gulp.task('js-minify', ['javascript'], function(){
-	return gulp.src(config.dest)
+	return gulp.src(config.dest + 'application.js')
 		.pipe(plugins.concat('application.min.js'))
 		.pipe(plugins.uglify())
 		.pipe(gulp.dest(config.dest))
