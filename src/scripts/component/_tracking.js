@@ -11,7 +11,6 @@ function trackView(url) {
 // example: category(video), action(play,pause,stop), label(title, name file), value(length, dollar value), nonInteraction(false,true (default is false and it impacts the bounce rate calculations))
 function trackEvent(category, action, label) {
 	ga('send', 'event', category, action, label);
-
 }
 
 // track click event
@@ -40,8 +39,7 @@ $('body').on('click', 'a[target="_blank"], [data-ga]', function() {
 	} else if (link.attr('target')) {
 		value = 'external/' + href;
 	}
-	
+
 	trackView(value);
 
 });
-
