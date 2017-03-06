@@ -7,25 +7,28 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
  */
 
+define('URI_SCHEME', (isset($_SERVER['HTTPS'])) ? "https://" : "http://");
+define('SITE_URL', URI_SCHEME . $_SERVER['SERVER_NAME']);
+
 return array(
 
-    '*' => array(
-        // ...
+  '*' => array(
+    'siteUrl' => SITE_URL,
+    'defaultWeekStartDay' => 1,
+    'enableCsrfProtection' => true,
+    'omitScriptNameInUrls' => true,
+    'addTrailingSlashesToUrls'=> false,
+    'sendPoweredByHeader' => false,
+    'cpTrigger' => 'admin',
+    'environmentVariables' => array(
+      'baseUrl' => SITE_URL,
     ),
+  ),
 
-    'dev.dannyarntz.nl' => array(
-        'environmentVariables' => array(
-            'baseUrl'  => 'http://dev.dannyarntz.nl'
-        ),
-        'siteUrl'  => 'http://dev.dannyarntz.nl',
-        'addTrailingSlashesToUrls' => true,
+  '.dev' => array(
+    'devMode' => true,
+    'environmentVariables' => array(
+      'baseUrl' => SITE_URL,
     ),
-
-    'www.dannyarntz.nl' => array(
-        'environmentVariables' => array(
-            'baseUrl'  => 'http://www.dannyarntz.nl'
-        ),
-        'siteUrl'  => 'http://www.dannyarntz.nl',
-        'addTrailingSlashesToUrls' => true,
-    )
+  )
 );
