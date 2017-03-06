@@ -1,136 +1,104 @@
 var src = 'app';
 var template = 'craft/templates';
-var build = 'build';
-var srcAssets = src + '/assets';
-var productionAssets = build + '/assets';
-var configJson = require('./parameters.json');
+var srcAssets = 'src';
+var productionAssets = 'public';
+
+// Source and destination paths for tasks:
+var path = {
+	npm: 'node_modules'
+};
 
 module.exports = {
     // browsersync
     browsersync: {
-        development: {
-            logLevel: 'debug',
-            browser: ['firefox'],
-            notify: true,
-            online: false,
-            /*server: {
-                baseDir: './',
-                index: 'index.php',
-            },
-            */
-            proxy: 'http://' + configJson.parameters.host.replace('.nl', '.dev'),
-            port: 9000,
-        },
-    },
-    // delete
-    delete: {
-        src: [productionAssets] + '/**',
-        options: {
-            read: false // much faster because it is not reading the files
-        }
+      logLevel: 'debug',
+      notify: true,
+      online: false,
+      proxy: 'http://portfolio.dev/',
+      port: 3000,
     },
     // watch
     watch: {
-        sass: srcAssets + '/scss/**/*.{sass,scss}',
-        javascript: srcAssets + '/js/**/*.js',
-        html: template + '/**/*.html',
-        images: srcAssets + 'images/**/*',
-
+      sass: srcAssets + '/styles/**/*.{sass,scss}',
+      javascript: srcAssets + '/scripts/**/*.js',
+      images: srcAssets + '/images/**/*.{gif,jpg,jpeg,png,svg}',
+      html: template + '/**/*.{twig,html}',
     },
     // javascript
     javascript: {
-        src: [
-            srcAssets + '/js/vendor/*.js',
-            srcAssets + '/js/component/**/*.js',
-            srcAssets + '/js/*.js',
-        ],
-        dest: productionAssets + '/js',
+      src: [
+        srcAssets + '/scripts/vendor/*.js',
+        srcAssets + '/scripts/component/**/*.js',
+        srcAssets + '/scripts/*.js',
+      ],
+      dest: productionAssets + '/scripts',
     },
     // sass
-    sass: {
-        src: [
-            srcAssets + '/scss/main.scss',
-        ],
-        dest: productionAssets + '/css',
-        options: {
-            outputStyle: 'expanded',
-            precision: 10,
-            includePaths: ['.'],
-            onError: console.error.bind(console, 'Sass error:'),
-            bundleExec: true,
-            errLogToConsole: true,
-            noCache: true,
-            compass: false,
-        }
+    styles: {
+      src: [
+          srcAssets + '/styles/application.scss',
+      ],
+      dest: productionAssets + '/styles',
+      options: {
+        outputStyle: 'expanded',
+        precision: 10,
+        onError: console.error.bind(console, 'Sass error:'),
+        bundleExec: true,
+        errLogToConsole: true,
+        noCache: true,
+        compass: false,
+      }
     },
     // autoprefixer
     autoprefixer: {
-        browsers: [
-            'last 2 versions',
-            'safari 8',
-            'ie 9',
-            'ios 7',
-            'android 4'
-        ],
-        cascade: true
+      browsers: [
+        'last 2 versions',
+        'safari 8',
+        'ie 9',
+        'ios 7',
+        'android 4'
+      ],
+      cascade: true
     },
-    // scss lint
-    scsslint: {
-        src: [
-            srcAssets + 'scss/**/*.{sass,scss}',
-            //'!' + development + 'css/scss/component/animate.scss', // '!' = excluding a file
-        ],
-        options: {
-            'maxBuffer': 507200,
-            'config': 'scss-lint.yml',
-            'filePipeOutput': 'scssReport.json',
-        }
+    // style lint
+    stylelint: {
+      src: [
+        srcAssets + '/styles/**/*.{sass,scss}',
+        //'!' + srcAssets + '/styles/components/_1-animate.scss', // '!' = excluding a file
+        //'!' + srcAssets + '/styles/components/animation/**/*.scss', // '!' = excluding a file
+      ],
+      options: {
+        configFile: 'sass-lint.yml'
+      }
     },
     //js hint
     jshint: {
-        src: srcAssets + '/js/**/*.js'
+      src: srcAssets + '/scripts/{,*/}*.js'
     },
     // optimize
     optimize: {
-        css: {
-            src: productionAssets + '/css/*.css',
-            dest: productionAssets + '/css/',
-            options: {
-                keepSpecialComments: 0
-            }
-        },
-        js: {
-            src: productionAssets + '/js/*.js',
-            dest: productionAssets + '/js/',
-            options: {}
-        },
-        images: {
-            src: srcAssets + '/images/**/*.{jpg,jpeg,png,gif}',
-            dest: productionAssets + '/images/',
-            options: {
-                optimizationLevel: 3,
-                progessive: true,
-                interlaced: true
-            }
-        }
-    },
-    // base 64 css images
-    base64: {
-        src: productionAssets + '/css/*.css',
-        dest: productionAssets + '/css/',
+      styles: {
+        src: productionAssets + '/styles/*.css',
+        dest: productionAssets + '/styles/',
         options: {
-            baseDir: build,
-            extensions: ['png'],
-            maxImageSize: 20 * 1024, // bytes
-            debug: false
+          keepSpecialComments: 0
         }
+      },
+      javascript: {
+        src: productionAssets + '/scripts/*.js',
+        dest: productionAssets + '/scripts/',
+        options: {}
+      },
+      images: {
+        src: srcAssets + '/images/**/*.{gif,jpg,jpeg,png,svg}',
+        dest: productionAssets + '/images/',
+        options: {
+    			progressive: true,
+    			interlaced: true,
+    			svgoPlugins: [
+    				{ removeDoctype: false } // Keeps IE happy
+    			]
+        }
+      }
     },
-
-    // ftp options
-    ftp: {
-        hostname: configJson.parameters.ftp_hostname,
-        username: configJson.parameters.ftp_username,
-        password: configJson.parameters.ftp_password,
-        path: configJson.parameters.path,
-    }
 };
