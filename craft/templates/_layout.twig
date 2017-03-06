@@ -37,14 +37,14 @@
     <meta property="og:locale" content="en_US">
 
     <!-- For IE 11, Chrome, Firefox, Safari, Opera -->
-    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-48.png" sizes="48x48" type="image/png">
-    <link rel="icon" href="{{ siteUrl }}build/assets/images/favicon/favicon-62.png" sizes="62x62" type="image/png">
+    <link rel="icon" href="images/favicon/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="images/favicon/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/favicon/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="images/favicon/favicon-62.png" sizes="62x62" type="image/png">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700" rel="stylesheet" type="text/css">
-    <link href="{{ siteUrl }}build/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="styles/application.css" rel="stylesheet" type="text/css">
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -61,19 +61,7 @@
 
     <div class="container">
 
-      {% set uriSegment = craft.request.segment(1) %}
-
-      <nav class="navigation js-header">
-        <a href="{{ siteUrl }}" class="navigation__item {{ uriSegment == '' ? ' navigation__item--active' }}" title="About" data-title="About" data-event="ga" data-category="Navigation" data-action="Click" data-label="About">
-          About
-        </a>
-        <a href="{{ url('experience') }}" class="navigation__item {{ uriSegment == 'experience' ? ' navigation__item--active' }}" title="Experience" data-title="Experience" data-event="ga" data-category="Navigation" data-action="Click" data-label="Experience">
-          Experience
-        </a>
-        <a href="{{ url('education') }}" class="navigation__item {{ uriSegment == 'education' ? ' navigation__item--active' }}" title="Education" data-title="Education" data-event="ga" data-category="Navigation" data-action="Click" data-label="Education">
-          Education
-        </a>
-      </nav>
+      {% include '_partials/_header' %}
 
       <main role="main">
         {% block content %}
@@ -82,13 +70,10 @@
         {% endblock %}
       </main>
 
-      <footer class="footer fadeInUp js-waypointitem">
-        This goes out to the whole wide website<br/>
-        Copyright {{ now.year }} • Built with <a href="http://craftcms.com" target="_blank" title="Craft">Craft</a>
-      </footer>
     </div>
 
-    <script src="{{ siteUrl }}build/assets/js/app.min.js"></script>
+    {% include '_partials/_footer' %}
+  	{% include '_partials/_scripts' %}
 
   </body>
 </html>

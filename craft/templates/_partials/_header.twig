@@ -1,0 +1,14 @@
+
+{% set uriSegment = craft.request.segment(1) %}
+
+<nav class="navigation js-header">
+  <a href="{{ siteUrl }}" class="navigation__item {{ uriSegment == '' ? ' navigation__item--active' }}" title="About" data-title="About" data-event="ga" data-category="Navigation" data-action="Click" data-label="About">
+    About
+  </a>
+  <a href="{{ url('experience') }}" class="navigation__item {{ uriSegment == 'experience' ? ' navigation__item--active' }}" title="Experience" data-title="Experience" data-event="ga" data-category="Navigation" data-action="Click" data-label="Experience">
+    Experience
+  </a>
+  <a href="{{ url('education') }}" class="navigation__item {{ uriSegment == 'education' ? ' navigation__item--active' }}" title="Education" data-title="Education" data-event="ga" data-category="Navigation" data-action="Click" data-label="Education">
+    Education
+  </a>
+</nav>
