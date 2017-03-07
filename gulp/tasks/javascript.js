@@ -41,8 +41,8 @@ gulp.task('js-watch', ['javascript'], function(done) {
 	done();
 });
 
-gulp.task('js-minify', ['javascript'], function(){
-	return gulp.src(config.dest + 'application.js')
+gulp.task('javascript:minify', function(){
+	return gulp.src(config.src)
 		.pipe(plugins.concat('application.min.js'))
 		.pipe(plugins.uglify())
 		.pipe(gulp.dest(config.dest))

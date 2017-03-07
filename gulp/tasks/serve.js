@@ -19,5 +19,5 @@ gulp.task('production', [
 	'images',
 	'sass',
 	'sass:minify',
-	'js-minify'
+	'javascript:minify'
 ]);
