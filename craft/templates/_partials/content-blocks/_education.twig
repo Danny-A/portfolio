@@ -1,26 +1,20 @@
 
-<div class="table__container">
-  {% for item in educationBlock %}
-
-    <div class="table fadeInUp js-waypointitem">
-      <div class="table--meta">
-        <h2 class="table--meta-title">
-          {{ item.educationSchool }}
-        </h2>
-        <h3 class="table--meta-location">
-          {{ item.educationLocation }}
-        </h3>
-        <div class="table--meta-duration">
-          {{ item.educationEnd|date('Y') }} - {{ item.educationEnd|date('Y') }}
-        </div>
-      </div>
-
-      <div class="table--body">
-        <h2 class="table--body-title">
-          {{ item.educationTitle }}
-        </h2>
-      </div>
+<div class="table fadeInUp js-waypointitem">
+  <div class="table--meta">
+    <h2 class="table--meta-title">
+      {{ block.educationSchool }}
+    </h2>
+    <h3 class="table--meta-location">
+      {{ block.educationLocation }}
+    </h3>
+    <div class="table--meta-duration">
+      {{ block.educationEnd|date('Y') }} - {{ block.educationEnd|date('Y') }}
     </div>
-    
-  {% endfor %}
+  </div>
+
+  <div class="table--body">
+    <h2 class="table--body-title">
+      {{ block.educationTitle }}
+    </h2>
+  </div>
 </div>

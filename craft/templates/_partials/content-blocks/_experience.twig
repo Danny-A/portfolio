@@ -1,29 +1,23 @@
 
-<div class="table__container">
-  {% for item in experienceBlock %}
-    <div class="table fadeInUp js-waypointitem">
-
-      <div class="table--meta">
-        <h2 class="table--meta-title">
-          {{ item.experienceFunction }}
-        </h2>
-        <h3 class="table--meta-location">
-          {{ item.experienceLocation }}
-        </h3>
-        <div class="table--meta-duration">
-          {{ item.experienceStart|date('m Y') }} - {% if% item.experienceEnd is not empty %} {{ item.experienceEnd|date('m Y') }} {% else %} Present
-        </div>
-      </div>
-
-      <div class="table--body">
-        <h2 class="table--body-title">
-          {{ item.experienceTitle }}
-        </h2>
-        <div class="table--body-text">
-          {{ item.experienceSummary }}
-        </div>
-      </div>
-
+<div class="table fadeInUp js-waypointitem">
+  <div class="table--meta">
+    <h2 class="table--meta-title">
+      {{ block.experienceFunction }}
+    </h2>
+    <h3 class="table--meta-location">
+      {{ block.experienceLocation }}
+    </h3>
+    <div class="table--meta-duration">
+      {{ block.experienceStart|date('F Y') }} - {% if block.experienceEnd is not empty %} {{ block.experienceEnd|date('F Y') }} {% else %} Present {% endif %}
     </div>
-  {% endfor %}
+  </div>
+
+  <div class="table--body">
+    <h2 class="table--body-title">
+      {{ block.experienceTitle }}
+    </h2>
+    <div class="table--body-text">
+      {{ block.experienceSummary }}
+    </div>
+  </div>
 </div>

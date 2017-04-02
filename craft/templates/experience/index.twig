@@ -4,9 +4,9 @@
  #}
 
 {% extends "_layout" %}
-{% set entry = craft.entries.section('experience') %}
 
 {% block content %}
+
   <div class="section">
 
     <div class="intro">
@@ -15,7 +15,9 @@
       </h1>
     </div>
 
-    {% include '_partials/content-blocks' %}
+    <div class="table__container">
+      {% include '_partials/content-blocks' %}
+    </div>
 
   </div>
 
