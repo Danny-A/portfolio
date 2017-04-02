@@ -1,13 +1,6 @@
 {#
  # Education index template
  # -------------------
- #
- # This template is loaded whenever http://example.com/education is
- # requested, because it is located at static/education.html in your
- # craft/templates/ folder.
- #
- # See this page for more details on how Craft routes requests:
- # http://craftcms.com/docs/routing
  #}
 
 {% extends "_layout" %}
@@ -23,53 +16,7 @@
       </h1>
     </div>
 
-    <div class="table__container">
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Grafisch Lyceum
-          </h2>
-          <h3 class="table--meta-location">
-            Utrecht
-          </h3>
-          <div class="table--meta-duration">
-            2006 – 2010
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            Interactief Vormgeven
-          </h2>
-        </div>
-
-      </div>
-
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Comenius College
-          </h2>
-          <h3 class="table--meta-location">
-            Hilversum
-          </h3>
-          <div class="table--meta-duration">
-            2001 – 2005
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            MAVO
-          </h2>
-        </div>
-
-      </div>
-    </div>
+    {% include '_partials/content-blocks' %}
 
   </div>
 

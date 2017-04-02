@@ -1,17 +1,10 @@
 {#
  # Experience index template
  # -------------------
- #
- # This template is loaded whenever http://example.com/experience is
- # requested, because it is located at static/experience.html in your
- # craft/templates/ folder.
- #
- # See this page for more details on how Craft routes requests:
- # http://craftcms.com/docs/routing
  #}
 
 {% extends "_layout" %}
-{% set title = "Experience" %}
+{% set entry = craft.entries.section('experience') %}
 
 {% block content %}
   <div class="section">
@@ -22,149 +15,7 @@
       </h1>
     </div>
 
-    <div class="table__container">
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Front-end developer
-          </h2>
-          <h3 class="table--meta-location">
-            Amsterdam
-          </h3>
-          <div class="table--meta-duration">
-            January 2012 – Present
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            Bravoure
-          </h2>
-          <div class="table--body-text">
-            As Front-end developer in this multidisciplinary team, I have worked on award winning websites such as: Amsterdam Dance Event, CJP, Awakenings, Dekmantel, Brunel. Next to that I am responsible for our Email Marketing. Improving email templates for our clients and working on mobile solutions.<br/>
-            <br/>
-            Over the years at Bravoure I have been involved in many projects, smaller, larger, simple and complicated. Within all projects I am responsible for the front-end part while working together with the design team and the back-end team. I have a clear vision of how things should work and share or propose those to the team.<br/>
-            <br/>
-            I became more eager to gather data based on user interaction. This data helps me provide solutions for our projects. I am now responsible to make sure we collect this data during the development of these projects.<br/>
-            <br/>
-            During the development of a project I try to think of the bigger picture and from a user perspective. This way, I can help during the entire process to optimize for user experience.
-           </div>
-        </div>
-
-      </div>
-
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Front-end developer
-          </h2>
-          <h3 class="table--meta-location">
-            Utrecht
-          </h3>
-          <div class="table--meta-duration">
-            September 2010 - January 2012
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            Seventy Two
-          </h2>
-          <div class="table--body-text">
-            As Seventy two I started my online identity by designing and developing websites. I have worked for many different clients ranging from smaller to medium sized projects.<br/>
-            <br/>
-            <ul>
-              <li>- Branding</li>
-              <li>- Design and development of websites and ecommerce</li>
-              <li>- Advising clients</li>
-            </ul>
-           </div>
-        </div>
-
-      </div>
-
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Internship
-          </h2>
-          <h3 class="table--meta-location">
-            Harderwijk
-          </h3>
-          <div class="table--meta-duration">
-            September 2009 - February 2010
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            Adena Internet
-          </h2>
-          <div class="table--body-text">
-            As an intern in this team I worked on a small range of projects. This gave me the opportunity to pay attention to details, important details to optimize for performance and provide a flawless delivery of projects.
-           </div>
-        </div>
-
-      </div>
-
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Internship
-          </h2>
-          <h3 class="table--meta-location">
-            Zeist
-          </h3>
-          <div class="table--meta-duration">
-            February 2009 - July 2009
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            Wennet
-          </h2>
-          <div class="table--body-text">
-            As an intern in this small team, I worked with a great diversity of clients and projects. I was responsible for a good part of development for a large community.
-           </div>
-        </div>
-
-      </div>
-
-      <!-- row -->
-      <div class="table fadeInUp js-waypointitem">
-
-        <div class="table--meta">
-          <h2 class="table--meta-title">
-            Internship
-          </h2>
-          <h3 class="table--meta-location">
-            Zeist
-          </h3>
-          <div class="table--meta-duration">
-            February 2008 - July 2008
-          </div>
-        </div>
-
-        <div class="table--body">
-          <h2 class="table--body-title">
-            Wennet
-          </h2>
-          <div class="table--body-text">
-            As an intern in this small team, I worked with a great diversity of clients and projects. I was responsible for a good part of development for a large community.
-           </div>
-        </div>
-
-      </div>
-    </div>
+    {% include '_partials/content-blocks' %}
 
   </div>
 
