@@ -1,7 +1,7 @@
 
 /***[ intro ]***********************************************/
 
-.intro--subtitle {
+.intro__subtitle {
 	color: $base-color-2;
 	font-size: 18px;
 	font-weight: 700;
@@ -15,7 +15,7 @@
 	}
 }
 
-.intro--title {
+.intro__title {
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 48px;
@@ -26,7 +26,7 @@
 	}
 }
 
-.intro--title-secundary {
+.intro__title--secondary {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 14px;
@@ -39,7 +39,7 @@
 	}
 }
 
-.intro--body {
+.intro__body {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 16px;
@@ -47,7 +47,7 @@
 	margin-top: 40px;
 	opacity: 0;
 	transform: translateY(40px);
-  transition: transform .7s $easeOutCubic .3s, opacity .5s $easeOutCubic .3s;
+    transition: transform .7s $ease-out-cubic .3s, opacity .5s $ease-out-cubic .3s;
 
 	@include respond-to(sm) {
 		max-width: 500px;

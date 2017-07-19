@@ -26,7 +26,7 @@
 }
 
 // meta information
-.table--meta {
+.table-meta {
 	margin-bottom: 20px;
 
 	@include respond-to(md) {
@@ -37,26 +37,26 @@
 	}
 }
 
-.table--meta-title {
+.table-meta__title {
 	font-size: 18px;
 	font-weight: 700;
 }
 
-.table--meta-location {
+.table-meta__location {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 14px;
 	line-height: 20px;
 }
 
-.table--meta-duration {
+.table-meta__duration {
 	font-size: 13px;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 }
 
 // main information
-.table--body {
+.table-body {
 	@include respond-to(md) {
 		box-sizing: border-box;
 		float: left;
@@ -76,13 +76,13 @@
 	}
 }
 
-.table--body-title {
+.table-body__title {
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 1;
 }
 
-.table--body-text {
+.table-body__text {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 16px;

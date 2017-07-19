@@ -2,7 +2,7 @@
 .fadeInUp {
   opacity: 0;
   transform: translate(0, 40px);
-  transition: transform .7s $easeOutCubic 0s, opacity 0.5s $easeOutCubic 0s;
+  transition: transform .7s $ease-out-cubic 0s, opacity 0.5s $ease-out-cubic 0s;
 
 	&.is-animated {
     opacity: 1;
