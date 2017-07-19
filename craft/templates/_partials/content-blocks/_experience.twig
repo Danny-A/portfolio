@@ -1,22 +1,22 @@
 
 <div class="table fadeInUp js-waypointitem">
-  <div class="table--meta">
-    <h2 class="table--meta-title">
+  <div class="table-meta">
+    <h2 class="table-meta__title">
       {{ block.experienceFunction }}
     </h2>
-    <h3 class="table--meta-location">
+    <h3 class="table-meta__location">
       {{ block.experienceLocation }}
     </h3>
-    <div class="table--meta-duration">
+    <div class="table-meta__duration">
       {{ block.experienceStart|date('F Y') }} - {% if block.experienceEnd is not empty %} {{ block.experienceEnd|date('F Y') }} {% else %} Present {% endif %}
     </div>
   </div>
 
-  <div class="table--body">
-    <h2 class="table--body-title">
+  <div class="table-body">
+    <h2 class="table-body__title">
       {{ block.experienceTitle }}
     </h2>
-    <div class="table--body-text">
+    <div class="table-body__text">
       {{ block.experienceSummary }}
     </div>
   </div>
