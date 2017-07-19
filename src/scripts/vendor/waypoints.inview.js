@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /*
 Waypoints Inview Shortcut - 4.0.0
 Copyright © 2011-2015 Caleb Troughton
