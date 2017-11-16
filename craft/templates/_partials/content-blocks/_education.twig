@@ -1,19 +1,19 @@
 
-<div class="table fadeInUp js-waypointitem">
-  <div class="table-meta">
-    <h2 class="table-meta__title">
+<div class="row js-inview">
+  <div class="row-meta">
+    <h2 class="row-meta__title">
       {{ block.educationSchool }}
     </h2>
-    <h3 class="table-meta__location">
+    <h3 class="row-meta__location">
       {{ block.educationLocation }}
     </h3>
-    <div class="table-meta__duration">
+    <div class="row-meta__duration">
       {{ block.educationEnd|date('Y') }} - {{ block.educationEnd|date('Y') }}
     </div>
   </div>
 
-  <div class="table-body">
-    <h2 class="table-body__title">
+  <div class="row-body">
+    <h2 class="row-body__title">
       {{ block.educationTitle }}
     </h2>
   </div>

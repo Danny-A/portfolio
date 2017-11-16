@@ -1,7 +1,7 @@
 
-/***[ table ]***********************************************/
+/***[ row ]***********************************************/
 
-.table__container {
+.row__container {
 	margin-top: 30px;
 
 	@include respond-to(md) {
@@ -9,10 +9,13 @@
 	}
 }
 
-.table {
+.row {
 	border-bottom: 1px solid $base-color-4;
 	border-top: 1px solid $base-color-4;
 	padding: 20px 0;
+	opacity: 0;
+	transform: translateY(40px);
+  transition: transform .7s $ease-out-cubic 0s, opacity 0.5s $ease-out-cubic 0s;
 	width: 100%;
 
 	@include respond-to(sm) {
@@ -20,13 +23,18 @@
 		padding: 40px 0;
 	}
 
-	& + .table {
+	& + .row {
 		border-top: none;
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
 // meta information
-.table-meta {
+.row-meta {
 	margin-bottom: 20px;
 
 	@include respond-to(md) {
@@ -37,26 +45,26 @@
 	}
 }
 
-.table-meta__title {
+.row-meta__title {
 	font-size: 18px;
 	font-weight: 700;
 }
 
-.table-meta__location {
+.row-meta__location {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 14px;
 	line-height: 20px;
 }
 
-.table-meta__duration {
+.row-meta__duration {
 	font-size: 13px;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 }
 
 // main information
-.table-body {
+.row-body {
 	@include respond-to(md) {
 		box-sizing: border-box;
 		float: left;
@@ -76,13 +84,13 @@
 	}
 }
 
-.table-body__title {
+.row-body__title {
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 1;
 }
 
-.table-body__text {
+.row-body__text {
 	color: $base-color-2;
 	font-family: 'Noto Serif', serif;
 	font-size: 16px;
