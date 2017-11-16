@@ -38,18 +38,14 @@
 
   <body>
 
-    <div class="container">
+    {% include '_partials/_header' %}
 
-      {% include '_partials/_header' %}
-
-      <main role="main">
-        {% block content %}
+    <main id="barba-wrapper" role="main">
+      {% block content %}
         <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
         <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-        {% endblock %}
-      </main>
-
-    </div>
+      {% endblock %}
+    </main>
 
     {% include '_partials/_footer' %}
   	{% include '_partials/_scripts' %}

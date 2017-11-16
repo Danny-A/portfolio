@@ -89,7 +89,7 @@
 		margin-left: 20px;
 	}
 
-	&.navigation__item--active {
+	&.is-active {
 		&:before {
 			background-color: $base-color-3;
 			bottom: -3px;
