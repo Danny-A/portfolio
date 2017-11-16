@@ -1,4 +1,4 @@
-/*! Craft  - 2017-06-30 */
+/*! Craft  - 2017-11-06 */
 (function($){
 
 // Set all the standard Craft.* stuff
@@ -2067,6 +2067,11 @@ Craft.BaseElementIndex = Garnish.Base.extend(
 
 		if (this.getSelectedSortAttribute() == 'structure')
 		{
+			if (typeof this.instanceState.collapsedElementIds === 'undefined')
+			{
+				this.instanceState.collapsedElementIds = [];
+			}
+
 			params.collapsedElementIds = this.instanceState.collapsedElementIds;
 		}
 
@@ -3585,6 +3590,7 @@ Craft.BaseElementIndexView = Garnish.Base.extend(
 				this.appendElements($newElements);
 				Craft.appendHeadHtml(response.headHtml);
 				Craft.appendFootHtml(response.footHtml);
+				picturefill();
 
 				if (this.elementSelect)
 				{
@@ -6836,14 +6842,13 @@ Craft.AuthManager = Garnish.Base.extend(
 			{
 				if (textStatus == 'success')
 				{
-					this.updateAuthTimeout(jqXHR.responseJSON.timeout);
-
-					this.submitLoginIfLoggedOut = false;
-
 					if (typeof jqXHR.responseJSON.csrfTokenValue !== 'undefined' && typeof Craft.csrfTokenValue !== 'undefined')
 					{
 						Craft.csrfTokenValue = jqXHR.responseJSON.csrfTokenValue;
 					}
+
+					this.updateAuthTimeout(jqXHR.responseJSON.timeout);
+					this.submitLoginIfLoggedOut = false;
 				}
 				else
 				{
@@ -16352,6 +16357,12 @@ Craft.TagSelectInput = Craft.BaseElementSelectInput.extend(
 
 			Craft.postActionRequest('tags/searchForTags', data, $.proxy(function(response, textStatus)
 			{
+				// Just in case
+				if (this.searchMenu)
+				{
+					this.killSearchMenu();
+				}
+
 				this.$spinner.addClass('hidden');
 
 				if (textStatus == 'success')
@@ -16815,7 +16826,7 @@ Craft.UpgradeModal = Garnish.Modal.extend(
 
 	init: function(settings)
 	{
-		this.$container = $('<div id="upgrademodal" class="modal loading"/>').appendTo(Garnish.$bod),
+		this.$container = $('<div id="upgrademodal" class="modal loading"/>').appendTo(Garnish.$bod);
 
 		this.base(this.$container, $.extend({
 			resizable: true
