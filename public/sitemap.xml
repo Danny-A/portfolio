@@ -6,18 +6,18 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-    <loc>http://www.dannyarntz.nl/</loc>
+    <loc>https://www.dannyarntz.nl/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
 </url>
 <url>
-    <loc>http://www.dannyarntz.nl/experience</loc>
+    <loc>https://www.dannyarntz.nl/experience</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
 </url>
 <url>
-    <loc>http://www.dannyarntz.nl/education</loc>
+    <loc>https://www.dannyarntz.nl/education</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-</url> 
+</url>
 </urlset>
