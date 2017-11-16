@@ -16,7 +16,7 @@ class SeomaticPlugin extends BasePlugin
 
     public function getDocumentationUrl()
     {
-        return 'https://github.com/khalwat/nystudio107/blob/master/README.md';
+        return 'https://github.com/nystudio107/seomatic/wiki';
     }
 
     public function getReleaseFeedUrl()
@@ -26,7 +26,7 @@ class SeomaticPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.1.45';
+        return '1.1.56';
     }
 
     public function getSchemaVersion()
@@ -64,6 +64,10 @@ class SeomaticPlugin extends BasePlugin
                 $seomaticSocial = $context['seomaticSocial'];
                 $seomaticCreator = $context['seomaticCreator'];
                 $seomaticHelper = $context['seomaticHelper'];
+                $dataLayer = null;
+                if (!empty($context['dataLayer'])) {
+                    $dataLayer = $context['dataLayer'];
+                }
 
 /* -- We want to pass an up-to-date variable context to the template, so pass everything on in */
 
@@ -75,6 +79,7 @@ class SeomaticPlugin extends BasePlugin
                     'seomaticSocial' => $seomaticSocial,
                     'seomaticCreator' => $seomaticCreator,
                     'seomaticHelper' => $seomaticHelper,
+                    'dataLayer' => $dataLayer,
                 );
 
 /* -- Main Entity of Page info, which is optional */
