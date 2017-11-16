@@ -44,11 +44,11 @@ gulp.task('watch:tasks', ['default'], function(){
 });
 
 /**
-	* $ gulp watch
+	* $ gulp serve
 	*
 	* - calls 'gulp watch:tasks'
 	*/
-gulp.task('watch', ['watch:tasks'], function() {
+gulp.task('serve', ['watch:tasks'], function() {
 	// Do a full page reload when any templates are updated:
 	plugins.browserSync.init(config.browsersync);
 	gulp.watch([
