@@ -14,6 +14,7 @@ return array(
 
   '*' => array(
     'siteUrl' => SITE_URL,
+    'overridePhpSessionLocation' => false,
     'useSecureCookies' => true,
     'defaultWeekStartDay' => 1,
     'enableCsrfProtection' => true,
