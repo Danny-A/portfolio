@@ -14,6 +14,7 @@ return array(
 
   '*' => array(
     'siteUrl' => SITE_URL,
+    'useSecureCookies' => true,
     'defaultWeekStartDay' => 1,
     'enableCsrfProtection' => true,
     'omitScriptNameInUrls' => true,
