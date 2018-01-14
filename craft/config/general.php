@@ -24,6 +24,7 @@ return array(
     'cpTrigger' => 'admin',
     'environmentVariables' => array(
       'baseUrl' => SITE_URL,
+      'basePath' => '/public_html',
     ),
   ),
 
