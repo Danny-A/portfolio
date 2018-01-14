@@ -14,7 +14,7 @@ module.exports = {
       logLevel: 'debug',
       notify: true,
       online: false,
-      proxy: 'http://portfolio.dev/',
+      proxy: 'https://portfolio.dev/',
       port: 3000,
     },
     // watch
