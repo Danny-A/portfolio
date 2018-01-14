@@ -79,7 +79,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	Barba.Dispatcher.on('initStateChange', function() {
 
 		// send pageview to Analytics
-    ga('send', 'pageview', '/' + location.pathname);
+		if (typeof ga === 'function') {
+    	ga('send', 'pageview', '/' + location.pathname);
+		}	
 
 	});
 
