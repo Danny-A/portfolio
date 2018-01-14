@@ -52,7 +52,7 @@
 
 .row-meta__location {
 	color: $base-color-2;
-	font-family: 'Noto Serif', serif;
+	font-family: $font-family-serif;
 	font-size: 14px;
 	line-height: 20px;
 }
@@ -92,7 +92,7 @@
 
 .row-body__text {
 	color: $base-color-2;
-	font-family: 'Noto Serif', serif;
+	font-family: $font-family-serif;
 	font-size: 16px;
 	line-height: 28px;
 	margin-top: 20px;
