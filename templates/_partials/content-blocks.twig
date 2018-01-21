@@ -1,4 +1,4 @@
-{% for block in entry.contentBlocks %}
+{% for block in entry.contentBlocks.all() %}
   {% switch block.type %}
     {% case 'experienceBlock' %}
       {% include '_partials/content-blocks/_experience.twig' %}

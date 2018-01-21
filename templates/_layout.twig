@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700" rel="stylesheet" type="text/css">
 
     {# Let's use uncompressed CSS if we're in dev mode, for easier debugging: #}
-    {% if craft.config.devMode %}
+    {% if craft.app.config.general.devMode %}
       <link rel="stylesheet" href="/styles/application.css"/>
     {% else %}
       <link rel="stylesheet" href="/styles/application.min.css"/>

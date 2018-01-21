@@ -1,5 +1,5 @@
 
-{% set uriSegment = craft.request.segment(1) %}
+{% set uriSegment = craft.app.request.getSegment(1) %}
 
 <nav class="navigation js-header" role="navigation">
   <a href="{{ siteUrl }}" class="navigation__item {{ uriSegment == '' ? ' is-active' }}" title="About" data-title="About">
