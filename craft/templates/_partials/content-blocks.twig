@@ -1,8 +1,0 @@
-{% for block in entry.contentBlocks %}
-  {% switch block.type %}
-    {% case 'experienceBlock' %}
-      {% include '_partials/content-blocks/_experience.twig' %}
-    {% case 'educationBlock' %}
-      {% include '_partials/content-blocks/_education.twig' %}
-  {% endswitch %}
-{% endfor %}

@@ -1,8 +1,0 @@
-# User agent
-User-agent: *
-
-# Don't allow web crawlers to index Craft CMS
-Disallow: /craft/
-
-# Sitemap
-Sitemap: https://www.dannyarntz.nl/sitemap.xml
