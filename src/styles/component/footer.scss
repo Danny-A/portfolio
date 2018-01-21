@@ -1,0 +1,32 @@
+
+/***[ footer ]***********************************************/
+
+.footer {
+	color: $base-color-2;
+	margin: auto;
+	opacity: 0;
+	padding: 20px 30px;
+	transform: translateY(40px);
+  transition: transform .7s $ease-out-cubic 0s, opacity 0.5s $ease-out-cubic 0s;
+
+	@include respond-to(sm) {
+		box-sizing: border-box;
+		margin: 0;
+		max-width: none;
+		padding: 30px 40px;
+	}
+
+	@include respond-to(md) {
+		padding: 40px 0 40px 80px;
+		width: 80%;
+	}
+
+	a {
+		color: $base-color-2;
+	}
+
+	&.is-animated {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
