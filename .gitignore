@@ -1,0 +1,20 @@
+*.idea/*
+Source/.idea/*
+*.log
+*.bak
+*.DS_Store
+*.orig
+*Thumbs.db
+*aspnet_client/*
+Build/*
+node_modules/
+vendor/
+/composer.lock
+/bower_components
+
+dummy-host2.example.com-*
+
+### Sass template
+.sass-cache/*
+*.sass-cache
+*.css.map
