@@ -14,9 +14,9 @@ vendor/
 yarn.lock
 dummy-host2.example.com-*
 
-web/images/*
-web/scripts/*
-web/styles/*
+web/images/
+web/scripts/
+web/styles/
 
 ### Sass template
 .sass-cache/*
