@@ -8,15 +8,13 @@ Source/.idea/*
 *aspnet_client/*
 Build/*
 node_modules/
-vendor/
-/composer.lock
 /bower_components
 yarn.lock
 dummy-host2.example.com-*
 
-web/images/
-web/scripts/
-web/styles/
+public/images/
+public/scripts/
+public/styles/
 
 ### Sass template
 .sass-cache/*
