@@ -1,0 +1,25 @@
+{
+  "name": "Portfolio van Front-end developer Danny Arntz",
+  "short_name": "Danny Arntz",
+  "icons": [{
+    "src": "images/favicon/favicon-128.png",
+    "type": "image/png",
+    "sizes": "128x128"
+  }, {
+    "src": "images/favicon/favicon-152.png",
+    "type": "image/png",
+    "sizes": "152x152"
+  }, {
+    "src": "images/favicon/favicon-144.png",
+    "type": "image/png",
+    "sizes": "144x144"
+  }, {
+    "src": "images/favicon/favicon-192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}

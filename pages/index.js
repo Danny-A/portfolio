@@ -1,65 +1,34 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>Danny Arntz: Front-end developer, Utrecht en Amsterdam</title>
+        <meta name="description" content="Senior Front-end developer uit Utrecht. JavaScript(ES6+), ReactJS, HTML en CSS ervaring. Focus op kwaliteit en breng projecten en teams naar een hoger niveau." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className="section">
+          <div className="intro">
+              <h2 className="intro__subtitle">
+                  Front-end developer
+              </h2>
+              <h1 className="intro__title">
+                  Danny Arntz
+              </h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+              <div className="intro__title--secondary">
+                  Curriculum Vitae
+              </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+              <div className="seperator--yellow" />
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+              <div className="intro__body">
+                  Hey! Ik ben Danny Arntz, een senior Front-end developer uit Utrecht. Sinds september 2016 werk ik bij Mangrove(onderdeel van WeAreYou) in Rotterdam.Als developer houd ik mij bezig met het ontwikkelen van snelle, slimme, gebruiksvriendelijke en mooie websites en web-applicaties. Dit doe ik door  altijd op zoek te zijn naar nieuwe technieken om zo de prestaties van wat ik bouw optimaal te maken. Nieuwe technieken zijn erg leuk, maar ook voor gebruikers op oudere devices weet ik alles netjes en werkend te krijgen.Werken aan animaties en transities vind ik erg gaaf. Als creatieve Front-end developer denk ik dan ook graag mee in het proces. 
+                  Wat ik belangrijk vind? Snelheid, kwaliteit, consistentie(van zowel code als visuele aspecten) en gebruiksgemak.De afgelopen jaren heb ik voor grote en kleine klanten en projecten gewerkt. Alles over meerdere devices, platforms en responsive. Hierdoor heb ik met allerlei technieken gewerkt, in een boel verschillende teams met eigen workflows. Ik werk snel, georganiseerd, consistent met BEM of andere methodes en weet tools als Webpack en Gulp goed in te zetten. Git, Gitflow en Scrummen zijn mij goed bekend.Waar ben ik goed in: JavaScript(ES6+), ReactJS, CSS3, HTML5, UX.
+              </div>
+          </div>
+      </div>
+    </>
   )
 }
