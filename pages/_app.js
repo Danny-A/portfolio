@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <base href="https://www.dannyarntz.nl/" />
 
         <title>Front-end developer, Utrecht en Amsterdam - Danny Arntz</title>
 
@@ -44,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:url" content="https://www.dannyarntz.nl" />
         <meta property="og:title" content="Front-end developer, Utrecht en Amsterdam - Danny Arntz" />
         <meta property="og:description" content="Senior Front-end developer uit Utrecht. JavaScript(ES6+), ReactJS, HTML en CSS ervaring. Focus op kwaliteit en breng projecten en teams naar een hoger niveau." />
-        {/* <meta property="og:image" content="https://www.dannyarntz.nl/images/share-image.png" /> */}
+        <meta property="og:image" content="https://www.dannyarntz.nl/images/share-image.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -59,8 +60,26 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:creator" content="@wildestbunch" />
         <meta name="twitter:title" content="Front-end developer, Utrecht en Amsterdam - Danny Arntz" />
         <meta name="twitter:description" content="Senior Front-end developer uit Utrecht. JavaScript(ES6+), ReactJS, HTML en CSS ervaring. Focus op kwaliteit en breng projecten en teams naar een hoger niveau." />
-        {/* <meta name="twitter:image" content="https://www.dannyarntz.nl/images/share-image.png" /> */}
+        <meta name="twitter:image" content="https://www.dannyarntz.nl/images/share-image.png" />
+
+        {/* -- For IE 11, Chrome, Firefox, Safari, Opera -- */}
+        <link rel="icon" href="images/favicon/favicon-16.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="images/favicon/favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="images/favicon/favicon-48.png" sizes="48x48" type="image/png" />
+        <link rel="icon" href="images/favicon/favicon-62.png" sizes="62x62" type="image/png" />
+
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#000000" />
       </Head>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-6896893-6', 'auto');
+        ga('send', 'pageview');
+      </script>
       <nav className="navigation" role="navigation">
         <Link href="/">
           About
