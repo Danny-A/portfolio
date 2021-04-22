@@ -39,7 +39,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="dcterms.Description" content="Senior Front-end developer uit Utrecht. JavaScript(ES6+), ReactJS, HTML en CSS ervaring. Focus op kwaliteit en breng projecten en teams naar een hoger niveau." />
 
         {/* -- Facebook OpenGraph -- */}
-
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_us" />
         <meta property="og:url" content="https://www.dannyarntz.nl" />
@@ -54,7 +53,6 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:see_also" content="https://github.com/Danny-A" />
 
         {/* -- Twitter Card -- */}
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@wildestbunch" />
         <meta name="twitter:creator" content="@wildestbunch" />
@@ -84,18 +82,22 @@ function MyApp({ Component, pageProps }) {
           }}
         />
       </Head>
-      <nav className="navigation" role="navigation">
-        <Link href="/">
-          About
-        </Link>
-        <Link href="/experience">
-          Experience
-        </Link>
-        <Link href="/education">
-          Education
-        </Link>
-      </nav>
-      <Component {...pageProps} />
+      <body>
+        <div className="container">
+          <nav className="navigation" role="navigation">
+            <Link href="/">
+              About
+            </Link>
+            <Link href="/experience">
+              Experience
+            </Link>
+            <Link href="/education">
+              Education
+            </Link>
+          </nav>
+          <Component {...pageProps} />
+        </div>
+      </body>
      </> 
   )
 }
