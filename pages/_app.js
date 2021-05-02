@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import '../styles/globals.css'
+import '../styles/globals.scss'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <base href="https://www.dannyarntz.nl/" />
 
@@ -15,11 +15,11 @@ function MyApp({ Component, pageProps }) {
 
         {/* -- Standard SEO -- */}
 
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="referrer" content="no-referrer-when-downgrade" />
         <meta name="description" content="Senior Front-end developer uit Utrecht. JavaScript(ES6+), ReactJS, HTML en CSS ervaring. Focus op kwaliteit en breng projecten en teams naar een hoger niveau." />
         <meta name="generator" content="SEOmatic" />
-        <link rel="alternate" href="https://www.dannyarntz.nl" hreflang="x-default" />
+        <link rel="alternate" href="https://www.dannyarntz.nl" hrefLang="x-default" />
         <meta name="geo.placename" content="Danny Arntz" />
 
         {/* -- Dublin Core basic info -- */}
@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments)}
             gtag('js', new Date());
 
             gtag('config', 'G-G9RW3D6T9K');

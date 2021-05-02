@@ -39,12 +39,10 @@ const Experience = () => {
           </div>
 
           <div className="seperator--yellow" />
-
-          <div className="intro__body">
-            {experienceData.map(item => (
-              <ExperienceBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
-            ))}
-          </div>
+          
+          {experienceData.map(item => (
+            <ExperienceBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
+          ))}
         </div>
       </div>
     )

@@ -24,11 +24,9 @@ const Education = () => {
           </h1>
         </div>
 
-        <div className="row__container">
-          {educationData.map(item => (
-            <EducationBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
-          ))}
-        </div>
+        {educationData.map(item => (
+          <EducationBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
+        ))}
     </div>
   )
 }

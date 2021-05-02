@@ -2,8 +2,8 @@ import React from 'react'
 
 const ExperienceBlock = ({ functionTitle, location, duration, title, text}) => {
     return (
-        <div className="row">
-            <div className="row-meta">
+        <div className="grid">
+            <div className="meta">
                 <h2 className="row-meta__title">
                     {functionTitle}
                 </h2>
@@ -15,11 +15,11 @@ const ExperienceBlock = ({ functionTitle, location, duration, title, text}) => {
                 </div>
             </div>
 
-            <div className="row-body">
-                <h2 className="row-body__title">
+            <div className="text">
+                <h2 className="text row-body__title">
                 {title}
                 </h2>
-                <div className="row-body__text">
+                <div className="text row-body__text">
                 {text}
                 </div>
             </div>

@@ -2,8 +2,8 @@ import React from 'react'
 
 const EducationBlock = ({ functionTitle, location, duration, title }) => {
     return (
-      <div className="row">
-        <div className="row-meta">
+      <div className="grid">
+        <div className="meta">
           <h2 className="row-meta__title">
             {functionTitle}
           </h2>
@@ -15,7 +15,7 @@ const EducationBlock = ({ functionTitle, location, duration, title }) => {
           </div>
         </div>
 
-        <div className="row-body">
+        <div className="text">
           <h2 className="row-body__title">
             {title}
           </h2>
