@@ -85,10 +85,10 @@ function MyApp({ Component, pageProps }) {
       <body>
         <div className="container">
           <nav className="navigation" role="navigation">
-            <Link href="/" className="navigation__item">
+            <Link href="/">
               About
             </Link>
-            <Link href="/experience" className="navigation__item">
+            <Link href="/experience">
               Experience
             </Link>
           </nav>

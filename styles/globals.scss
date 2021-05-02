@@ -32,11 +32,9 @@ a {
 }
 
 .navigation {
-  padding: 20px;
-}
+  padding: 20px 48px;
 
-.navigation__item {
-  & + .navigation__item {
+  a + a {
     margin-left: 20px;
   }
 }
