@@ -15,9 +15,9 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
 </url>
-<url>
+<!-- <url>
     <loc>https://www.dannyarntz.nl/education</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-</url>
+</url> -->
 </urlset>
