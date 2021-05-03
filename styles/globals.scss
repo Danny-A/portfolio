@@ -34,7 +34,11 @@ a {
 }
 
 .navigation {
-  padding: 20px 48px;
+  padding: 20px 24px;
+
+  @include mq(medium) {
+    padding: 20px 48px;
+  }
 
   a + a {
     margin-left: 20px;
@@ -42,17 +46,21 @@ a {
 }
 
 .section {
-  padding: 24px 48px 40px 48px;
+  padding: 24px 24px 40px;
+
+  @include mq(medium) {
+    padding: 24px 48px 40px;
+  }
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 20px;
   grid-row-gap: 0px;
 
   @include mq(medium) {
     grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 20px;
   }
 
   @include mq(large) {
