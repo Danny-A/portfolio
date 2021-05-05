@@ -69,16 +69,16 @@ function MyApp({ Component, pageProps }) {
         <link rel="manifest" href="manifest.json" />
         <meta name="theme-color" content="#000000" />
         {/* -- Global site tag (gtag.js) - Google Analytics -- */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9RW3D6T9K"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6896893-6"></script>
         <script 
           dangerouslySetInnerHTML={{
             __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments)}
-            gtag('js', new Date());
-
-            gtag('config', 'G-G9RW3D6T9K');
-          `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'UA-6896893-6');
+            `
           }}
         />
       </Head>
