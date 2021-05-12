@@ -1,3 +1,4 @@
+import Page from '../components/Page'
 import EducationBlock from '../components/ContentBlocks/Education'
 
 const Education = () => {
@@ -17,6 +18,7 @@ const Education = () => {
   ]
 
   return (
+    <Page>
       <div className="section">
         <div className="intro">
           <h1 className="intro__title">
@@ -27,7 +29,8 @@ const Education = () => {
         {educationData.map(item => (
           <EducationBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
         ))}
-    </div>
+      </div>
+    </Page>
   )
 }
 
