@@ -2,11 +2,6 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { GA_TRACKING_ID } from "../utils/gtag";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
   render() {
     return (
       <Html>
@@ -15,7 +10,7 @@ class MyDocument extends Document {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <base href="https://www.dannyarntz.nl/" />
-        <title>Danny Arntz - Front-end developer, Utrecht, Rotterdam en Amsterdam</title>
+        <title>Front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz</title>
 
         {/* -- Standard SEO -- */}
 

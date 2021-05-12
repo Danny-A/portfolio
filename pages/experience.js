@@ -1,3 +1,4 @@
+import {Head} from 'next/head'
 import ExperienceBlock from '../components/ContentBlocks/Experience'
 
 const Experience = () => {
@@ -32,11 +33,16 @@ const Experience = () => {
       }
     ]
     return (
-      <div className="section">          
+      <>
+        <Head>
+          <title>Education - Front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz</title>
+        </Head>
+        <div className="section">          
         {experienceData.map(item => (
           <ExperienceBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
         ))}
-      </div>
+        </div>
+      </>
     )
 }
 
