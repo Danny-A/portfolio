@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Page from '../components/Page'
 import ExperienceBlock from '../components/ContentBlocks/Experience'
 
@@ -34,6 +35,9 @@ const Experience = () => {
     ]
     return (
       <>
+        <Head>
+            <title>Experience - Front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz</title>
+        </Head>
         <Page>
           <div className="section">          
           {experienceData.map(item => (
