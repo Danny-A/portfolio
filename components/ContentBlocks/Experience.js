@@ -7,7 +7,7 @@ const ExperienceBlock = ({ functionTitle, location, duration, title, text}) => {
                 {title}
             </h2>
             <div className="meta">
-                <h2 className="row-meta__title">
+                <h2 className="subtitle">
                     {functionTitle}
                 </h2>
                 <h3 className="row-meta__location">
@@ -19,9 +19,7 @@ const ExperienceBlock = ({ functionTitle, location, duration, title, text}) => {
             </div>
 
             <div className="text">
-                <div className="text row-body__text">
-                {text}
-                </div>
+              {text}
             </div>
         </div>
     )

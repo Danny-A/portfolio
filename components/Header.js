@@ -6,7 +6,7 @@ export default function Header() {
     <header>
         <nav className="navigation" role="navigation">
         <Link href="/">
-            About
+            Danny Arntz
         </Link>
         <Link href="/experience">
             Experience
