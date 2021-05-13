@@ -81,6 +81,14 @@ a {
 
   + .grid {
     margin-top: 36px;
+
+    @include mq(medium) {
+      margin-top: 50px;
+    }
+
+    @include mq(large) {
+      margin-top: 80px;
+    }
   }
 }
 
@@ -100,19 +108,21 @@ a {
 }
 
 .title {
-  font-size: 32px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 28px;
   grid-row: 1;
   grid-column: 1 / span 4;
 
   @include mq(medium) {
-    font-size: 48px;
-    line-height: 50px;
+    font-size: 32px;
+    line-height: 36px;
     grid-column: 3 / span 5;
-    margin-bottom: 65px;
+    margin-bottom: 48px;
   }
 
   @include mq(large) {
+    font-size: 48px;
+    line-height: 50px;
     grid-column: 4 / span 6;
   }
 }
@@ -121,9 +131,9 @@ a {
   font-size: 24px;
   line-height: 28px;
 
-  @include mq(medium) {
-    font-size: 36px;
-    line-height: 44px;
+  @include mq(large) {
+    font-size: 28px;
+    line-height: 32px;
   }
 }
 
