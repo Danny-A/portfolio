@@ -13,14 +13,14 @@ const ExperienceBlock = ({ functionTitle, location, duration, title, text}) => {
                 <h3 className="meta__title meta__title--secondary">
                     {location}
                 </h3>
-                <div className="meta__title">
+                <p className="meta__title">
                     {duration}
-                </div>
+                </p>
             </div>
 
-            <div className="text">
+            <p className="text">
               {text}
-            </div>
+            </p>
         </div>
     )
 }
