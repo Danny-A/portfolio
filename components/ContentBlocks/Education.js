@@ -4,21 +4,19 @@ const EducationBlock = ({ functionTitle, location, duration, title }) => {
     return (
       <div className="grid">
         <div className="meta">
-          <h2 className="row-meta__title">
+          <h2 className="subtitle">
             {functionTitle}
           </h2>
-          <h3 className="row-meta__location">
+          <h3 className="meta__title meta__title--secondary">
             {location}
           </h3>
-          <div className="row-meta__duration">
+          <div className="meta__title">
             {duration}
           </div>
         </div>
 
         <div className="text">
-          <h2 className="row-body__title">
-            {title}
-          </h2>
+          {title}
         </div>
       </div>
     )

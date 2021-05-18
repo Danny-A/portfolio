@@ -10,10 +10,10 @@ const ExperienceBlock = ({ functionTitle, location, duration, title, text}) => {
                 <h2 className="subtitle">
                     {functionTitle}
                 </h2>
-                <h3 className="row-meta__location">
+                <h3 className="meta__title meta__title--secondary">
                     {location}
                 </h3>
-                <div className="row-meta__duration">
+                <div className="meta__title">
                     {duration}
                 </div>
             </div>
