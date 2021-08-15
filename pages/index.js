@@ -15,7 +15,7 @@ export default function Home() {
               <h2>
                 Front-end developer
               </h2>
-              <Link href="/public/files/cv-dannyarntz.pdf">
+              <Link href="/files/cv-danny-arntz.pdf">
                 Resume ↓
               </Link>
             </div>
