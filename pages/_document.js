@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
           <meta name="dcterms.Publisher" content="Danny Arntz" />
           <meta name="dcterms.Type" content="text/html" />
           <meta name="dcterms.Coverage" content="/" />
-          <meta name="dcterms.Rights" content="Copyright &copy;2020 Danny Arntz." />
+          <meta name="dcterms.Rights" content="Copyright &copy;2021 Danny Arntz." />
           <meta name="dcterms.Title" content="Front-end developer, Utrecht en Amsterdam" />
           <meta name="dcterms.Subject" content="" />
           <meta name="dcterms.Contributor" content="Danny Arntz" />
@@ -62,10 +62,10 @@ export default class MyDocument extends Document {
           <meta name="twitter:image" content="/images/share-image.png" />
 
           {/* -- For IE 11, Chrome, Firefox, Safari, Opera -- */}
-          <link rel="icon" href="images/favicon/favicon-16.png" sizes="16x16" type="image/png" />
-          <link rel="icon" href="images/favicon/favicon-32.png" sizes="32x32" type="image/png" />
-          <link rel="icon" href="images/favicon/favicon-48.png" sizes="48x48" type="image/png" />
-          <link rel="icon" href="images/favicon/favicon-62.png" sizes="62x62" type="image/png" />
+          <link rel="icon" href="/images/favicon/favicon-16.png" sizes="16x16" type="image/png" />
+          <link rel="icon" href="/images/favicon/favicon-32.png" sizes="32x32" type="image/png" />
+          <link rel="icon" href="/images/favicon/favicon-48.png" sizes="48x48" type="image/png" />
+          <link rel="icon" href="/images/favicon/favicon-62.png" sizes="62x62" type="image/png" />
           <link rel="icon" href="/favicon.ico" />
 
           <link rel="manifest" href="manifest.json" />
