@@ -1,8 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Page from '../components/Page'
+import * as gtag from '../lib/gtag'
 
 export default function Home() {
+  const handleEvent = () => {
+    gtag.event({
+      category: 'Downloads',
+      action: 'CV',
+      label: 'CV downloaded'
+    });
+  }
+
   return (
     <>
       <Head>
@@ -15,7 +24,7 @@ export default function Home() {
               <h2>
                 Front-end developer
               </h2>
-              <Link href="/files/cv-danny-arntz.pdf">
+              <Link href="/files/cv-danny-arntz.pdf" onClick={() => handleEvent}>
                 Resumé ↓
               </Link>
             </div>
