@@ -5,6 +5,7 @@ import * as gtag from '../lib/gtag'
 
 export default function Home() {
   const handleEvent = () => {
+    console.log('this')
     gtag.event({
       category: 'Downloads',
       action: 'CV',
