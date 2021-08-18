@@ -20,11 +20,11 @@ export default function Home() {
       <Page>
         <div className="section">
           <div className="grid">
-            <div class="meta">
+            <div className="meta">
               <h2>
                 Front-end developer
               </h2>
-              <a href="/files/cv-danny-arntz.pdf" onClick={() => handleEvent}>
+              <a href="/files/cv-danny-arntz.pdf" onClick={() => handleEvent()}>
                 Resumé ↓
               </a>
             </div>
