@@ -1,15 +1,20 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Page from '../components/Page'
 import * as gtag from '../lib/gtag'
 
 export default function Home() {
-  const handleEvent = () => {
+  const handleEvent = (e) => {
+    e.preventDefault()
+
     gtag.event({
-      category: 'Downloads',
-      action: 'CV',
+      action: 'Download',
+      category: 'CV',
       label: 'CV downloaded'
     });
+
+    window.setTimeout(() => {
+      window.location.href = '/files/cv-danny-arntz.pdf'
+    }, 50)
   }
 
   return (
@@ -24,7 +29,7 @@ export default function Home() {
               <h2>
                 Front-end developer
               </h2>
-              <a href="/files/cv-danny-arntz.pdf" onClick={() => handleEvent()}>
+              <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
                 Resumé ↓
               </a>
             </div>
