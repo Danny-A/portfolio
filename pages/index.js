@@ -37,15 +37,18 @@ export default function Home() {
               </a>
             </div>
 
-            <p className="text">
-              Hey! Ik ben Danny Arntz, een freelance front-end developer uit Utrecht.<br/>
-              Met meer dan 10 jaar ervaring in de digitale industrie help ik grote en kleinere bedrijven in hun digitale transitie. Ik een expert in het leiden van development teams en het bouwen van applicaties voor web en app.<br/>
-              <br/>
-              Ik heb een sterke visuele focus, maar ben altijd geïnteresseerd in complexe uitdagingen.<br/>
-              <br/>
-              <h4 class="meta__title meta__title--secondary">Huidige stack:</h4>
-              ES6+, React (Native), Apollo, GraphQL, Swift
-            </p>
+            <div className="text">
+              <p>
+                Hey! Ik ben Danny Arntz, een freelance front-end developer uit Utrecht.<br/>
+                Met meer dan 10 jaar ervaring in de digitale industrie help ik grote en kleinere bedrijven in hun digitale transitie. Ik een expert in het leiden van development teams en het bouwen van applicaties voor web en app.<br/>
+                <br/>
+                Ik heb een sterke visuele focus, maar ben altijd geïnteresseerd in complexe uitdagingen.<br/>
+              </p>
+              <h4 className="meta__title meta__title--secondary">Huidige stack:</h4>
+              <p>
+                ES6+, React (Native), Apollo, GraphQL, Swift
+              </p>  
+            </div>
           </div>
         </div>
       </Page>
