@@ -30,7 +30,7 @@ const Contact = () => {
                   Kom in contact
                 </h3>
                 <p>
-                  arntz.d[at]gmail.com
+                  hi[at]dannyarntz.nl
                 </p>
                 <h3 className="meta__title meta__title--secondary">
                   Online
