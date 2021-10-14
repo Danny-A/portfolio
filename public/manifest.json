@@ -18,8 +18,8 @@
     "type": "image/png",
     "sizes": "192x192"
   }],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#121212",
+  "background_color": "#121212",
   "display": "fullscreen",
   "orientation": "portrait"
 }
