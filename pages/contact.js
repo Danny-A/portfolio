@@ -38,7 +38,7 @@ const Contact = () => {
                 <p>
                   <a href="https://www.linkedin.com/in/darntz/" target="_blank">LinkedIn</a><br/>
                   <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
-                    Resumé ↓
+                    Curriculum vitae ↓
                   </a>
                 </p>
               </div>

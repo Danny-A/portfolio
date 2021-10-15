@@ -37,7 +37,7 @@ export default function Home() {
                 ES6+, React (Native), Apollo, GraphQL, Swift
               </p>  
               <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
-                Resumé ↓
+                Curriculum vitae ↓
               </a>
             </div>
 
