@@ -29,9 +29,13 @@ export default function Home() {
               <h1>
                 Danny Arntz
               </h1>
-              <h2>
+              <h2 className="color--secondary">
                 Freelance front-end developer
               </h2>
+              <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
+              <p>
+                ES6+, React (Native), Apollo, GraphQL, Swift
+              </p>  
               <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
                 Resumé ↓
               </a>
@@ -44,10 +48,6 @@ export default function Home() {
                 <br/>
                 Ik heb een sterke visuele focus, maar ben altijd geïnteresseerd in complexe uitdagingen.<br/>
               </p>
-              <h4 className="meta__title meta__title--secondary">Huidige stack:</h4>
-              <p>
-                ES6+, React (Native), Apollo, GraphQL, Swift
-              </p>  
             </div>
           </div>
         </div>
