@@ -44,7 +44,7 @@ export default function Home() {
             <div className="text">
               <p>
                 Hey! Ik ben Danny Arntz, een freelance front-end developer uit Utrecht.<br/>
-                Met meer dan 10 jaar ervaring in de digitale industrie help ik grote en kleinere bedrijven in hun digitale transitie. Ik een expert in het leiden van development teams en het bouwen van applicaties voor web en app.<br/>
+                Met meer dan 10 jaar ervaring in de digitale industrie help ik grote en kleinere bedrijven in hun digitale transitie. Ik ben een expert in het leiden van development teams en het bouwen van applicaties voor web en app.<br/>
                 <br/>
                 Ik heb een sterke visuele focus, maar ben altijd geïnteresseerd in complexe uitdagingen.<br/>
               </p>
