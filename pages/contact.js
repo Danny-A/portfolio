@@ -7,9 +7,11 @@ const Contact = () => {
     e.preventDefault()
 
     gtag.event({
-      action: 'Download',
-      category: 'CV',
-      label: 'CV downloaded'
+      action: 'file_download',
+      file_extension: '.pdf',
+      file_name: 'cv-danny-arntz.pdf',
+      link_url: '/files/cv-danny-arntz.pdf',
+      link_text: 'Download CV',
     });
 
     window.setTimeout(() => {
@@ -38,7 +40,7 @@ const Contact = () => {
                 <p>
                   <a href="https://www.linkedin.com/in/darntz/" target="_blank">LinkedIn</a><br/>
                   <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
-                    Curriculum vitae ↓
+                    Download CV ↓
                   </a>
                 </p>
               </div>

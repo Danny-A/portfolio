@@ -7,9 +7,11 @@ export default function Home() {
     e.preventDefault()
 
     gtag.event({
-      action: 'Download',
-      category: 'CV',
-      label: 'CV downloaded'
+      action: 'file_download',
+      file_extension: '.pdf',
+      file_name: 'cv-danny-arntz.pdf',
+      link_url: '/files/cv-danny-arntz.pdf',
+      link_text: 'Download CV',
     });
 
     window.setTimeout(() => {
@@ -37,7 +39,7 @@ export default function Home() {
                 ES6+, React (Native), Apollo, GraphQL, Swift
               </p>  
               <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
-                Curriculum vitae ↓
+                Download CV ↓
               </a>
             </div>
 
