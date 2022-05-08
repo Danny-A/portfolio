@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EducationBlock = ({ functionTitle, location, duration, title }) => {
+const EducationBlock = ({ functionTitle, location, duration, title, text }) => {
     return (
       <div className="grid">
         <div className="meta">

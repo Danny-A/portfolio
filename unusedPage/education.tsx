@@ -8,12 +8,14 @@ const Education = () => {
       location: 'Utrecht',
       duration: '2006 - 2010',
       title: "Interactief Vormgeven",
+      text: "",
     },
     {
       functionTitle: 'Comenius College',
       location: 'Hilversum',
       duration: '2001 - 2005',
       title: "MAVO",
+      text: "",
     },
   ]
 
