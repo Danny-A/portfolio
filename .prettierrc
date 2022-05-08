@@ -1,0 +1,22 @@
+{
+  "arrowParens": "avoid",
+  "bracketSameLine": true,
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "printWidth": 80
+      }
+    },
+    {
+      "files": ["*.yml"],
+      "options": {
+        "printWidth": 200,
+        "singleQuote": false
+      }
+    }
+  ],
+  "printWidth": 120,
+  "proseWrap": "always",
+  "singleQuote": true
+}
