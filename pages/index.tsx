@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Page from '../components/Page'
-import * as gtag from '../lib/gtag'
+import Head from 'next/head';
+import Page from '../components/Page';
+import * as gtag from '../lib/gtag';
 
 export default function Home() {
   const handleEvent = (e) => {
@@ -15,8 +15,8 @@ export default function Home() {
     });
 
     window.setTimeout(() => {
-      window.location.href = '/files/cv-danny-arntz.pdf'
-    }, 50)
+      window.location.href = '/files/cv-danny-arntz.pdf';
+    }, 50);
   }
 
   return (
@@ -37,7 +37,7 @@ export default function Home() {
               <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
               <p>
                 ES6+, React (Native), Apollo, GraphQL, Swift
-              </p>  
+              </p>
               <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
                 Download CV ↓
               </a>

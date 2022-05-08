@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Page from '../components/Page'
-import ExperienceBlock from '../components/ContentBlocks/Experience'
+import Head from 'next/head';
+import Page from '../components/Page';
+import ExperienceBlock from '../components/ContentBlocks/Experience';
 
 const Werk = () => {
     const experienceData = [
@@ -39,7 +39,7 @@ const Werk = () => {
             <title>Werk - Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz</title>
         </Head>
         <Page>
-          <div className="section">          
+          <div className="section">
           {experienceData.map(item => (
             <ExperienceBlock key={item.title} functionTitle={item.functionTitle} location={item.location} duration={item.duration} title={item.title} text={item.text} />
           ))}
@@ -49,4 +49,4 @@ const Werk = () => {
     )
 }
 
-export default Werk
+export default Werk;

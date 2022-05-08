@@ -1,26 +1,26 @@
 import { useEffect } from "react";
-import Head from 'next/head'
+import Head from 'next/head';
 import { useRouter } from "next/router";
-import * as gtag from '../lib/gtag'
+import * as gtag from '../lib/gtag';
 
-import '../styles/globals.scss'
+import '../styles/globals.scss';
 
 const App = ({ Component, pageProps }) => {
-  const metaTitle = "Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz"
-  const metaDescription = "Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie."
-  const router = useRouter()
+  const metaTitle = "Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz";
+  const metaDescription = "Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie.";
+  const router = useRouter();
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-    
-    router.events.on('routeChangeComplete', handleRouteChange)
+      gtag.pageview(url);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
+      router.events.off('routeChangeComplete', handleRouteChange);
     }
-  }, [router.events])
+  }, [router.events]);
 
   return (
     <>
@@ -81,4 +81,4 @@ const App = ({ Component, pageProps }) => {
   )
 }
 
-export default App
+export default App;

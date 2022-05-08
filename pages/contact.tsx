@@ -25,8 +25,8 @@ const Contact = () => {
         </Head>
         <Page>
           <div className="section">
-            <div class="grid">
-              <div class="meta">
+            <div className="grid">
+              <div className="meta">
                 <h2 className="subtitle subtitle--secondary">Wil je graag met mij samenwerken of gewoon even kennismaken? Dan hoor ik graag van je!</h2>
                 <h3 className="meta__title meta__title--secondary">
                   Kom in contact
@@ -38,13 +38,13 @@ const Contact = () => {
                   Online
                 </h3>
                 <p>
-                  <a href="https://www.linkedin.com/in/darntz/" target="_blank">LinkedIn</a><br/>
+                  <a href="https://www.linkedin.com/in/darntz/" target="_blank" rel="noreferrer">LinkedIn</a><br/>
                   <a href="/files/cv-danny-arntz.pdf" onClick={(e) => handleEvent(e)}>
                     Download CV ↓
                   </a>
                 </p>
               </div>
-            </div>  
+            </div>
           </div>
         </Page>
       </>
