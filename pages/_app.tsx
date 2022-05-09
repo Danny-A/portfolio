@@ -25,7 +25,6 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <html lang="nl" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <base href="/" />
         <title>{metaTitle}</title>
