@@ -1,5 +1,3 @@
-
-
 import Header from './Header';
 
 export default function Page({ children }) {
@@ -8,5 +6,5 @@ export default function Page({ children }) {
       <Header />
       {children}
     </div>
-  )
+  );
 }
