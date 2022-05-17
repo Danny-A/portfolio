@@ -6,13 +6,15 @@ const Contact = () => {
   const handleEvent = e => {
     e.preventDefault();
 
-    // gtag.event({
-    //   action: 'file_download',
-    //   file_extension: '.pdf',
-    //   file_name: 'cv-danny-arntz.pdf',
-    //   link_url: '/files/cv-danny-arntz.pdf',
-    //   link_text: 'Download CV',
-    // });
+    gtag.event({
+      action: 'file_download',
+      params: {
+        file_extension: '.pdf',
+        file_name: 'cv-danny-arntz.pdf',
+        link_url: '/files/cv-danny-arntz.pdf',
+        link_text: 'Download CV',
+      },
+    });
 
     window.setTimeout(() => {
       window.location.href = '/files/cv-danny-arntz.pdf';
