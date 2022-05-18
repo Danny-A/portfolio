@@ -34,7 +34,7 @@ export default function Home() {
               <h2 className="color--secondary">Freelance front-end developer</h2>
               <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
               <p>ES6+, React (Native), Apollo, GraphQL, Swift</p>
-              <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)}>
+              <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
                 Download CV ↓
               </a>
             </div>

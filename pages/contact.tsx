@@ -40,7 +40,7 @@ const Contact = () => {
                   LinkedIn
                 </a>
                 <br />
-                <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)}>
+                <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
                   Download CV ↓
                 </a>
               </p>
