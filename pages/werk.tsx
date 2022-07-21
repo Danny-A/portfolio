@@ -5,6 +5,13 @@ import ExperienceBlock from '../components/ContentBlocks/Experience';
 const Werk = () => {
   const experienceData = [
     {
+      functionTitle: 'Freelance front-end developer',
+      location: 'Remote',
+      duration: 'November 2021 - nu',
+      title: 'Eneco',
+      text: 'Samen met een team verantwoordelijk voor de implementatie van de nieuwe multilabel (Eneco, Oxxio en WoonEnergie) en meertalige mijn-omgeving.',
+    },
+    {
       functionTitle: 'Software engineer',
       location: 'Remote',
       duration: 'Januari 2020 - November 2021',
