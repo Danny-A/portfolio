@@ -59,7 +59,7 @@ const App = ({ Component, pageProps }) => {
         <meta property="og:url" content="/" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:image" content="/images/share-image.png" />
+        <meta property="og:image" content="/images/share/share-image.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -73,7 +73,7 @@ const App = ({ Component, pageProps }) => {
         <meta name="twitter:creator" content="@wildestbunch" />
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content="/images/share-image.png" />
+        <meta name="twitter:image" content="/images/share/share-image.png" />
       </Head>
       <Component {...pageProps} />
     </>
