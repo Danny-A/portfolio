@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import * as gtag from '../lib/gtag';
 
 import '../styles/globals.scss';
-import Script from 'next/script';
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -98,7 +98,7 @@ const App = ({ Component, pageProps }) => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', ${gtag.GA_TRACKING_ID}, {
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
               page_path: window.location.pathname,
             });
           `,
