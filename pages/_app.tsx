@@ -4,14 +4,15 @@ import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
 
 import '../styles/globals.scss';
+import Script from 'next/script';
 
 const App = ({ Component, pageProps }) => {
+  const router = useRouter();
   const metaTitle = 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz';
   const metaDescription = 'Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie.';
-  const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = url => {
+    const handleRouteChange = (url: string) => {
       gtag.pageview(url);
     };
 
@@ -25,6 +26,8 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <base href="/" />
         <title>{metaTitle}</title>
@@ -74,7 +77,33 @@ const App = ({ Component, pageProps }) => {
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content="/images/share/share-image.png" />
+
+        {/* -- For IE 11, Chrome, Firefox, Safari, Opera -- */}
+        <link rel="icon" href="/images/favicon/favicon-16.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="/images/favicon/favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/images/favicon/favicon-48.png" sizes="48x48" type="image/png" />
+        <link rel="icon" href="/images/favicon/favicon-62.png" sizes="62x62" type="image/png" />
+        <link rel="icon" href="/favicon.ico" />
+
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#000000" />
       </Head>
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', ${gtag.GA_TRACKING_ID}, {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
       <Component {...pageProps} />
     </>
   );
