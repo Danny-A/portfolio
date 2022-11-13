@@ -1,27 +1,12 @@
-import { useEffect } from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import Script from 'next/script';
 import * as gtag from '../lib/gtag';
 
 import '../styles/globals.scss';
 
 const App = ({ Component, pageProps }) => {
-  const router = useRouter();
   const metaTitle = 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz';
   const metaDescription = 'Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie.';
-
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      gtag.pageview(url);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
 
   return (
     <>
