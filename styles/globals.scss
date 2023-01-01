@@ -1,13 +1,13 @@
-@import "mixins";
-@import "font-face";
+@import 'mixins';
+@import 'font-face';
 
 :root {
-   --primary-color: orangered;
-   --secondary-color: lightcoral;
+  --primary-color: orangered;
+  --secondary-color: lightcoral;
 }
 
 :root {
-  font-feature-settings: "liga" on;
+  font-feature-settings: 'liga' on;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-variant-ligatures: common-ligatures;
@@ -24,8 +24,8 @@ body {
   color: #dcdcdc;
   padding: 0;
   margin: 0;
-  font-family: "Moderat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Moderat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
 }
 
@@ -64,7 +64,7 @@ p {
 }
 
 .navigation {
-  justify-content: flex-end;
+  justify-content: space-between;
   display: flex;
   padding: 20px 24px;
 
@@ -184,7 +184,7 @@ p {
 }
 
 .subtitle--secondary {
-  line-height: 1.5
+  line-height: 1.5;
 }
 
 .text {
@@ -200,5 +200,12 @@ p {
 }
 
 .color--secondary {
-  color: var(--secondary-color)
+  color: var(--secondary-color);
+}
+
+.available-tag {
+  background-color: #13282a;
+  color: #41985b;
+  border-radius: 4px;
+  padding: 3px 8px 4px;
 }

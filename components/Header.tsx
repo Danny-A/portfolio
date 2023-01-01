@@ -7,15 +7,20 @@ export default function Header() {
   return (
     <header>
       <nav className="navigation" role="navigation">
-        <Link href="/" className={router.pathname == '/' ? 'is-active' : ''}>
-          Home
-        </Link>
-        <Link href="/werk" className={router.pathname == '/werk' ? 'is-active' : ''}>
-          Werk
-        </Link>
-        <Link href="/contact" className={router.pathname == '/contact' ? 'is-active' : ''}>
-          Contact
-        </Link>
+        <div>
+          <div className="available-tag">Available from March 2023</div>
+        </div>
+        <div>
+          <Link href="/" className={router.pathname == '/' ? 'is-active' : ''}>
+            Home
+          </Link>
+          <Link href="/werk" className={router.pathname == '/werk' ? 'is-active' : ''}>
+            Werk
+          </Link>
+          <Link href="/contact" className={router.pathname == '/contact' ? 'is-active' : ''}>
+            Contact
+          </Link>
+        </div>
       </nav>
     </header>
   );
