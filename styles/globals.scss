@@ -64,7 +64,7 @@ p {
 }
 
 .navigation {
-  justify-content: space-between;
+  justify-content: flex-end;
   display: flex;
   padding: 20px 24px;
 
@@ -203,8 +203,12 @@ p {
   color: var(--secondary-color);
 }
 
+.available-container {
+  display: flex;
+}
+
 .available-tag {
-  background-color: #13282a;
+  background-color: #132411;
   color: #41985b;
   border-radius: 4px;
   padding: 3px 8px 4px;

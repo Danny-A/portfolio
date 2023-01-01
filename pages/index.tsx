@@ -30,6 +30,9 @@ export default function Home() {
         <div className="section">
           <div className="grid">
             <div className="meta">
+              <div className="available-container">
+                <div className="available-tag">Available from March 2023</div>
+              </div>
               <h1>Danny Arntz</h1>
               <h2 className="color--secondary">Freelance front-end developer</h2>
               <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
