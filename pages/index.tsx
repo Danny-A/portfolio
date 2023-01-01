@@ -31,12 +31,12 @@ export default function Home() {
           <div className="grid">
             <div className="meta">
               <div className="available-container">
-                <div className="available-tag">Available from March 2023</div>
+                <div className="available-tag">Beschikbaar vanaf maart</div>
               </div>
               <h1>Danny Arntz</h1>
               <h2 className="color--secondary">Freelance front-end developer</h2>
               <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
-              <p>ES6+, React (Native), Apollo, GraphQL, Swift</p>
+              <p>React (Native), NextJS, Apollo, GraphQL, Swift</p>
               <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
                 Download CV ↓
               </a>
@@ -44,7 +44,7 @@ export default function Home() {
 
             <div className="text">
               <p>
-                Hey! Ik ben Danny Arntz, een freelance front-end developer uit Utrecht.
+                Hey! Ik ben Danny, een freelance front-end developer uit Utrecht.
                 <br />
                 Met meer dan 10 jaar ervaring in de digitale industrie help ik grote en kleinere bedrijven in hun
                 digitale transitie. Ik ben een expert in het leiden van development teams en het bouwen van applicaties
