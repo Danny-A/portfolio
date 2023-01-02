@@ -2,7 +2,25 @@ import Head from 'next/head';
 import Page from '../components/Page';
 import * as gtag from '../lib/gtag';
 
+import { gql, useQuery } from '@apollo/client';
+
+const query = gql`
+  query getContact {
+    contact {
+      emailaddress
+      introduction
+      cv {
+        filename
+        url
+        id
+      }
+    }
+  }
+`;
+
 const Contact = () => {
+  const { loading, error, data } = useQuery(query);
+
   const handleEvent = e => {
     e.preventDefault();
 
@@ -10,14 +28,14 @@ const Contact = () => {
       action: 'file_download',
       params: {
         file_extension: '.pdf',
-        file_name: 'cv-danny-arntz.pdf',
-        link_url: '/files/cv-danny-arntz.pdf',
+        file_name: data?.contact.cv.filename,
+        link_url: data?.contact.cv.url,
         link_text: 'Download CV',
       },
     });
 
     window.setTimeout(() => {
-      window.location.href = '/files/cv-danny-arntz.pdf';
+      window.location.href = data?.contact.cv.url;
     }, 50);
   };
   return (
@@ -29,18 +47,16 @@ const Contact = () => {
         <div className="section">
           <div className="grid">
             <div className="meta">
-              <h2 className="subtitle subtitle--secondary">
-                Wil je graag met mij samenwerken of gewoon even kennismaken? Dan hoor ik graag van je!
-              </h2>
+              <h2 className="subtitle subtitle--secondary">{data?.contact.introduction}</h2>
               <h3 className="meta__title meta__title--secondary">Kom in contact</h3>
-              <p>hi[at]dannyarntz.nl</p>
+              <p>{data?.contact.emailaddress}</p>
               <h3 className="meta__title meta__title--secondary">Online</h3>
               <p>
                 <a href="https://www.linkedin.com/in/darntz/" target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>
                 <br />
-                <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
+                <a href={data?.contact.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
                   Download CV ↓
                 </a>
               </p>

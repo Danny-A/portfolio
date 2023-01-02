@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import * as gtag from '../lib/gtag';
+import client from '../lib/apolloClient';
+import { ApolloProvider } from '@apollo/client';
 
 import '../styles/globals.scss';
 
@@ -9,7 +11,7 @@ const App = ({ Component, pageProps }) => {
   const metaDescription = 'Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie.';
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -84,7 +86,7 @@ const App = ({ Component, pageProps }) => {
           `}
       </Script>
       <Component {...pageProps} />
-    </>
+    </ApolloProvider>
   );
 };
 
