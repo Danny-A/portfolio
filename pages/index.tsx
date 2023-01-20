@@ -12,6 +12,11 @@ const query = gql`
       subtitle
       title
       availability
+      cv {
+        filename
+        url
+        id
+      }
     }
   }
 `;
@@ -26,14 +31,14 @@ export default function Home() {
       action: 'file_download',
       params: {
         file_extension: '.pdf',
-        file_name: 'cv-danny-arntz.pdf',
-        link_url: '/files/cv-danny-arntz.pdf',
+        file_name: data?.home.cv.filename,
+        link_url: data?.home.cv.url,
         link_text: 'Download CV',
       },
     });
 
     window.setTimeout(() => {
-      window.location.href = '/files/cv-danny-arntz.pdf';
+      window.location.href = data?.home.cv.url;
     }, 50);
   };
 
@@ -53,7 +58,7 @@ export default function Home() {
               <h2 className="color--secondary">{data?.home.subtitle}</h2>
               <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
               <p>{data?.home.currentStack}</p>
-              <a href="/files/cv-danny-arntz.pdf" onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
+              <a href={data?.home.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
                 Download CV ↓
               </a>
             </div>
