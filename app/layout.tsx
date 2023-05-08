@@ -1,18 +1,15 @@
-import Head from 'next/head';
 import Script from 'next/script';
+import { LayoutProviders } from '@/components/LayoutProviders';
 import * as gtag from '../lib/gtag';
-import client from '../lib/apolloClient';
-import { ApolloProvider } from '@apollo/client';
+import '@/styles/globals.scss';
 
-import '../styles/globals.scss';
-
-const App = ({ Component, pageProps }) => {
+export default async function RootLayout({ children }) {
   const metaTitle = 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz';
   const metaDescription = 'Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie.';
 
   return (
-    <ApolloProvider client={client}>
-      <Head>
+    <html lang="nl">
+      <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,11 +33,11 @@ const App = ({ Component, pageProps }) => {
         <meta name="dcterms.Publisher" content="Danny Arntz" />
         <meta name="dcterms.Type" content="text/html" />
         <meta name="dcterms.Coverage" content="/" />
-        <meta name="dcterms.Rights" content="Copyright &copy;2021 Danny Arntz." />
+        <meta name="dcterms.Rights" content="Copyright &copy;2023 Danny Arntz." />
         <meta name="dcterms.Title" content={metaTitle} />
         <meta name="dcterms.Subject" content="" />
         <meta name="dcterms.Contributor" content="Danny Arntz" />
-        <meta name="dcterms.Date" content="2020-11-01" />
+        <meta name="dcterms.Date" content="2023-05-07" />
         <meta name="dcterms.Description" content={metaDescription} />
 
         {/* -- Facebook OpenGraph -- */}
@@ -74,20 +71,26 @@ const App = ({ Component, pageProps }) => {
 
         <link rel="manifest" href="manifest.json" />
         <meta name="theme-color" content="#000000" />
-      </Head>
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
-      <Script>
-        {`
+
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        />
+        <Script>
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${gtag.GA_TRACKING_ID}');
           `}
-      </Script>
-      <Component {...pageProps} />
-    </ApolloProvider>
+        </Script>
+      </head>
+      <body>
+        <LayoutProviders>
+          <main>{children}</main>
+        </LayoutProviders>
+      </body>
+    </html>
   );
-};
-
-export default App;
+}
