@@ -3,9 +3,9 @@ import { format } from 'date-fns';
 
 const ExperienceBlock = ({ functionTitle, location, startdate, enddate, title, text }) => {
   return (
-    <>
+    <div className="row">
       <h2 className="title">{title}</h2>
-      <div className="meta meta-as-row">
+      <div className="meta">
         <h2 className="subtitle">{functionTitle}</h2>
         <h3 className="meta__title meta__title--secondary">{location}</h3>
         <p className="meta__title">
@@ -14,7 +14,7 @@ const ExperienceBlock = ({ functionTitle, location, startdate, enddate, title, t
       </div>
 
       <p className="text">{text}</p>
-    </>
+    </div>
   );
 };
 

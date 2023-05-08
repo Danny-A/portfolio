@@ -46,26 +46,27 @@ export default function Homepage() {
   return (
     <Page>
       <div className="section">
-        {data?.home.availability && (
-          <div className="available-container">
-            <div className="available-tag">{data?.home.availability}</div>
-          </div>
-        )}
-        <h1>{data?.home.title}</h1>
-        <h2 className="color--secondary">{data?.home.subtitle}</h2>
-        {data?.home.currentStack && (
-          <>
-            <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
-            <p>{data?.home.currentStack}</p>
-          </>
-        )}
+        <div className="meta">
+          {data?.home.availability && (
+            <div className="available-container">
+              <div className="available-tag">{data?.home.availability}</div>
+            </div>
+          )}
+          <h1>{data?.home.title}</h1>
+          <h2 className="color--secondary">{data?.home.subtitle}</h2>
+          {data?.home.currentStack && (
+            <>
+              <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
+              <p>{data?.home.currentStack}</p>
+            </>
+          )}
 
-        {data?.home.cv.url && (
-          <a href={data?.home.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
-            Download CV ↓
-          </a>
-        )}
-
+          {data?.home.cv.url && (
+            <a href={data?.home.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
+              Download CV ↓
+            </a>
+          )}
+        </div>
         <div className="text">
           <p>{data?.home.introduction}</p>
         </div>
