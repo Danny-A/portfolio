@@ -60,7 +60,9 @@ p {
 }
 
 .container {
+  margin: 0 auto;
   position: relative;
+  max-width: 512px;
 }
 
 .navigation {
@@ -87,10 +89,10 @@ p {
 }
 
 .section {
-  padding: 24px 24px 40px;
+  padding: 24px 16px 40px;
 
   @include mq(medium) {
-    padding: 24px 48px 40px;
+    padding: 0;
   }
 }
 
@@ -184,7 +186,7 @@ p {
 }
 
 .subtitle--secondary {
-  line-height: 1.5;
+  line-height: 1.3;
 }
 
 .text {
