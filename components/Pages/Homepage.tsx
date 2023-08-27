@@ -1,30 +1,10 @@
 'use client';
 
 import Page from '@/components/Page';
+import { GetHomeQuery } from '@/generated/gql/graphql';
 import * as gtag from '@/lib/gtag';
 
-import { gql, useQuery } from '@apollo/client';
-
-const query = gql`
-  query getHome {
-    home {
-      currentStack
-      introduction
-      subtitle
-      title
-      availability
-      cv {
-        filename
-        url
-        id
-      }
-    }
-  }
-`;
-
-export default function Homepage() {
-  const { loading, error, data } = useQuery(query);
-
+export default function Homepage({ home }: GetHomeQuery) {
   const handleEvent = e => {
     e.preventDefault();
 
@@ -32,14 +12,14 @@ export default function Homepage() {
       action: 'file_download',
       params: {
         file_extension: '.pdf',
-        file_name: data?.home.cv.filename,
-        link_url: data?.home.cv.url,
+        file_name: home?.cv?.filename,
+        link_url: home?.cv?.url,
         link_text: 'Download CV',
       },
     });
 
     window.setTimeout(() => {
-      window.location.href = data?.home.cv.url;
+      window.location.href = home?.cv?.url ?? '';
     }, 50);
   };
 
@@ -47,29 +27,31 @@ export default function Homepage() {
     <Page>
       <div className="section">
         <div className="meta">
-          {data?.home.availability && (
+          {home?.availability && (
             <div className="available-container">
-              <div className="available-tag">{data?.home.availability}</div>
+              <div className="available-tag">{home.availability}</div>
             </div>
           )}
-          <h1>{data?.home.title}</h1>
-          <h2 className="color--secondary">{data?.home.subtitle}</h2>
-          {data?.home.currentStack && (
+          {home?.title && <h1>{home.title}</h1>}
+          {home?.subtitle && <h2 className="color--secondary">{home.subtitle}</h2>}
+          {home?.currentStack && (
             <>
               <h3 className="meta__title meta__title--secondary">Huidige stack:</h3>
-              <p>{data?.home.currentStack}</p>
+              <p>{home.currentStack}</p>
             </>
           )}
 
-          {data?.home.cv.url && (
-            <a href={data?.home.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
+          {home?.cv?.url && (
+            <a href={home.cv?.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
               Download CV ↓
             </a>
           )}
         </div>
-        <div className="text">
-          <p>{data?.home.introduction}</p>
-        </div>
+        {home?.introduction && (
+          <div className="text">
+            <p>{home.introduction}</p>
+          </div>
+        )}
       </div>
     </Page>
   );

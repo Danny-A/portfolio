@@ -1,27 +1,10 @@
 'use client';
 
 import Page from '@/components/Page';
+import { GetContactQuery } from '@/generated/gql/graphql';
 import * as gtag from '@/lib/gtag';
 
-import { gql, useQuery } from '@apollo/client';
-
-const query = gql`
-  query getContact {
-    contact {
-      emailaddress
-      introduction
-      cv {
-        filename
-        url
-        id
-      }
-    }
-  }
-`;
-
-const Contactpage = () => {
-  const { loading, error, data } = useQuery(query);
-
+const Contactpage = ({ contact }: GetContactQuery) => {
   const handleEvent = e => {
     e.preventDefault();
 
@@ -29,24 +12,25 @@ const Contactpage = () => {
       action: 'file_download',
       params: {
         file_extension: '.pdf',
-        file_name: data?.contact.cv.filename,
-        link_url: data?.contact.cv.url,
+        file_name: contact?.cv?.filename,
+        link_url: contact?.cv?.url,
         link_text: 'Download CV',
       },
     });
 
     window.setTimeout(() => {
-      window.location.href = data?.contact.cv.url;
+      window.location.href = contact?.cv?.url ?? '';
     }, 50);
   };
+
   return (
     <Page>
       <div className="section">
-        <h2 className="subtitle subtitle--secondary">{data?.contact.introduction}</h2>
-        {data?.contact.emailaddress && (
+        {contact?.introduction && <h2 className="subtitle subtitle--secondary">{contact.introduction}</h2>}
+        {contact?.emailaddress && (
           <>
             <h3 className="meta__title meta__title--secondary">Kom in contact</h3>
-            <p>{data?.contact.emailaddress}</p>
+            <p>{contact.emailaddress}</p>
           </>
         )}
         <h3 className="meta__title meta__title--secondary">Online</h3>
@@ -55,8 +39,8 @@ const Contactpage = () => {
             LinkedIn
           </a>
           <br />
-          {data?.contact.cv.url && (
-            <a href={data?.contact.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
+          {contact?.cv?.url && (
+            <a href={contact.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
               Download CV ↓
             </a>
           )}
