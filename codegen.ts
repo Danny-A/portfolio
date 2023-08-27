@@ -25,6 +25,7 @@ const config: CodegenConfig = {
       plugins: ['introspection'],
     },
   },
+  config: { namingConvention: './utils/graphql-naming-fn.ts' },
 };
 
 export default config;

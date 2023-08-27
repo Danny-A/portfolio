@@ -9,25 +9,25 @@ export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> =
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
   /** Represents `true` or `false` values. */
-  BooleanType: { input: any; output: any; }
-  CustomData: { input: any; output: any; }
+  BooleanType: { input: any; output: any };
+  CustomData: { input: any; output: any };
   /** A ISO 8601 compliant date value */
-  Date: { input: any; output: any; }
+  Date: { input: any; output: any };
   /** A ISO 8601 compliant datetime value */
-  DateTime: { input: any; output: any; }
+  DateTime: { input: any; output: any };
   /** Represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). */
-  FloatType: { input: any; output: any; }
+  FloatType: { input: any; output: any };
   /** Represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. */
-  IntType: { input: any; output: any; }
-  ItemId: { input: any; output: any; }
-  MetaTagAttributes: { input: any; output: any; }
-  UploadId: { input: any; output: any; }
+  IntType: { input: any; output: any };
+  ItemId: { input: any; output: any };
+  MetaTagAttributes: { input: any; output: any };
+  UploadId: { input: any; output: any };
 };
 
 /** Specifies how to filter Boolean fields */
@@ -53,7 +53,7 @@ export enum ColorBucketType {
   Purple = 'purple',
   Red = 'red',
   White = 'white',
-  Yellow = 'yellow'
+  Yellow = 'yellow',
 }
 
 export type ColorField = {
@@ -91,12 +91,10 @@ export type ContactRecord = RecordInterface & {
   updatedAt: Scalars['DateTime']['output'];
 };
 
-
 /** Record of type contact (contact) */
 export type ContactRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 /** Record of type contact (contact) */
 export type ContactRecordIntroductionArgs = {
@@ -142,7 +140,7 @@ export type DateFilter = {
 export enum FaviconType {
   AppleTouchIcon = 'appleTouchIcon',
   Icon = 'icon',
-  MsApplication = 'msApplication'
+  MsApplication = 'msApplication',
 }
 
 export type FileField = FileFieldInterface & {
@@ -179,12 +177,10 @@ export type FileField = FileFieldInterface & {
   width?: Maybe<Scalars['IntType']['output']>;
 };
 
-
 export type FileFieldAltArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 export type FileFieldBlurUpThumbArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
@@ -193,18 +189,15 @@ export type FileFieldBlurUpThumbArgs = {
   size?: Scalars['Int']['input'];
 };
 
-
 export type FileFieldCustomDataArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
-
 export type FileFieldFocalPointArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 export type FileFieldResponsiveImageArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
@@ -213,12 +206,10 @@ export type FileFieldResponsiveImageArgs = {
   sizes?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type FileFieldTitleArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 export type FileFieldUrlArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
@@ -257,12 +248,10 @@ export type FileFieldInterface = {
   width?: Maybe<Scalars['IntType']['output']>;
 };
 
-
 export type FileFieldInterfaceAltArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 export type FileFieldInterfaceBlurUpThumbArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
@@ -271,18 +260,15 @@ export type FileFieldInterfaceBlurUpThumbArgs = {
   size?: Scalars['Int']['input'];
 };
 
-
 export type FileFieldInterfaceCustomDataArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
-
 export type FileFieldInterfaceFocalPointArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 export type FileFieldInterfaceResponsiveImageArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
@@ -291,12 +277,10 @@ export type FileFieldInterfaceResponsiveImageArgs = {
   sizes?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type FileFieldInterfaceTitleArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 export type FileFieldInterfaceUrlArgs = {
   imgixParams?: InputMaybe<ImgixParams>;
@@ -353,12 +337,10 @@ export type HomeRecord = RecordInterface & {
   updatedAt: Scalars['DateTime']['output'];
 };
 
-
 /** Record of type home (home) */
 export type HomeRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 /** Record of type home (home) */
 export type HomeRecordIntroductionArgs = {
@@ -1604,7 +1586,7 @@ export enum ImgixParamsAuto {
   Compress = 'compress',
   Enhance = 'enhance',
   Format = 'format',
-  Redeye = 'redeye'
+  Redeye = 'redeye',
 }
 
 export enum ImgixParamsBlendAlign {
@@ -1613,7 +1595,7 @@ export enum ImgixParamsBlendAlign {
   Left = 'left',
   Middle = 'middle',
   Right = 'right',
-  Top = 'top'
+  Top = 'top',
 }
 
 export enum ImgixParamsBlendCrop {
@@ -1621,7 +1603,7 @@ export enum ImgixParamsBlendCrop {
   Faces = 'faces',
   Left = 'left',
   Right = 'right',
-  Top = 'top'
+  Top = 'top',
 }
 
 export enum ImgixParamsBlendFit {
@@ -1629,7 +1611,7 @@ export enum ImgixParamsBlendFit {
   Clip = 'clip',
   Crop = 'crop',
   Max = 'max',
-  Scale = 'scale'
+  Scale = 'scale',
 }
 
 export enum ImgixParamsBlendMode {
@@ -1648,17 +1630,17 @@ export enum ImgixParamsBlendMode {
   Overlay = 'overlay',
   Saturation = 'saturation',
   Screen = 'screen',
-  Softlight = 'softlight'
+  Softlight = 'softlight',
 }
 
 export enum ImgixParamsBlendSize {
-  Inherit = 'inherit'
+  Inherit = 'inherit',
 }
 
 export enum ImgixParamsCh {
   Dpr = 'dpr',
   SaveData = 'saveData',
-  Width = 'width'
+  Width = 'width',
 }
 
 export enum ImgixParamsCrop {
@@ -1669,19 +1651,19 @@ export enum ImgixParamsCrop {
   Focalpoint = 'focalpoint',
   Left = 'left',
   Right = 'right',
-  Top = 'top'
+  Top = 'top',
 }
 
 export enum ImgixParamsCs {
   Adobergb1998 = 'adobergb1998',
   Srgb = 'srgb',
   Strip = 'strip',
-  Tinysrgb = 'tinysrgb'
+  Tinysrgb = 'tinysrgb',
 }
 
 export enum ImgixParamsFill {
   Blur = 'blur',
-  Solid = 'solid'
+  Solid = 'solid',
 }
 
 export enum ImgixParamsFit {
@@ -1693,13 +1675,13 @@ export enum ImgixParamsFit {
   Fillmax = 'fillmax',
   Max = 'max',
   Min = 'min',
-  Scale = 'scale'
+  Scale = 'scale',
 }
 
 export enum ImgixParamsFlip {
   H = 'h',
   Hv = 'hv',
-  V = 'v'
+  V = 'v',
 }
 
 export enum ImgixParamsFm {
@@ -1716,12 +1698,12 @@ export enum ImgixParamsFm {
   Png8 = 'png8',
   Png32 = 'png32',
   Webm = 'webm',
-  Webp = 'webp'
+  Webp = 'webp',
 }
 
 export enum ImgixParamsIptc {
   Allow = 'allow',
-  Block = 'block'
+  Block = 'block',
 }
 
 export enum ImgixParamsMarkAlign {
@@ -1730,7 +1712,7 @@ export enum ImgixParamsMarkAlign {
   Left = 'left',
   Middle = 'middle',
   Right = 'right',
-  Top = 'top'
+  Top = 'top',
 }
 
 export enum ImgixParamsMarkFit {
@@ -1738,25 +1720,25 @@ export enum ImgixParamsMarkFit {
   Crop = 'crop',
   Fill = 'fill',
   Max = 'max',
-  Scale = 'scale'
+  Scale = 'scale',
 }
 
 export enum ImgixParamsMarkTile {
-  Grid = 'grid'
+  Grid = 'grid',
 }
 
 export enum ImgixParamsPalette {
   Css = 'css',
-  Json = 'json'
+  Json = 'json',
 }
 
 export enum ImgixParamsTransparency {
-  Grid = 'grid'
+  Grid = 'grid',
 }
 
 export enum ImgixParamsTrim {
   Auto = 'auto',
-  Color = 'color'
+  Color = 'color',
 }
 
 export enum ImgixParamsTxtAlign {
@@ -1765,18 +1747,18 @@ export enum ImgixParamsTxtAlign {
   Left = 'left',
   Middle = 'middle',
   Right = 'right',
-  Top = 'top'
+  Top = 'top',
 }
 
 export enum ImgixParamsTxtClip {
   Ellipsis = 'ellipsis',
   End = 'end',
   Middle = 'middle',
-  Start = 'start'
+  Start = 'start',
 }
 
 export enum ImgixParamsTxtFit {
-  Max = 'max'
+  Max = 'max',
 }
 
 /** Specifies how to filter by usage */
@@ -1800,13 +1782,13 @@ export type ItemIdFilter = {
 export enum ItemStatus {
   Draft = 'draft',
   Published = 'published',
-  Updated = 'updated'
+  Updated = 'updated',
 }
 
 export enum MuxThumbnailFormatType {
   Gif = 'gif',
   Jpg = 'jpg',
-  Png = 'png'
+  Png = 'png',
 }
 
 /** Specifies how to filter by image orientation */
@@ -1858,13 +1840,11 @@ export type Query = {
   work?: Maybe<WorkRecord>;
 };
 
-
 /** The query root for this schema */
 export type Query_AllUploadsMetaArgs = {
   filter?: InputMaybe<UploadFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 /** The query root for this schema */
 export type Query_AllWorksMetaArgs = {
@@ -1873,13 +1853,11 @@ export type Query_AllWorksMetaArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
-
 /** The query root for this schema */
 export type Query_SiteArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 /** The query root for this schema */
 export type QueryAllUploadsArgs = {
@@ -1891,7 +1869,6 @@ export type QueryAllUploadsArgs = {
   skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
-
 /** The query root for this schema */
 export type QueryAllWorksArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
@@ -1902,20 +1879,17 @@ export type QueryAllWorksArgs = {
   skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
-
 /** The query root for this schema */
 export type QueryContactArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
-
 /** The query root for this schema */
 export type QueryHomeArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 /** The query root for this schema */
 export type QueryUploadArgs = {
@@ -1924,7 +1898,6 @@ export type QueryUploadArgs = {
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<UploadOrderBy>>>;
 };
-
 
 /** The query root for this schema */
 export type QueryWorkArgs = {
@@ -1951,7 +1924,6 @@ export type RecordInterface = {
   id: Scalars['ItemId']['output'];
 };
 
-
 export type RecordInterface_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
@@ -1972,7 +1944,7 @@ export enum ResolutionType {
   Icon = 'icon',
   Large = 'large',
   Medium = 'medium',
-  Small = 'small'
+  Small = 'small',
 }
 
 export type ResponsiveImage = {
@@ -2012,11 +1984,9 @@ export type Site = {
   locales: Array<SiteLocale>;
 };
 
-
 export type SiteFaviconMetaTagsArgs = {
   variants?: InputMaybe<Array<InputMaybe<FaviconType>>>;
 };
-
 
 export type SiteGlobalSeoArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
@@ -2024,7 +1994,7 @@ export type SiteGlobalSeoArgs = {
 };
 
 export enum SiteLocale {
-  En = 'en'
+  En = 'en',
 }
 
 /** Specifies how to filter by status */
@@ -2309,10 +2279,10 @@ export type UploadNotesFilter = {
 };
 
 export enum UploadOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
+  _CreatedAtAsc = '_createdAt_ASC',
+  _CreatedAtDesc = '_createdAt_DESC',
+  _UpdatedAtAsc = '_updatedAt_ASC',
+  _UpdatedAtDesc = '_updatedAt_DESC',
   BasenameAsc = 'basename_ASC',
   BasenameDesc = 'basename_DESC',
   FilenameAsc = 'filename_ASC',
@@ -2326,13 +2296,13 @@ export enum UploadOrderBy {
   ResolutionAsc = 'resolution_ASC',
   ResolutionDesc = 'resolution_DESC',
   SizeAsc = 'size_ASC',
-  SizeDesc = 'size_DESC'
+  SizeDesc = 'size_DESC',
 }
 
 export enum UploadOrientation {
   Landscape = 'landscape',
   Portrait = 'portrait',
-  Square = 'square'
+  Square = 'square',
 }
 
 /** Specifies how to filter by size */
@@ -2391,7 +2361,7 @@ export enum UploadType {
   Presentation = 'presentation',
   Richtext = 'richtext',
   Spreadsheet = 'spreadsheet',
-  Video = 'video'
+  Video = 'video',
 }
 
 /** Specifies how to filter by update datetime */
@@ -2421,12 +2391,10 @@ export type UploadVideoField = {
   thumbnailUrl: Scalars['String']['output'];
 };
 
-
 export type UploadVideoFieldMp4UrlArgs = {
   exactRes?: InputMaybe<VideoMp4Res>;
   res?: InputMaybe<VideoMp4Res>;
 };
-
 
 export type UploadVideoFieldThumbnailUrlArgs = {
   format?: InputMaybe<MuxThumbnailFormatType>;
@@ -2451,7 +2419,7 @@ export type UploadWidthFilter = {
 export enum VideoMp4Res {
   High = 'high',
   Low = 'low',
-  Medium = 'medium'
+  Medium = 'medium',
 }
 
 export type WorkModelFilter = {
@@ -2479,22 +2447,22 @@ export type WorkModelFilter = {
 };
 
 export enum WorkModelOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
-  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
-  IsValidAsc = '_isValid_ASC',
-  IsValidDesc = '_isValid_DESC',
-  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
-  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
-  PublishedAtAsc = '_publishedAt_ASC',
-  PublishedAtDesc = '_publishedAt_DESC',
-  StatusAsc = '_status_ASC',
-  StatusDesc = '_status_DESC',
-  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
-  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
+  _CreatedAtAsc = '_createdAt_ASC',
+  _CreatedAtDesc = '_createdAt_DESC',
+  _FirstPublishedAtAsc = '_firstPublishedAt_ASC',
+  _FirstPublishedAtDesc = '_firstPublishedAt_DESC',
+  _IsValidAsc = '_isValid_ASC',
+  _IsValidDesc = '_isValid_DESC',
+  _PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
+  _PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
+  _PublishedAtAsc = '_publishedAt_ASC',
+  _PublishedAtDesc = '_publishedAt_DESC',
+  _StatusAsc = '_status_ASC',
+  _StatusDesc = '_status_DESC',
+  _UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
+  _UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
+  _UpdatedAtAsc = '_updatedAt_ASC',
+  _UpdatedAtDesc = '_updatedAt_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   EnddateAsc = 'enddate_ASC',
@@ -2510,7 +2478,7 @@ export enum WorkModelOrderBy {
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
+  UpdatedAtDesc = 'updatedAt_DESC',
 }
 
 /** Record of type work (work) */
@@ -2542,12 +2510,10 @@ export type WorkRecord = RecordInterface & {
   updatedAt: Scalars['DateTime']['output'];
 };
 
-
 /** Record of type work (work) */
 export type WorkRecord_SeoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
-
 
 /** Record of type work (work) */
 export type WorkRecordDescriptionArgs = {
@@ -2560,22 +2526,163 @@ export type FocalPoint = {
   y: Scalars['FloatType']['output'];
 };
 
-export type GetContactQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetContactQueryVariables = Exact<{ [key: string]: never }>;
 
+export type GetContactQuery = {
+  __typename?: 'Query';
+  contact?: {
+    __typename?: 'ContactRecord';
+    emailaddress?: string | null;
+    introduction?: string | null;
+    cv?: { __typename?: 'FileField'; filename: string; url: string; id: any } | null;
+  } | null;
+};
 
-export type GetContactQuery = { __typename?: 'Query', contact?: { __typename?: 'ContactRecord', emailaddress?: string | null, introduction?: string | null, cv?: { __typename?: 'FileField', filename: string, url: string, id: any } | null } | null };
+export type GetHomeQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetHomeQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetHomeQuery = {
+  __typename?: 'Query';
+  home?: {
+    __typename?: 'HomeRecord';
+    currentStack?: string | null;
+    introduction?: string | null;
+    subtitle?: string | null;
+    title?: string | null;
+    availability?: string | null;
+    cv?: { __typename?: 'FileField'; filename: string; url: string; id: any } | null;
+  } | null;
+};
 
+export type GetWorkQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetHomeQuery = { __typename?: 'Query', home?: { __typename?: 'HomeRecord', currentStack?: string | null, introduction?: string | null, subtitle?: string | null, title?: string | null, availability?: string | null, cv?: { __typename?: 'FileField', filename: string, url: string, id: any } | null } | null };
+export type GetWorkQuery = {
+  __typename?: 'Query';
+  allWorks: Array<{
+    __typename?: 'WorkRecord';
+    id: any;
+    title?: string | null;
+    location?: string | null;
+    role?: string | null;
+    startdate?: any | null;
+    enddate?: any | null;
+    description?: string | null;
+  }>;
+};
 
-export type GetWorkQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetWorkQuery = { __typename?: 'Query', allWorks: Array<{ __typename?: 'WorkRecord', id: any, title?: string | null, location?: string | null, role?: string | null, startdate?: any | null, enddate?: any | null, description?: string | null }> };
-
-
-export const GetContactDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getContact"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contact"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"emailaddress"}},{"kind":"Field","name":{"kind":"Name","value":"introduction"}},{"kind":"Field","name":{"kind":"Name","value":"cv"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"filename"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetContactQuery, GetContactQueryVariables>;
-export const GetHomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getHome"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"currentStack"}},{"kind":"Field","name":{"kind":"Name","value":"introduction"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"availability"}},{"kind":"Field","name":{"kind":"Name","value":"cv"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"filename"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetHomeQuery, GetHomeQueryVariables>;
-export const GetWorkDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getWork"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allWorks"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"EnumValue","value":"startdate_DESC"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"location"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"startdate"}},{"kind":"Field","name":{"kind":"Name","value":"enddate"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]} as unknown as DocumentNode<GetWorkQuery, GetWorkQueryVariables>;
+export const GetContactDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'getContact' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'contact' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'emailaddress' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'introduction' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'cv' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetContactQuery, GetContactQueryVariables>;
+export const GetHomeDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'getHome' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'home' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'currentStack' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'introduction' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'subtitle' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'availability' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'cv' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetHomeQuery, GetHomeQueryVariables>;
+export const GetWorkDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'getWork' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'allWorks' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'orderBy' },
+                value: { kind: 'EnumValue', value: 'startdate_DESC' },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'location' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'role' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'startdate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'enddate' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetWorkQuery, GetWorkQueryVariables>;
