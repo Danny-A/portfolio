@@ -4,6 +4,8 @@ import { client } from '@/lib/client';
 
 import { Metadata } from 'next';
 
+export const revalidate = 3600; // revalidate the data at most every hour
+
 export const metadata: Metadata = {
   title: 'Werk - Danny Arntz',
 };

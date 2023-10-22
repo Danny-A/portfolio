@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz',
 };
 
+export const revalidate = 3600; // revalidate the data at most every hour
+
 async function getData() {
   const data = await client.request(GetHomeDocument, {});
 
