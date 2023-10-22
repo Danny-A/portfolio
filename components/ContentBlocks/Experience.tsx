@@ -1,20 +1,30 @@
 import React from 'react';
 import { format } from 'date-fns';
+import Text from '@/components/Text';
+import Heading from '@/components/Heading';
 
 const ExperienceBlock = ({ functionTitle, location, startdate, enddate, title, text }) => {
   return (
-    <div className="row">
-      <h2 className="title">{title}</h2>
-      <div className="meta">
-        <h2 className="subtitle">{functionTitle}</h2>
-        <h3 className="meta__title meta__title--secondary">{location}</h3>
-        <p className="meta__title">
+    <section>
+      <Heading level="h1" size="text-3xl">
+        {title}
+      </Heading>
+      <Heading level="h2" size="text-xl" color="text-primary-400">
+        {functionTitle}
+      </Heading>
+      <div className="mt-4">
+        <Text size="text-xs" color="text-gray-200">
+          {location}
+        </Text>
+        <Text size="text-sm">
           {format(new Date(startdate), 'MMMM yyyy')} - {enddate ? format(new Date(enddate), 'MMMM yyyy') : 'nu'}
-        </p>
+        </Text>
       </div>
 
-      <p className="text">{text}</p>
-    </div>
+      <div className="mt-4">
+        <Text>{text}</Text>
+      </div>
+    </section>
   );
 };
 
