@@ -1,7 +1,7 @@
 import Script from 'next/script';
 import { LayoutProviders } from '@/components/LayoutProviders';
 import * as gtag from '../lib/gtag';
-import '@/styles/globals.scss';
+import '@/styles/globals.css';
 
 export default async function RootLayout({ children }) {
   const metaTitle = 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz';
@@ -86,7 +86,7 @@ export default async function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body>
+      <body className="bg-gray-950">
         <LayoutProviders>
           <main>{children}</main>
         </LayoutProviders>

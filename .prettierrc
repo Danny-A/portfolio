@@ -18,5 +18,7 @@
   ],
   "printWidth": 120,
   "proseWrap": "always",
-  "singleQuote": true
+  "singleQuote": true,
+  "tailwindConfig": "./tailwind.config.js",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

@@ -3,6 +3,8 @@
 import Page from '@/components/Page';
 import { GetContactQuery } from '@/generated/gql/graphql';
 import * as gtag from '@/lib/gtag';
+import Text from '@/components/Text';
+import Heading from '@/components/Heading';
 
 const Contactpage = ({ contact }: GetContactQuery) => {
   const handleEvent = e => {
@@ -25,27 +27,53 @@ const Contactpage = ({ contact }: GetContactQuery) => {
 
   return (
     <Page>
-      <div className="section">
-        {contact?.introduction && <h2 className="subtitle subtitle--secondary">{contact.introduction}</h2>}
-        {contact?.emailaddress && (
-          <>
-            <h3 className="meta__title meta__title--secondary">Kom in contact</h3>
-            <p>{contact.emailaddress}</p>
-          </>
+      <section>
+        {contact?.introduction && (
+          <Heading level="h1" size="text-3xl">
+            {contact.introduction}
+          </Heading>
         )}
-        <h3 className="meta__title meta__title--secondary">Online</h3>
-        <p>
-          <a href="https://www.linkedin.com/in/darntz/" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <br />
-          {contact?.cv?.url && (
-            <a href={contact.cv.url} onClick={e => handleEvent(e)} target="_blank" rel="noreferrer">
-              Download CV ↓
-            </a>
+        <div className="mt-4">
+          {contact?.emailaddress && (
+            <>
+              <Text size="text-sm" color="text-gray-200">
+                Kom in contact
+              </Text>
+              <Text>{contact.emailaddress}</Text>
+            </>
           )}
-        </p>
-      </div>
+        </div>
+        <div className="mt-4">
+          <Text size="text-sm" color="text-gray-200">
+            Online
+          </Text>
+
+          <Text>
+            <a
+              href="https://www.linkedin.com/in/darntz/"
+              className="underline hover:text-gray-200"
+              target="_blank"
+              rel="noreferrer">
+              LinkedIn
+            </a>
+          </Text>
+
+          {contact?.cv?.url && (
+            <div className="mt-4">
+              <Text>
+                <a
+                  href={contact.cv.url}
+                  onClick={e => handleEvent(e)}
+                  className="underline hover:text-gray-200"
+                  target="_blank"
+                  rel="noreferrer">
+                  Download CV ↓
+                </a>
+              </Text>
+            </div>
+          )}
+        </div>
+      </section>
     </Page>
   );
 };

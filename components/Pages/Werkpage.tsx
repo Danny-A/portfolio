@@ -7,7 +7,7 @@ import { GetWorkQuery } from '@/generated/gql/graphql';
 const Werkpage = ({ allWorks }: GetWorkQuery) => {
   return (
     <Page>
-      <div className="section">
+      <div className="flex flex-col gap-8">
         {allWorks.map(item => (
           <ExperienceBlock
             key={item.title}
