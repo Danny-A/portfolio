@@ -26,11 +26,11 @@ export default function Homepage({ home }) {
 
   return (
     <Page>
-      <section>
-        <div className="flex flex-col gap-4">
+      <section className="mx-auto max-w-xl px-4">
+        <div className="flex flex-col gap-4 rounded-md bg-[#f3f4f5] p-8">
           {home?.availability && (
             <div className="flex">
-              <div className="rounded-sm bg-green-950 px-2 py-1 text-xs text-green-400">{home.availability}</div>
+              <div className="bg-green-200 text-green-800 rounded-sm px-2 py-1 text-xs">{home.availability}</div>
             </div>
           )}
           {home?.title && (
@@ -39,7 +39,7 @@ export default function Homepage({ home }) {
             </Heading>
           )}
           {home?.subtitle && (
-            <Heading level="h2" size="text-2xl" color="text-primary-400">
+            <Heading level="h2" size="text-2xl" color="text-secondary">
               {home.subtitle}
             </Heading>
           )}

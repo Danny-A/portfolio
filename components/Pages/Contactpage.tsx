@@ -26,51 +26,53 @@ const Contactpage = ({ contact }) => {
 
   return (
     <Page>
-      <section>
-        {contact?.introduction && (
-          <Heading level="h1" size="text-3xl">
-            {contact.introduction}
-          </Heading>
-        )}
-        <div className="mt-4">
-          {contact?.emailaddress && (
-            <>
-              <Text size="text-sm" color="text-gray-200">
-                Kom in contact
-              </Text>
-              <Text>{contact.emailaddress}</Text>
-            </>
+      <section className="mx-auto max-w-xl px-4">
+        <div className="rounded-md bg-[#f3f4f5] p-8">
+          {contact?.introduction && (
+            <Heading level="h1" size="text-3xl">
+              {contact.introduction}
+            </Heading>
           )}
-        </div>
-        <div className="mt-4">
-          <Text size="text-sm" color="text-gray-200">
-            Online
-          </Text>
+          <div className="mt-4">
+            {contact?.emailaddress && (
+              <>
+                <Text size="text-sm" color="text-gray-200">
+                  Kom in contact
+                </Text>
+                <Text>{contact.emailaddress}</Text>
+              </>
+            )}
+          </div>
+          <div className="mt-4">
+            <Text size="text-sm" color="text-gray-200">
+              Online
+            </Text>
 
-          <Text>
-            <a
-              href="https://www.linkedin.com/in/darntz/"
-              className="underline hover:text-gray-200"
-              target="_blank"
-              rel="noreferrer">
-              LinkedIn
-            </a>
-          </Text>
+            <Text>
+              <a
+                href="https://www.linkedin.com/in/darntz/"
+                className="underline hover:text-gray-200"
+                target="_blank"
+                rel="noreferrer">
+                LinkedIn
+              </a>
+            </Text>
 
-          {contact?.cv?.url && (
-            <div className="mt-4">
-              <Text>
-                <a
-                  href={contact.cv.url}
-                  onClick={e => handleEvent(e)}
-                  className="underline hover:text-gray-200"
-                  target="_blank"
-                  rel="noreferrer">
-                  Download CV ↓
-                </a>
-              </Text>
-            </div>
-          )}
+            {contact?.cv?.url && (
+              <div className="mt-4">
+                <Text>
+                  <a
+                    href={contact.cv.url}
+                    onClick={e => handleEvent(e)}
+                    className="underline hover:text-gray-200"
+                    target="_blank"
+                    rel="noreferrer">
+                    Download CV ↓
+                  </a>
+                </Text>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </Page>

@@ -5,11 +5,11 @@ import Heading from '@/components/Heading';
 
 const ExperienceBlock = ({ functionTitle, location, startdate, enddate, title, text }) => {
   return (
-    <section>
+    <section className="rounded-md bg-[#f3f4f5] p-8">
       <Heading level="h1" size="text-3xl">
         {title}
       </Heading>
-      <Heading level="h2" size="text-xl" color="text-primary-400">
+      <Heading level="h2" size="text-xl" color="text-secondary">
         {functionTitle}
       </Heading>
       <div className="mt-4">
