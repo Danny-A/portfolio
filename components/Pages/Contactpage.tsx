@@ -1,12 +1,11 @@
 'use client';
 
 import Page from '@/components/Page';
-import { GetContactQuery } from '@/generated/gql/graphql';
 import * as gtag from '@/lib/gtag';
 import Text from '@/components/Text';
 import Heading from '@/components/Heading';
 
-const Contactpage = ({ contact }: GetContactQuery) => {
+const Contactpage = ({ contact }) => {
   const handleEvent = e => {
     e.preventDefault();
 

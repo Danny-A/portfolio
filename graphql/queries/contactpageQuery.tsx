@@ -1,6 +1,4 @@
-import { graphql } from '@/generated/gql';
-
-export const contactpageQueryDocument = graphql(`
+export const contactpageQueryDocument = `
   query getContact {
     contact {
       emailaddress
@@ -12,4 +10,4 @@ export const contactpageQueryDocument = graphql(`
       }
     }
   }
-`);
+`;

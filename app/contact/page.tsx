@@ -1,6 +1,7 @@
 import Contactpage from '@/components/Pages/Contactpage';
-import { GetContactDocument } from '@/generated/gql/graphql';
-import { client } from '@/lib/client';
+import { contactpageQueryDocument } from '@/graphql/queries/contactpageQuery';
+
+import { performRequest } from '@/lib/performRequest';
 
 import { Metadata } from 'next';
 
@@ -8,10 +9,12 @@ export const metadata: Metadata = {
   title: 'Contact - Danny Arntz',
 };
 
-export const revalidate = 3600; // revalidate the data at most every hour
-
 async function getData() {
-  const data = await client.request(GetContactDocument, {});
+  const data = await performRequest({
+    query: contactpageQueryDocument,
+    revalidate: 60,
+    visualEditingBaseUrl: '',
+  });
 
   return data;
 }

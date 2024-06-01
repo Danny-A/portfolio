@@ -1,12 +1,11 @@
 'use client';
 
 import Page from '@/components/Page';
-import { GetHomeQuery } from '@/generated/gql/graphql';
 import * as gtag from '@/lib/gtag';
 import Text from '@/components/Text';
 import Heading from '@/components/Heading';
 
-export default function Homepage({ home }: GetHomeQuery) {
+export default function Homepage({ home }) {
   const handleEvent = e => {
     e.preventDefault();
 

@@ -1,6 +1,4 @@
-import { graphql } from '@/generated/gql';
-
-export const workpageQueryDocument = graphql(`
+export const workpageQueryDocument = `
   query getWork {
     allWorks(orderBy: startdate_DESC) {
       id
@@ -12,4 +10,4 @@ export const workpageQueryDocument = graphql(`
       description
     }
   }
-`);
+`;

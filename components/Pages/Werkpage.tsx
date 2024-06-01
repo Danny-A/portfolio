@@ -2,9 +2,8 @@
 
 import Page from '@/components/Page';
 import ExperienceBlock from '@/components/ContentBlocks/Experience';
-import { GetWorkQuery } from '@/generated/gql/graphql';
 
-const Werkpage = ({ allWorks }: GetWorkQuery) => {
+const Werkpage = ({ allWorks }) => {
   return (
     <Page>
       <div className="flex flex-col gap-8">

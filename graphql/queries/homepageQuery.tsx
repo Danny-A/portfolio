@@ -1,6 +1,4 @@
-import { graphql } from '@/generated/gql';
-
-export const homepageQueryDocument = graphql(`
+export const homepageQueryDocument = `
   query getHome {
     home {
       currentStack
@@ -15,4 +13,4 @@ export const homepageQueryDocument = graphql(`
       }
     }
   }
-`);
+`;
