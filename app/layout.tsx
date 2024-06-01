@@ -33,7 +33,7 @@ export default async function RootLayout({ children }) {
         <meta name="dcterms.Publisher" content="Danny Arntz" />
         <meta name="dcterms.Type" content="text/html" />
         <meta name="dcterms.Coverage" content="/" />
-        <meta name="dcterms.Rights" content="Copyright &copy;2023 Danny Arntz." />
+        <meta name="dcterms.Rights" content="Copyright &copy;2024 Danny Arntz." />
         <meta name="dcterms.Title" content={metaTitle} />
         <meta name="dcterms.Subject" content="" />
         <meta name="dcterms.Contributor" content="Danny Arntz" />
@@ -86,7 +86,7 @@ export default async function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className="bg-gray-950">
+      <body className=" bg-white">
         <LayoutProviders>
           <main>{children}</main>
         </LayoutProviders>

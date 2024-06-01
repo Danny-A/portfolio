@@ -1,6 +1,6 @@
 import Homepage from '@/components/Pages/Homepage';
-import { GetHomeDocument } from '@/generated/gql/graphql';
-import { client } from '@/lib/client';
+import { homepageQueryDocument } from '@/graphql/queries/homepageQuery';
+import { performRequest } from '@/lib/performRequest';
 
 import { Metadata } from 'next';
 
@@ -8,10 +8,12 @@ export const metadata: Metadata = {
   title: 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz',
 };
 
-export const revalidate = 3600; // revalidate the data at most every hour
-
 async function getData() {
-  const data = await client.request(GetHomeDocument, {});
+  const data = await performRequest({
+    query: homepageQueryDocument,
+    revalidate: 60,
+    visualEditingBaseUrl: '',
+  });
 
   return data;
 }

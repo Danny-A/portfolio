@@ -1,17 +1,19 @@
 import Werkpage from '@/components/Pages/Werkpage';
-import { GetWorkDocument } from '@/generated/gql/graphql';
-import { client } from '@/lib/client';
+import { workpageQueryDocument } from '@/graphql/queries/workpageQuery';
+import { performRequest } from '@/lib/performRequest';
 
 import { Metadata } from 'next';
-
-export const revalidate = 3600; // revalidate the data at most every hour
 
 export const metadata: Metadata = {
   title: 'Werk - Danny Arntz',
 };
 
 async function getData() {
-  const data = await client.request(GetWorkDocument, {});
+  const data = await performRequest({
+    query: workpageQueryDocument,
+    revalidate: 60,
+    visualEditingBaseUrl: '',
+  });
 
   return data;
 }
