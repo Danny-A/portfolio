@@ -9,10 +9,12 @@ export const metadata: Metadata = {
   title: 'Contact - Danny Arntz',
 };
 
+export const revalidate = 60;
+
 async function getData() {
   const data = await performRequest({
     query: contactpageQueryDocument,
-    revalidate: 60,
+    revalidate,
     visualEditingBaseUrl: '',
   });
 

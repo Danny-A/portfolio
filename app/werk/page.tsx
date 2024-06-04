@@ -8,10 +8,12 @@ export const metadata: Metadata = {
   title: 'Werk - Danny Arntz',
 };
 
+export const revalidate = 60;
+
 async function getData() {
   const data = await performRequest({
     query: workpageQueryDocument,
-    revalidate: 60,
+    revalidate,
     visualEditingBaseUrl: '',
   });
 

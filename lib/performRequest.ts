@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-const dedupedFetch = cache(async serializedInit => {
+const dedupedFetch = cache(async (serializedInit: string) => {
   const response = await fetch(process.env.NEXT_DATOCMS_API_URL as string, JSON.parse(serializedInit));
   const responseBody = await response.json();
 
@@ -11,6 +11,15 @@ const dedupedFetch = cache(async serializedInit => {
   return responseBody;
 });
 
+type PerformRequestParams = {
+  query: string;
+  variables?: Record<string, any>;
+  includeDrafts?: boolean;
+  excludeInvalid?: boolean;
+  visualEditingBaseUrl?: string;
+  revalidate?: number;
+};
+
 export async function performRequest({
   query,
   variables = {},
@@ -18,7 +27,11 @@ export async function performRequest({
   excludeInvalid = false,
   visualEditingBaseUrl,
   revalidate,
-}) {
+}: PerformRequestParams) {
+  if (!process.env.NEXT_DATOCMS_API_URL || !process.env.NEXT_DATOCMS_API_TOKEN) {
+    throw new Error('Environment variables for DatoCMS API URL or Token are not set');
+  }
+
   const { data } = await dedupedFetch(
     JSON.stringify({
       method: 'POST',
@@ -35,5 +48,6 @@ export async function performRequest({
       next: { revalidate },
     }),
   );
+
   return data;
 }

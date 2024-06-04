@@ -86,7 +86,7 @@ export default async function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className=" bg-white">
+      <body className="bg-white">
         <LayoutProviders>
           <main>{children}</main>
         </LayoutProviders>
