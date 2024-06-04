@@ -8,14 +8,21 @@ export const metadata: Metadata = {
   title: 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz',
 };
 
-async function getData() {
-  const data = await performRequest({
-    query: homepageQueryDocument,
-    revalidate: 60,
-    visualEditingBaseUrl: '',
-  });
+export const revalidate = 60;
 
-  return data;
+async function getData() {
+  try {
+    const data = await performRequest({
+      query: homepageQueryDocument,
+      revalidate,
+      visualEditingBaseUrl: '',
+    });
+
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+    throw new Error('Failed to fetch data');
+  }
 }
 
 export default async function Home() {
