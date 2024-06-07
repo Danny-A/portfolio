@@ -4,25 +4,26 @@ import Text from '@/components/Text';
 import Heading from '@/components/Heading';
 
 const ExperienceBlock = ({ functionTitle, location, startdate, enddate, title, text }) => {
+  const formattedText = text.replace(/\n/g, '<br />');
   return (
-    <section className="rounded-md bg-[#f3f4f5] p-8">
-      <Heading level="h1" size="text-3xl">
+    <section className="shadow-elevation-high rounded-md bg-white p-8">
+      <Heading as="h1" size="3xl">
         {title}
       </Heading>
-      <Heading level="h2" size="text-xl" color="text-secondary">
+      <Heading as="h2" size="xl" color="secondary">
         {functionTitle}
       </Heading>
       <div className="mt-4">
-        <Text size="text-xs" color="text-gray-200">
+        <Text size="xs" color="secondary">
           {location}
         </Text>
-        <Text size="text-sm">
+        <Text size="sm">
           {format(new Date(startdate), 'MMMM yyyy')} - {enddate ? format(new Date(enddate), 'MMMM yyyy') : 'nu'}
         </Text>
       </div>
 
       <div className="mt-4">
-        <Text>{text}</Text>
+        <Text dangerouslySetInnerHTML={{ __html: formattedText }} />
       </div>
     </section>
   );

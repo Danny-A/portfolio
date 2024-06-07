@@ -27,16 +27,16 @@ const Contactpage = ({ contact }) => {
   return (
     <Page>
       <section className="mx-auto max-w-xl px-4">
-        <div className="rounded-md bg-[#f3f4f5] p-8">
+        <div className="shadow-elevation-high rounded-md bg-white p-8">
           {contact?.introduction && (
-            <Heading level="h1" size="text-3xl">
+            <Heading as="h1" size="3xl">
               {contact.introduction}
             </Heading>
           )}
           <div className="mt-4">
             {contact?.emailaddress && (
               <>
-                <Text size="text-sm" color="text-gray-200">
+                <Text size="sm" color="secondary">
                   Kom in contact
                 </Text>
                 <Text>{contact.emailaddress}</Text>
@@ -44,7 +44,7 @@ const Contactpage = ({ contact }) => {
             )}
           </div>
           <div className="mt-4">
-            <Text size="text-sm" color="text-gray-200">
+            <Text size="sm" color="secondary">
               Online
             </Text>
 

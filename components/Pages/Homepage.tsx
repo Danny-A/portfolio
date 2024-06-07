@@ -6,6 +6,8 @@ import Text from '@/components/Text';
 import Heading from '@/components/Heading';
 
 export default function Homepage({ home }) {
+  const formattedIntroduction = home?.introduction.replace(/\n/g, '<br />');
+
   const handleEvent = e => {
     e.preventDefault();
 
@@ -27,26 +29,26 @@ export default function Homepage({ home }) {
   return (
     <Page>
       <section className="mx-auto max-w-xl px-4">
-        <div className="flex flex-col gap-4 rounded-md bg-[#f3f4f5] p-8">
+        <div className="flex flex-col gap-4 rounded-md bg-white p-8 shadow-elevation-high">
           {home?.availability && (
             <div className="flex">
-              <div className="bg-green-200 text-green-800 rounded-sm px-2 py-1 text-xs">{home.availability}</div>
+              <div className="rounded-sm bg-green-200 px-2 py-1 text-xs text-green-800">{home.availability}</div>
             </div>
           )}
           {home?.title && (
-            <Heading level="h1" size="text-4xl">
+            <Heading as="h1" size="3xl">
               {home.title}
             </Heading>
           )}
           {home?.subtitle && (
-            <Heading level="h2" size="text-2xl" color="text-secondary">
+            <Heading as="h2" size="2xl" color="secondary">
               {home.subtitle}
             </Heading>
           )}
-          {home?.introduction && <Text>{home.introduction}</Text>}
+          {home?.introduction && <Text dangerouslySetInnerHTML={{ __html: formattedIntroduction }} />}
           {home?.currentStack && (
             <span>
-              <Text color="text-gray-200" size="text-sm">
+              <Text color="secondary" size="sm">
                 Huidige stack:
               </Text>
               <Text>{home.currentStack}</Text>
