@@ -9,16 +9,19 @@ export const metadata: Metadata = {
   title: 'Contact - Danny Arntz',
 };
 
-export const revalidate = 60;
-
 async function getData() {
-  const data = await performRequest({
-    query: contactpageQueryDocument,
-    revalidate,
-    visualEditingBaseUrl: '',
-  });
+  try {
+    const data = await performRequest({
+      query: contactpageQueryDocument,
+      revalidate: 300,
+      visualEditingBaseUrl: '',
+    });
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+    throw new Error('Failed to fetch data');
+  }
 }
 
 export default async function Contact() {
