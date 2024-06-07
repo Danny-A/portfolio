@@ -8,13 +8,11 @@ export const metadata: Metadata = {
   title: 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz',
 };
 
-export const revalidate = 60;
-
 async function getData() {
   try {
     const data = await performRequest({
       query: homepageQueryDocument,
-      revalidate,
+      revalidate: 300,
       visualEditingBaseUrl: '',
     });
 
