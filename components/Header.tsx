@@ -12,7 +12,7 @@ export default function Header() {
         </Link>
         <Link
           href="/werk"
-          className={`hover:underline ${pathname == '/werk' ? ' text-secondary underline' : 'text-gray-900'}`}>
+          className={`hover:underline ${pathname == '/werk' ? 'text-secondary underline' : 'text-gray-900'}`}>
           Werk
         </Link>
         <Link
