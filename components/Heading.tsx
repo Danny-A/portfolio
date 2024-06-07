@@ -1,14 +1,38 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from '@/lib/tailwindmerge';
 
-type Props = {
-  level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  size?: 'text-md' | 'text-lg' | 'text-xl' | 'text-2xl' | 'text-3xl' | 'text-4xl' | 'text-5xl' | 'text-base';
-  color?: 'text-gray-950' | 'text-primary-500' | 'text-gray-900' | 'text-gray-200' | 'text-secondary';
+type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export const headingStyles = tv({
+  base: 'font-heading',
+  variants: {
+    size: {
+      xl: 'text-xl',
+      '2xl': 'text-2xl',
+      '3xl': 'text-3xl',
+    },
+    color: {
+      primary: 'text-gray-900',
+      secondary: 'text-secondary',
+    },
+  },
+  defaultVariants: {
+    color: 'primary',
+    size: '3xl',
+  },
+});
+
+export type TextVariants = VariantProps<typeof headingStyles>;
+
+type Props = TextVariants & {
+  as?: HeadingLevel;
+  className?: string;
+  children: React.ReactNode;
 };
 
-const Heading: FC<PropsWithChildren<Props>> = ({ children, level, size = 'text-lg', color = 'text-gray-900' }) => {
-  const Tag = level as keyof JSX.IntrinsicElements;
-  return <Tag className={`font-moderat ${size} ${color}`}>{children}</Tag>;
-};
+const Heading: FC<Props> = ({ as: Component = 'h2', className, children, ...props }) => (
+  <Component className={cn(headingStyles(props), className)}>{children}</Component>
+);
 
 export default Heading;

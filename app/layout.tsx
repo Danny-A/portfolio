@@ -3,12 +3,34 @@ import { LayoutProviders } from '@/components/LayoutProviders';
 import * as gtag from '../lib/gtag';
 import '@/styles/globals.css';
 
+import localFont from 'next/font/local';
+
+const moderat = localFont({
+  src: [
+    {
+      path: '../fonts/Moderat-Regular.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/Moderat-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-moderat',
+});
+
+export const revalidate = 300;
+
 export default async function RootLayout({ children }) {
   const metaTitle = 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz';
-  const metaDescription = 'Freelance front-end developer met ruim 10 jaar ervaring in de digitale industrie.';
+  const metaDescription =
+    'Senior front-end developer met 10+ jaar ervaring om jouw business of project tot een succes te brengen. Werk met TypeScript, React, NextJS, GraphQL, testing';
 
   return (
-    <html lang="nl">
+    <html lang="nl" className={`${moderat.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -70,7 +92,7 @@ export default async function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
 
         <link rel="manifest" href="manifest.json" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
 
         {/* Global Site Tag (gtag.js) - Google Analytics */}
         <Script
@@ -86,7 +108,7 @@ export default async function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className="bg-white">
+      <body className="bg-zinc-50">
         <LayoutProviders>
           <main>{children}</main>
         </LayoutProviders>
