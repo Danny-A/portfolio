@@ -29,7 +29,7 @@ export default function Homepage({ home }) {
   return (
     <Page>
       <section className="mx-auto max-w-xl px-4">
-        <div className="shadow-elevation-high flex flex-col gap-4 rounded-md bg-white p-8">
+        <div className="flex flex-col gap-4 rounded-md bg-white p-8 shadow-elevation-high">
           {home?.availability && (
             <div className="flex">
               <div className="rounded-sm bg-green-200 px-2 py-1 text-xs text-green-800">{home.availability}</div>
@@ -48,7 +48,7 @@ export default function Homepage({ home }) {
           {home?.introduction && <Text dangerouslySetInnerHTML={{ __html: formattedIntroduction }} />}
           {home?.currentStack && (
             <span>
-              <Text color="text-gray-200" size="text-sm">
+              <Text color="secondary" size="sm">
                 Huidige stack:
               </Text>
               <Text>{home.currentStack}</Text>
