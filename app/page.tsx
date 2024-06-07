@@ -6,6 +6,8 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Freelance front-end developer, Utrecht, Rotterdam en Amsterdam - Danny Arntz',
+  description:
+    'Senior front-end developer met 10+ jaar ervaring om jouw business of project tot een succes te brengen. Werk met TypeScript, React, NextJS, GraphQL, testing',
 };
 
 async function getData() {
