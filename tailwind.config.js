@@ -14,7 +14,7 @@ module.exports = {
         'gray-950': '#121212',
       },
       fontFamily: {
-        moderat: ['Moderat', 'sans-serif'],
+        moderat: ['var(--font-moderat)'],
       },
     },
   },
