@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: '#2a3537',
         'primary-400': '#f08080',
         'primary-700': '#ff4500',
         secondary: '#7e5bef',
@@ -12,6 +13,7 @@ module.exports = {
         'gray-100': '#dcdcdc',
         'gray-200': '#848484',
         'gray-950': '#121212',
+        navigation: 'rgba(230, 228, 220, 0.5)',
       },
       fontFamily: {
         moderat: ['var(--font-moderat)'],

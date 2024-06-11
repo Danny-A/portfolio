@@ -6,7 +6,7 @@ import Heading from '@/components/Heading';
 const ExperienceBlock = ({ functionTitle, location, startdate, enddate, title, text }) => {
   const formattedText = text.replace(/\n/g, '<br />');
   return (
-    <section className="shadow-elevation-high rounded-md bg-white p-8">
+    <section className="rounded-md bg-white p-8 shadow-elevation-high">
       <Heading as="h1" size="3xl">
         {title}
       </Heading>
