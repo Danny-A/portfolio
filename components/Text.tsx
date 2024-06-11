@@ -17,7 +17,7 @@ export const textStyles = tv({
       medium: 'font-medium',
     },
     color: {
-      primary: 'text-gray-900',
+      primary: 'text-primary',
       secondary: 'text-gray-200',
     },
   },

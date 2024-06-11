@@ -13,7 +13,7 @@ export const headingStyles = tv({
       '3xl': 'text-3xl',
     },
     color: {
-      primary: 'text-gray-900',
+      primary: 'text-primary',
       secondary: 'text-secondary',
     },
   },
