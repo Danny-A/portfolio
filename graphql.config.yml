@@ -1,7 +1,7 @@
 schema:
   - https://graphql.datocms.com:
       headers:
-        Authorization: 'Bearer 7176542bddd50c28b94ef52173f838'
+        Authorization: 'Bearer ${DATOCMS_READONLY_TOKEN}'
         X-Exclude-Invalid: true
 documents: './app/graphql/**/*.graphql'
 generates:
