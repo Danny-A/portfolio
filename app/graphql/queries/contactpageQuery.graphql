@@ -1,0 +1,16 @@
+query getContact {
+  contact {
+    emailaddress
+    introduction
+    cv {
+      filename
+      url
+      id
+    }
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+  }
+}
