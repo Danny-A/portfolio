@@ -32,14 +32,18 @@ type Props = TextVariants & {
 };
 
 const Heading: FC<Props> = ({
-  as: Component = 'h2',
+  as = 'h2',
   className,
   children,
   ...props
-}) => (
-  <Component className={cn(headingStyles(props), className)}>
-    {children}
-  </Component>
-);
+}) => {
+  const Component = as;
+  
+  return (
+    <Component className={cn(headingStyles(props), className)}>
+      {children}
+    </Component>
+  );
+};
 
 export default Heading;
