@@ -19,7 +19,11 @@ const ExperienceBlock = ({
   title,
   description,
 }: ExperienceBlockProps) => {
-  const formattedText = description?.replace(/\n/g, '<br />');
+  const paragraphs = description
+    ?.replace(/<p>/g, '')
+    ?.split(/<\/p>|\n/)
+    ?.filter(text => text.trim().length > 0)
+    ?.map(text => text.trim());
 
   return (
     <section className="rounded-md bg-white p-8 shadow-elevation-high">
@@ -41,9 +45,13 @@ const ExperienceBlock = ({
         </Text>
       </div>
 
-      {formattedText && (
+      {paragraphs && (
         <div className="mt-4">
-          <Text dangerouslySetInnerHTML={{ __html: formattedText }} />
+          {paragraphs.map((paragraph, index) => (
+            <Text key={index} className="mb-4">
+              {paragraph}
+            </Text>
+          ))}
         </div>
       )}
     </section>
