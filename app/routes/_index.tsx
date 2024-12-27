@@ -41,10 +41,12 @@ const Index = () => {
     enabled: true,
   });
 
-  const formattedIntroduction = data?.home?.introduction?.replace(
-    /\n/g,
-    '<br />'
-  );
+
+  const formattedIntroduction = data?.home?.introduction
+    ?.replace(/<p>/g, '')
+    ?.split(/<\/p>|\n/)
+    ?.filter(text => text.trim().length > 0)
+    ?.map(text => text.trim());
 
   const handleEvent = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -83,12 +85,13 @@ const Index = () => {
             </Heading>
           )}
           {formattedIntroduction && (
-            <Text
-              dangerouslySetInnerHTML={{
-                __html: formattedIntroduction,
-              }}
-            />
+            formattedIntroduction.map((paragraph, index) => (
+              <Text key={index}>
+                {paragraph}
+              </Text>
+            ))        
           )}
+
           {data?.home?.currentStack && (
             <span>
               <Text color="secondary" size="sm">
