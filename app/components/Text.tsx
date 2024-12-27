@@ -67,12 +67,14 @@ type Props = TextVariants & {
 };
 
 const Text: FC<PropsWithChildren<Props>> = ({
-  as: Component = 'p',
+  as = 'p',
   children,
   dangerouslySetInnerHTML,
   className,
   ...props
 }) => {
+  const Component = as;
+  
   return (
     <Component
       className={cn(textStyles(props), className)}
