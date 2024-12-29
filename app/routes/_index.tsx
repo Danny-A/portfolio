@@ -1,7 +1,7 @@
 import { useLoaderData } from '@remix-run/react';
 import { toRemixMeta, useQuerySubscription } from 'react-datocms';
 import Heading from '~/components/Heading';
-import Page from '~/components/Page';
+import Layout from '~/components/Layout';
 import Text from '~/components/Text';
 import { performRequest } from '~/lib/datocms';
 import * as gtag from '~/utils/gtags.client';
@@ -48,30 +48,30 @@ const Index = () => {
     ?.filter(text => text.trim().length > 0)
     ?.map(text => text.trim());
 
-  const handleEvent = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleCvDownload = (url?: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    if (!url) return;
 
     gtag.event({
       action: 'download',
       category: 'home',
       label: 'download_cv',
     });
-
-    // Small delay to ensure the event fires before navigation
-    setTimeout(() => {
-      window.open(data?.home?.cv?.url, '_blank');
-    }, 100);
+        
+    requestAnimationFrame(() => {
+      window.open(url, '_blank');
+    });
   };
 
   return (
-    <Page>
+    <Layout>
       <section className="mx-auto max-w-xl px-4">
         <div className="flex flex-col gap-4 rounded-md bg-white p-8 shadow-elevation-high">
           {data?.home?.availability && (
             <div className="flex">
-              <div className="rounded-sm bg-green-200 px-2 py-1 text-xs text-green-800">
+              <p className="rounded-sm bg-green-200 px-2 py-1 text-xs text-green-800">
                 {data.home.availability}
-              </div>
+              </p>
             </div>
           )}
           {data?.home?.title && (
@@ -105,7 +105,7 @@ const Index = () => {
             <Text>
               <a
                 href={data.home.cv?.url}
-                onClick={(e) => handleEvent(e)}
+                onClick={handleCvDownload(data.home.cv?.url)}
                 className="underline hover:text-gray-200"
                 target="_blank"
                 rel="noreferrer"
@@ -116,7 +116,7 @@ const Index = () => {
           )}
         </div>
       </section>
-    </Page>
+    </Layout>
   );
 };
 

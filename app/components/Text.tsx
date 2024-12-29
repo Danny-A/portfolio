@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { ElementType } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '~/utils/tailwindmerge';
 
@@ -20,6 +20,9 @@ export const textStyles = tv({
       primary: 'text-primary',
       secondary: 'text-gray-200',
     },
+    truncate: {
+      true: 'truncate',
+    }
   },
   defaultVariants: {
     size: 'base',
@@ -29,56 +32,66 @@ export const textStyles = tv({
 
 export type TextVariants = VariantProps<typeof textStyles>;
 
-type Props = TextVariants & {
-  children?: React.ReactNode;
-  /** The DOM element to render */
-  as?: Extract<
-    keyof JSX.IntrinsicElements,
-    | 'caption'
-    | 'div'
-    | 'span'
-    | 'section'
-    | 'article'
-    | 'abbr'
-    | 'summary'
-    | 'details'
-    | 'legend'
-    | 'address'
-    | 'figcaption'
-    | 'p'
-    | 'aside'
-    | 'bdi'
-    | 'th'
-    | 'td'
-    | 'cite'
-    | 'code'
-    | 'dt'
-    | 'dd'
-    | 'dfn'
-    | 'del'
-    | 'ins'
-    | 'li'
-  >;
-  /** For usage with ARIA attributes */
-  id?: string;
-  dangerouslySetInnerHTML?: { __html: string };
-  'aria-hidden'?: boolean | 'true' | 'false';
-  className?: string;
-};
+type TextElements = Extract<
+  keyof JSX.IntrinsicElements,
+  | 'p'
+  | 'span'
+  | 'div'
+  | 'caption'
+  | 'section'
+  | 'article'
+  | 'abbr'
+  | 'summary'
+  | 'details'
+  | 'legend'
+  | 'address'
+  | 'figcaption'
+  | 'p'
+  | 'aside'
+  | 'bdi'
+  | 'th'
+  | 'td'
+  | 'cite'
+  | 'code'
+  | 'dt'
+  | 'dd'
+  | 'dfn'
+  | 'del'
+  | 'ins'
+  | 'li'
+>;
 
-const Text: FC<PropsWithChildren<Props>> = ({
-  as = 'p',
+type TextProps<E extends ElementType = TextElements> = TextVariants & {
+  as?: E;
+  children?: React.ReactNode;
+  className?: string;
+} & Omit<React.ComponentPropsWithoutRef<E>, keyof TextVariants>;
+
+/**
+ * Text component for consistent typography across the application
+ * 
+ * @example
+ * ```tsx
+ * <Text size="lg" weight="bold" color="primary">Hello World</Text>
+ * <Text as="span" truncate>This text will be truncated...</Text>
+ * ```
+ */
+const Text = <E extends TextElements = 'p'>({
+  as,
   children,
-  dangerouslySetInnerHTML,
   className,
   ...props
-}) => {
-  const Component = as;
+}: TextProps<E>) => {
+  const Component = (as || 'p') as ElementType;
+  const { size, weight, color,  truncate, ...rest } = props;
   
   return (
     <Component
-      className={cn(textStyles(props), className)}
-      dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+      className={cn(
+        textStyles({ size, weight, color, truncate }),
+        className
+      )}
+      {...rest}
     >
       {children}
     </Component>

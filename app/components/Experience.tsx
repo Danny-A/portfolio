@@ -55,7 +55,7 @@ const ExperienceBlock = ({
         </div>
       )}
     </section>
-  );
+  );  
 };
 
 export default ExperienceBlock;
