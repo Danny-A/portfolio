@@ -52,17 +52,15 @@ const Index = () => {
     e.preventDefault();
     if (!url) return;
 
-    if (typeof window !== 'undefined') {
-      gtag.event({
-        action: 'download',
-        category: 'home',
-        label: 'download_cv',
-      });
-        
-      requestAnimationFrame(() => {
-        window.open(url, '_blank');
-      });
-    }
+    gtag.event({
+      action: 'download',
+      category: 'home',
+      label: 'download_cv',
+    });
+      
+    requestAnimationFrame(() => {
+      window.open(url, '_blank');
+    });
   };
 
   return (
