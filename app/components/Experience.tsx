@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { nl } from 'date-fns/locale';
 import Heading from './Heading';
 import Text from './Text';
 
@@ -13,7 +14,7 @@ interface ExperienceBlockProps {
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr);
-  return isNaN(date.getTime()) ? '' : format(date, 'MMMM yyyy');
+  return isNaN(date.getTime()) ? '' : format(date, 'MMMM yyyy', { locale: nl });
 };
 
 const ExperienceBlock = ({
@@ -31,7 +32,7 @@ const ExperienceBlock = ({
     ?.map(text => text.trim());
 
   const formattedStartDate = formatDate(startdate);
-  const formattedEndDate = enddate ? formatDate(enddate) : 'Present';
+  const formattedEndDate = enddate ? formatDate(enddate) : 'Nu';
 
   return (
     <section className="rounded-md bg-white p-8 shadow-elevation-high">

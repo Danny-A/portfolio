@@ -50,15 +50,17 @@ const Contact = () => {
     e.preventDefault();
     if (!url) return;
 
-    gtag.event({
-      action: 'download',
-      category: 'contact',
-      label: 'download_cv',
-    });
+    if (typeof window !== 'undefined') {
+      gtag.event({
+        action: 'download',
+        category: 'contact',
+        label: 'download_cv',
+      });
         
-    requestAnimationFrame(() => {
-      window.open(url, '_blank');
-    });
+      requestAnimationFrame(() => {
+        window.open(url, '_blank');
+      });
+    }
   };
 
   return (
