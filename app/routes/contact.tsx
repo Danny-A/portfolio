@@ -2,7 +2,7 @@ import { useLoaderData } from '@remix-run/react';
 import { toRemixMeta } from 'react-datocms';
 import { useQuerySubscription } from 'react-datocms/use-query-subscription';
 import Heading from '~/components/Heading';
-import Page from '~/components/Page';
+import Layout from '~/components/Layout';
 import Text from '~/components/Text';
 import {
   GetHomeDocument,
@@ -46,23 +46,23 @@ const Contact = () => {
     enabled: true,
   });
 
-  const handleEvent = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleCvDownload = (url?: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    if (!url) return;
 
     gtag.event({
       action: 'download',
       category: 'contact',
       label: 'download_cv',
     });
-
-    // Small delay to ensure the event fires before navigation
-    setTimeout(() => {
-      window.open(data?.contact?.cv?.url, '_blank');
-    }, 100);
+        
+    requestAnimationFrame(() => {
+      window.open(url, '_blank');
+    });
   };
 
   return (
-    <Page>
+    <Layout>
       <section className="mx-auto max-w-xl px-4">
         <div className="shadow-elevation-high rounded-md bg-white p-8">
           <Heading as="h1" size="3xl">
@@ -100,7 +100,7 @@ const Contact = () => {
                 <Text>
                   <a
                     href={data?.contact?.cv?.url}
-                    onClick={handleEvent}
+                    onClick={handleCvDownload(data?.contact?.cv?.url)}
                     className="underline hover:text-gray-200"
                     target="_blank"
                     rel="noreferrer"
@@ -113,7 +113,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </Page>
+    </Layout>
   );
 };
 

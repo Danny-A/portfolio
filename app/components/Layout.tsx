@@ -1,6 +1,6 @@
 import Header from './Header';
 
-export default function Page({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="mx-auto max-w-lg px-4">

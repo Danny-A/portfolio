@@ -1,7 +1,7 @@
 import { useLoaderData } from '@remix-run/react';
 import { toRemixMeta, useQuerySubscription } from 'react-datocms';
 import ExperienceBlock from '~/components/Experience';
-import Page from '~/components/Page';
+import Layout from '~/components/Layout';
 import { WorkNewDocument, WorkNewQuery } from '~/graphql/generated';
 import { performRequest } from '~/lib/datocms';
 
@@ -40,7 +40,7 @@ const Work = () => {
   });
 
   return (
-    <Page>
+    <Layout>
       <div className="mx-auto max-w-xl px-4">
         <div className="flex flex-col gap-8">
           {data?.workNew?.work?.map((item) => (
@@ -56,7 +56,7 @@ const Work = () => {
           ))}
         </div>
       </div>
-    </Page>
+    </Layout>
   );
 };
 

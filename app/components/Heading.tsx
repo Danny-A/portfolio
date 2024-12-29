@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '~/utils/tailwindmerge';
 
@@ -25,25 +25,27 @@ export const headingStyles = tv({
 
 export type TextVariants = VariantProps<typeof headingStyles>;
 
-type Props = TextVariants & {
+interface HeadingProps extends TextVariants {
   as?: HeadingLevel;
   className?: string;
   children: React.ReactNode;
-};
+}
 
-const Heading: FC<Props> = ({
-  as = 'h2',
-  className,
-  children,
-  ...props
-}) => {
-  const Component = as;
-  
-  return (
-    <Component className={cn(headingStyles(props), className)}>
-      {children}
-    </Component>
-  );
-};
+const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+  ({ as = 'h2', className, children, ...props }, ref) => {
+    const Component = as;
+    
+    return (
+      <Component 
+        ref={ref}
+        className={cn(headingStyles(props), className)}
+      >
+        {children}
+      </Component>
+    );
+  }
+);
+
+Heading.displayName = 'Heading';
 
 export default Heading;
