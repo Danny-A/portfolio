@@ -37,9 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      gtag.pageview(location.pathname, gaTrackingId);
-    }
+    gtag.pageview(location.pathname, gaTrackingId);
   }, [location]);
 
   return (
@@ -49,7 +47,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        {typeof window !== 'undefined' && (
           <>
             <script
               async
@@ -66,7 +63,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
               }}
             />
           </>
-        )}
       </head>
       <body className="bg-zinc-50">        
         {children}
