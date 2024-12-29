@@ -11,6 +11,11 @@ interface ExperienceBlockProps {
   description?: string | null;
 }
 
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  return isNaN(date.getTime()) ? '' : format(date, 'MMMM yyyy');
+};
+
 const ExperienceBlock = ({
   role,
   location,
@@ -24,6 +29,9 @@ const ExperienceBlock = ({
     ?.split(/<\/p>|\n/)
     ?.filter(text => text.trim().length > 0)
     ?.map(text => text.trim());
+
+  const formattedStartDate = formatDate(startdate);
+  const formattedEndDate = enddate ? formatDate(enddate) : 'Present';
 
   return (
     <section className="rounded-md bg-white p-8 shadow-elevation-high">
@@ -40,8 +48,9 @@ const ExperienceBlock = ({
           </Text>
         )}
         <Text size="sm">
-          {format(new Date(startdate), 'MMMM yyyy')} -{' '}
-          {enddate ? format(new Date(enddate), 'MMMM yyyy') : 'nu'}
+          {formattedStartDate}
+          {formattedStartDate && formattedEndDate && ' - '}
+          {formattedEndDate}
         </Text>
       </div>
 
