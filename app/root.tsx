@@ -8,9 +8,10 @@ import {
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
 
-import './tailwind.css';
 import { useEffect } from 'react';
 import * as gtag from '~/utils/gtags.client';
+
+import './tailwind.css';
 
 export const links: LinksFunction = () => {
   return [
@@ -28,6 +29,14 @@ export const links: LinksFunction = () => {
       type: 'font/woff2',
       crossOrigin: 'anonymous',
     },
+    {
+      rel: 'preconnect',
+      href: 'https://www.googletagmanager.com',
+    },
+    {
+      rel: 'dns-prefetch',
+      href: 'https://www.googletagmanager.com',
+    },
   ];
 };
 
@@ -41,31 +50,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [location]);
 
   return (
-    <html lang="en">
+    <html lang="nl">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaTrackingId}');
+                `,
+              }}
+            />
+          </>
+        
       </head>
-      <body className="bg-zinc-50">        
+      <body className="bg-zinc-50">   
         {children}
         <ScrollRestoration />
         <Scripts />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaTrackingId}');
-            `,
-          }}
-        />
       </body>
     </html>
   );
