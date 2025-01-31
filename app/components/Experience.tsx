@@ -14,7 +14,12 @@ interface ExperienceBlockProps {
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr);
-  return isNaN(date.getTime()) ? '' : format(date, 'MMMM yyyy', { locale: nl });
+  // Just ensure consistent formatting with explicit locale
+  return isNaN(date.getTime()) 
+    ? '' 
+    : format(date, 'MMMM yyyy', {
+        locale: nl,
+      });
 };
 
 const ExperienceBlock = ({
