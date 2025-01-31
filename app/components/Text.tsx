@@ -65,6 +65,9 @@ type TextProps<E extends ElementType = TextElements> = TextVariants & {
   as?: E;
   children?: React.ReactNode;
   className?: string;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+  'aria-hidden'?: boolean;
 } & Omit<React.ComponentPropsWithoutRef<E>, keyof TextVariants>;
 
 /**
@@ -76,22 +79,17 @@ type TextProps<E extends ElementType = TextElements> = TextVariants & {
  * <Text as="span" truncate>This text will be truncated...</Text>
  * ```
  */
-const Text = <E extends TextElements = 'p'>({
+const Text = <E extends ElementType = 'p'>({
   as,
   children,
   className,
   ...props
 }: TextProps<E>) => {
-  const Component = (as || 'p') as ElementType;
-  const { size, weight, color,  truncate, ...rest } = props;
-  
+  const Component = as || 'p';
   return (
     <Component
-      className={cn(
-        textStyles({ size, weight, color, truncate }),
-        className
-      )}
-      {...rest}
+      className={cn(textStyles(props), className)}
+      {...props}
     >
       {children}
     </Component>
