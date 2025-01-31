@@ -5,16 +5,18 @@
 @layer base {
   @font-face {
     font-family: 'Moderat';
-    src: url('/fonts/Moderat-Regular.woff2');
+    src: url('/fonts/Moderat-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Moderat';
-    src: url('/fonts/Moderat-Medium.woff2');
+    src: url('/fonts/Moderat-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
   }
 
   :root {
