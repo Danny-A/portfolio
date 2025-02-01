@@ -86,9 +86,7 @@ const Index = () => {
           )}
           {formattedIntroduction && (
             formattedIntroduction.map((paragraph, index) => (
-              <Text key={index}>
-                {paragraph}
-              </Text>
+              <Text key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
             ))        
           )}
 
