@@ -63,9 +63,7 @@ const ExperienceBlock = ({
       {paragraphs && (
         <div className="mt-4">
           {paragraphs.map((paragraph, index) => (
-            <Text key={index} className="mb-4">
-              {paragraph}
-            </Text>
+            <Text key={index} className="mb-4" dangerouslySetInnerHTML={{ __html: paragraph }} />
           ))}
         </div>
       )}
