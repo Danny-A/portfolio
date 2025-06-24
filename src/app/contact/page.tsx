@@ -1,8 +1,8 @@
 import { toNextMetadata } from 'react-datocms/seo';
 
+import ContactPage from '~/components/pages/Contact';
 import { GetContactDocument } from '~/graphql/generated';
 import queryDatoCMS from '~/lib/datocms';
-import ContactPage from '~/pages/Contact';
 
 export async function generateMetadata() {
   const data = await queryDatoCMS(GetContactDocument, {});
