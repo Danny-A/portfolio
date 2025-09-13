@@ -8,7 +8,7 @@ const moderatMedium = localFont({ src: '../public/fonts/Moderat-Medium.woff2', v
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="nl">
       <head>
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`} />
         <script
