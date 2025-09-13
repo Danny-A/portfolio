@@ -1,33 +1,13 @@
-'use client';
-
-import { useEffect } from 'react';
-
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
 import Text from '~/components/Text';
 import { GetContactQuery } from '~/graphql/generated';
-import * as gtag from '~/utils/gtags.client';
 
 type Props = {
   data: GetContactQuery;
 };
 
 export default function ContactPage({ data }: Props) {
-  const handleCvDownload = (url?: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (!url) return;
-
-    gtag.event({
-      action: 'download',
-      category: 'contact',
-      label: 'download_cv',
-    });
-
-    requestAnimationFrame(() => {
-      window.open(url, '_blank');
-    });
-  };
-
   return (
     <Layout>
       <section className="mx-auto max-w-xl px-4">
@@ -66,10 +46,9 @@ export default function ContactPage({ data }: Props) {
                 <Text>
                   <a
                     href={data?.contact?.cv?.url}
-                    onClick={handleCvDownload(data?.contact?.cv?.url)}
                     className="underline hover:text-gray-200"
                     target="_blank"
-                    rel="noreferrer">
+                    rel="noreferrer noopener">
                     Download CV ↓
                   </a>
                 </Text>

@@ -1,11 +1,8 @@
-'use client';
-
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
 import Text from '~/components/Text';
 import { GetHomeQuery } from '~/graphql/generated';
 import { getParagraphs } from '~/utils/getParagraphs';
-import * as gtag from '~/utils/gtags.client';
 
 type Props = {
   data: GetHomeQuery;
@@ -13,21 +10,6 @@ type Props = {
 
 export default function HomePage({ data }: Props) {
   const formattedIntroduction = getParagraphs(data?.home?.introduction);
-
-  const handleCvDownload = (url?: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (!url) return;
-
-    gtag.event({
-      action: 'download',
-      category: 'home',
-      label: 'download_cv',
-    });
-
-    requestAnimationFrame(() => {
-      window.open(url, '_blank');
-    });
-  };
 
   return (
     <Layout>
@@ -66,10 +48,9 @@ export default function HomePage({ data }: Props) {
             <Text>
               <a
                 href={data.home.cv?.url}
-                onClick={handleCvDownload(data.home.cv?.url)}
                 className="underline hover:text-gray-200"
                 target="_blank"
-                rel="noreferrer">
+                rel="noreferrer noopener">
                 Download CV ↓
               </a>
             </Text>
