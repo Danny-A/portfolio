@@ -1,40 +1,61 @@
-# Welcome to Remix!
+# Portfolio
 
-- 📖 [Remix docs](https://remix.run/docs)
+A modern portfolio website built with Next.js and powered by Contentful CMS.
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) with React 19
+- **CMS**: [Contentful](https://www.contentful.com/) for content management
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4
+- **Testing**: [Vitest](https://vitest.dev/) with React Testing Library
+- **TypeScript**: Full type safety throughout
 
 ## Development
 
-Run the dev server:
+Install dependencies:
 
-```shellscript
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
 npm run dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000) to view the site.
+
+## Environment Setup
+
+Create a `.env.local` file with your Contentful credentials:
+
+```env
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
+- `npm run test:coverage` - Run tests with coverage
+
 ## Deployment
 
-First, build your app for production:
+Build the application:
 
-```sh
+```bash
 npm run build
 ```
 
-Then run the app in production mode:
+The app can be deployed to any platform that supports Next.js, such as Vercel,
+Netlify, or your own server.
 
-```sh
-npm start
-```
+## Content Management
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+Content is managed through Contentful CMS. The site automatically revalidates
+when content is updated via webhooks.
