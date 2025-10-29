@@ -28,12 +28,26 @@ export async function POST(request: NextRequest) {
     // Parse the raw body as JSON
     const body = JSON.parse(rawBody);
 
-    // Extract content type from Contentful webhook payload
-    const contentType = body?.sys?.contentType?.sys?.id;
+    // Get the webhook topic from headers to determine event type
+    const topic = request.headers.get('x-contentful-topic') || '';
+
+    // Extract content type from different webhook payload structures
+    let contentType: string | undefined;
+
+    if (topic.includes('ContentType')) {
+      // ContentType events: body.sys.id contains the content type ID
+      contentType = body?.sys?.id;
+    } else {
+      // Entry events: body.sys.contentType.sys.id contains the content type ID
+      contentType = body?.sys?.contentType?.sys?.id;
+    }
 
     if (!contentType) {
-      return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
+      console.log('No content type found in payload:', { topic, bodyKeys: Object.keys(body || {}) });
+      return NextResponse.json({ error: 'Invalid payload - no content type found' }, { status: 400 });
     }
+
+    console.log(`Processing webhook for content type: ${contentType}, topic: ${topic}`);
 
     // Revalidate based on content type
     switch (contentType) {
@@ -67,6 +81,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       message: 'Revalidation triggered',
       contentType,
+      topic,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
