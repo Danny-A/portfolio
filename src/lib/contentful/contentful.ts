@@ -23,18 +23,20 @@ const client = createClient({
 
 // This is a Contentful client that's been configured
 // to fetch drafts and unpublished content.
-const previewClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_PREVIEW_SECRET,
-  host: 'preview.contentful.com',
-});
+// !TODO: Vercel: The access token you sent could not be found or is invalid.
+// const previewClient = createClient({
+//   space: process.env.CONTENTFUL_SPACE_ID,
+//   accessToken: process.env.CONTENTFUL_PREVIEW_SECRET,
+//   host: 'preview.contentful.com',
+// });
 
 // This little helper will let us switch between the two
 // clients easily:
 export default function contentfulClient({ preview = false }) {
-  if (preview) {
-    return previewClient;
-  }
+  // !TODO: Vercel: The access token you sent could not be found or is invalid.
+  // if (preview) {
+  //   return previewClient;
+  // }
 
   return client;
 }
