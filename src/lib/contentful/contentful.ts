@@ -2,6 +2,17 @@ import { createClient } from 'contentful';
 
 import type { ContentfulAsset } from '~/types';
 
+// Validate required environment variables
+if (!process.env.CONTENTFUL_SPACE_ID) {
+  throw new Error('CONTENTFUL_SPACE_ID environment variable is required');
+}
+if (!process.env.CONTENTFUL_ACCESS_TOKEN) {
+  throw new Error('CONTENTFUL_ACCESS_TOKEN environment variable is required');
+}
+if (!process.env.CONTENTFUL_PREVIEW_SECRET) {
+  throw new Error('CONTENTFUL_PREVIEW_SECRET environment variable is required');
+}
+
 // Create Contentful client
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,

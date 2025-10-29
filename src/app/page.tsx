@@ -7,7 +7,7 @@ import { generatePageMetadata } from '~/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   const entry = await fetchHomepage({ preview: false });
-  console.log(entry.fields.seoFields);
+
   return generatePageMetadata(entry.fields.seoFields || undefined, {
     title: String(
       entry.fields.title || 'Danny Arntz | Freelance Senior Front-end Developer React & Next.js | Nederland',

@@ -7,6 +7,7 @@ import { generatePageMetadata } from '~/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   const entry = await fetchWorkPage({ preview: false });
+
   return generatePageMetadata(entry.fields.seoFields || undefined, {
     title: String(entry.fields.title || 'Projecten & Ervaringen'),
     description:
