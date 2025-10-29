@@ -1,28 +1,33 @@
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
 import Text from '~/components/Text';
-import { GetContactQuery } from '~/graphql/generated';
+import { getAssetUrl } from '~/lib/contentful/contentful';
+import type { ContactPageEntry } from '~/types';
+
+import RichText from '../RichText';
 
 type Props = {
-  data: GetContactQuery;
+  entry: ContactPageEntry;
 };
 
-export default function ContactPage({ data }: Props) {
+export default function ContactPage({ entry }: Props) {
+  const { fields } = entry;
+
   return (
     <Layout>
       <section className="mx-auto max-w-xl px-4">
         <div className="shadow-elevation-high rounded-md bg-white p-8">
           <Heading as="h1" size="3xl">
-            {data?.contact?.introduction}
+            {fields.description && <RichText document={fields.description} />}
           </Heading>
 
           <div className="mt-4">
-            {data?.contact?.emailaddress && (
+            {fields.emailAddress && (
               <>
                 <Text size="sm" color="secondary">
                   Kom in contact
                 </Text>
-                <Text>{data?.contact?.emailaddress}</Text>
+                <Text>{fields.emailAddress}</Text>
               </>
             )}
           </div>
@@ -41,11 +46,11 @@ export default function ContactPage({ data }: Props) {
               </a>
             </Text>
 
-            {data?.contact?.cv?.url && (
+            {fields.cv && (
               <div className="mt-4">
                 <Text>
                   <a
-                    href={data?.contact?.cv?.url}
+                    href={getAssetUrl(fields.cv)}
                     className="underline hover:text-gray-200"
                     target="_blank"
                     rel="noreferrer noopener">
