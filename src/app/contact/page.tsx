@@ -6,6 +6,8 @@ import { fetchSiteSettings } from '~/lib/contentful/siteSettings';
 import { generatePageMetadata } from '~/lib/seo';
 import { formatDate } from '~/utils/formatDate';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export async function generateMetadata(): Promise<Metadata> {
   const [entry, siteSettings] = await Promise.all([
     fetchContactPage({ preview: false }),

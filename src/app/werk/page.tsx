@@ -5,6 +5,8 @@ import { fetchWorkPage } from '~/lib/contentful/work';
 import { fetchWorkItems } from '~/lib/contentful/workItems';
 import { generatePageMetadata } from '~/lib/seo';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export async function generateMetadata(): Promise<Metadata> {
   const entry = await fetchWorkPage({ preview: false });
 

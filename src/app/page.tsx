@@ -5,6 +5,8 @@ import { fetchHomepage } from '~/lib/contentful/home';
 import { fetchSiteSettings } from '~/lib/contentful/siteSettings';
 import { generatePageMetadata } from '~/lib/seo';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export async function generateMetadata(): Promise<Metadata> {
   const entry = await fetchHomepage({ preview: false });
 
