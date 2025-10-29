@@ -18,6 +18,7 @@ const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
+  host: 'cdn.contentful.com',
 });
 
 // This is a Contentful client that's been configured
@@ -25,6 +26,7 @@ const client = createClient({
 const previewClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_PREVIEW_SECRET,
+  host: 'preview.contentful.com',
 });
 
 // This little helper will let us switch between the two
