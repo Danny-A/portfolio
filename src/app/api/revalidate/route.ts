@@ -1,28 +1,32 @@
+import crypto from 'crypto';
+
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
-// Webhook verification (optional but recommended)
-function verifyWebhook(request: NextRequest): boolean {
+function verifyWebhook(request: NextRequest, body: string): boolean {
   const webhookSecret = process.env.CONTENTFUL_WEBHOOK_SECRET;
-  if (!webhookSecret) {
-    // If no secret is configured, allow all requests (development mode)
-    return true;
-  }
+  if (!webhookSecret) return true;
 
   const signature = request.headers.get('x-contentful-webhook-signature');
-  // In production, you should verify the signature
-  // This is a simplified version - implement proper HMAC verification for production
-  return signature === webhookSecret;
+  if (!signature) return false;
+
+  const expectedSignature = crypto.createHmac('sha256', webhookSecret).update(body).digest('hex');
+
+  // Use timing-safe comparison to prevent timing attacks
+  return crypto.timingSafeEqual(Buffer.from(signature, 'hex'), Buffer.from(expectedSignature, 'hex'));
 }
 
 export async function POST(request: NextRequest) {
   try {
+    // Read the raw body as text first (you can only read the request body once)
+    const rawBody = await request.text();
     // Verify webhook authenticity
-    if (!verifyWebhook(request)) {
+    if (!verifyWebhook(request, rawBody)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await request.json();
+    // Parse the raw body as JSON
+    const body = JSON.parse(rawBody);
 
     // Extract content type from Contentful webhook payload
     const contentType = body?.sys?.contentType?.sys?.id;

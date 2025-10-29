@@ -24,3 +24,15 @@ export const fetchHomepage = async ({ preview }: FetchHomepageOptions): Promise<
 
   return entries.items[0];
 };
+
+// Cached version with tags
+export const fetchHomepageCached = async ({ preview }: FetchHomepageOptions): Promise<HomePageEntry> => {
+  const { unstable_cache } = await import('next/cache');
+
+  const cachedFetch = unstable_cache(async () => fetchHomepage({ preview }), ['homepage'], {
+    tags: ['homepage', 'page'],
+    revalidate: preview ? 0 : 3600, // No cache for preview, 1 hour for production
+  });
+
+  return cachedFetch();
+};

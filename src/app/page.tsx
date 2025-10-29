@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 import HomePage from '~/components/pages/HomePage';
-import { fetchHomepage } from '~/lib/contentful/home';
+import { fetchHomepageCached } from '~/lib/contentful/home';
 import { fetchSiteSettings } from '~/lib/contentful/siteSettings';
 import { generatePageMetadata } from '~/lib/seo';
 
 export const revalidate = 3600; // Revalidate every hour
 
 export async function generateMetadata(): Promise<Metadata> {
-  const entry = await fetchHomepage({ preview: false });
+  const entry = await fetchHomepageCached({ preview: false });
 
   return generatePageMetadata(entry.fields.seoFields || undefined, {
     title: String(
@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const [entry, siteSettings] = await Promise.all([
-    fetchHomepage({ preview: false }),
+    fetchHomepageCached({ preview: false }),
     fetchSiteSettings({ preview: false }),
   ]);
 

@@ -24,3 +24,15 @@ export const fetchWorkItems = async ({ preview }: FetchWorkItemsOptions): Promis
 
   return entries.items;
 };
+
+// Cached version with tags
+export const fetchWorkItemsCached = async ({ preview }: FetchWorkItemsOptions): Promise<WorkItemEntry[]> => {
+  const { unstable_cache } = await import('next/cache');
+
+  const cachedFetch = unstable_cache(async () => fetchWorkItems({ preview }), ['workitems'], {
+    tags: ['workitems', 'page'],
+    revalidate: preview ? 0 : 3600,
+  });
+
+  return cachedFetch();
+};

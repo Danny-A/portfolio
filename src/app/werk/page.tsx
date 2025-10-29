@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 import WerkPage from '~/components/pages/Werk';
-import { fetchWorkPage } from '~/lib/contentful/work';
-import { fetchWorkItems } from '~/lib/contentful/workItems';
+import { fetchWorkPageCached } from '~/lib/contentful/work';
+import { fetchWorkItemsCached } from '~/lib/contentful/workItems';
 import { generatePageMetadata } from '~/lib/seo';
 
 export const revalidate = 3600; // Revalidate every hour
 
 export async function generateMetadata(): Promise<Metadata> {
-  const entry = await fetchWorkPage({ preview: false });
+  const entry = await fetchWorkPageCached({ preview: false });
 
   return generatePageMetadata(entry.fields.seoFields || undefined, {
     title: String(entry.fields.title || 'Projecten & Ervaringen'),
@@ -19,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const [workPageEntry, workItemEntries] = await Promise.all([
-    fetchWorkPage({ preview: false }),
-    fetchWorkItems({ preview: false }),
+    fetchWorkPageCached({ preview: false }),
+    fetchWorkItemsCached({ preview: false }),
   ]);
 
   return <WerkPage workPageEntry={workPageEntry} workItemEntries={workItemEntries} />;
