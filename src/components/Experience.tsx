@@ -1,7 +1,9 @@
+import { Document } from '@contentful/rich-text-types';
+
 import Heading from '~/components/Heading';
+import RichText from '~/components/RichText';
 import Text from '~/components/Text';
 import { formatDate } from '~/utils/formatDate';
-import { getParagraphs } from '~/utils/getParagraphs';
 
 interface ExperienceBlockProps {
   role: string;
@@ -9,12 +11,10 @@ interface ExperienceBlockProps {
   startdate: string;
   enddate?: string | null;
   title: string;
-  description?: string | null;
+  description?: Document;
 }
 
 const ExperienceBlock = ({ role, location, startdate, enddate, title, description }: ExperienceBlockProps) => {
-  const paragraphs = getParagraphs(description);
-
   const formattedStartDate = formatDate(startdate);
   const formattedEndDate = enddate ? formatDate(enddate) : 'Nu';
 
@@ -39,11 +39,9 @@ const ExperienceBlock = ({ role, location, startdate, enddate, title, descriptio
         </Text>
       </div>
 
-      {paragraphs && (
+      {description && (
         <div className="mt-4">
-          {paragraphs.map((paragraph, index) => (
-            <Text key={index} className="mb-4" dangerouslySetInnerHTML={{ __html: paragraph }} />
-          ))}
+          <RichText document={description} />
         </div>
       )}
     </section>

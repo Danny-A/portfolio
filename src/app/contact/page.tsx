@@ -1,17 +1,42 @@
 import { Metadata } from 'next';
-import { toNextMetadata } from 'react-datocms/seo';
 
-import ContactPage from '~/components/pages/Contact';
-import { GetContactDocument } from '~/graphql/generated';
-import queryDatoCMS from '~/lib/datocms';
+import ContactPageComponent from '~/components/pages/Contact';
+import { fetchContactPage } from '~/lib/contentful/contact';
+import { fetchSiteSettings } from '~/lib/contentful/siteSettings';
+import { generatePageMetadata } from '~/lib/seo';
+import { formatDate } from '~/utils/formatDate';
+
+export const revalidate = 3600; // Revalidate every hour
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await queryDatoCMS(GetContactDocument, {});
-  return toNextMetadata(data.contact?.seo ?? []);
+  const [entry, siteSettings] = await Promise.all([
+    fetchContactPage({ preview: false }),
+    fetchSiteSettings({ preview: false }),
+  ]);
+  const availableFrom = siteSettings.fields.availableFrom || '';
+
+  // Create modified SEO fields with dynamic description
+  const modifiedSeoFields = entry.fields.seoFields
+    ? {
+        ...entry.fields.seoFields,
+        fields: {
+          ...entry.fields.seoFields.fields,
+          description: entry.fields.seoFields.fields.pageDescription?.replace(
+            '{availableFrom}',
+            formatDate(availableFrom),
+          ),
+        },
+      }
+    : undefined;
+
+  return generatePageMetadata(modifiedSeoFields, {
+    title: 'Contact & Beschikbaarheid | Danny Arntz | Freelance Front-end Developer',
+    description: `Beschikbaar vanaf ${formatDate(availableFrom)}. Freelance senior front-end developer voor React, Next.js en TypeScript projecten. Lead developer, team mentoring of lange termijn opdrachten. Utrecht, Amsterdam, Rotterdam en remote.`,
+  });
 }
 
 export default async function Page() {
-  const data = await queryDatoCMS(GetContactDocument, {});
+  const entry = await fetchContactPage({ preview: false });
 
-  return <ContactPage data={data} />;
+  return <ContactPageComponent entry={entry} />;
 }
