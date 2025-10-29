@@ -15,17 +15,16 @@ if (!process.env.CONTENTFUL_PREVIEW_SECRET) {
 
 // Create Contentful client
 const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
 });
 
 // This is a Contentful client that's been configured
 // to fetch drafts and unpublished content.
 const previewClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.CONTENTFUL_PREVIEW_SECRET!,
-  host: 'preview.contentful.com',
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_PREVIEW_SECRET,
 });
 
 // This little helper will let us switch between the two
