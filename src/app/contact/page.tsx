@@ -19,7 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
         ...entry.fields.seoFields,
         fields: {
           ...entry.fields.seoFields.fields,
-          description: entry.fields.seoFields.fields.description?.replace('{availableFrom}', formatDate(availableFrom)),
+          description: entry.fields.seoFields.fields.pageDescription?.replace(
+            '{availableFrom}',
+            formatDate(availableFrom),
+          ),
         },
       }
     : undefined;
