@@ -46,7 +46,7 @@ export const getCodeFromParagraph = (node: Node): { code: string; lang: string }
  * Extract code from a BLOCKS.CODE node
  */
 export const getCodeFromBlock = (node: Node): { code: string; lang: string } | null => {
-  if (node.nodeType !== BLOCKS.CODE) return null;
+  if (node.nodeType !== 'code') return null;
 
   const code = 'content' in node && Array.isArray(node.content) && node.content[0] && isTextNode(node.content[0])
     ? node.content[0].value || ''

@@ -84,7 +84,7 @@ const createRenderOptions = (highlightedCode: Map<string, string>) => ({
       <blockquote className="mb-4 border-l-4 border-gray-200 pl-4 italic">{children}</blockquote>
     ),
     [BLOCKS.HR]: () => <hr className="my-6 border-gray-100" />,
-    [BLOCKS.CODE as string]: (node: Node) => {
+    ['code']: (node: Node) => {
       // BLOCKS.CODE nodes support node.data.language - this is the preferred way
       const codeBlock = getCodeFromBlock(node);
       
