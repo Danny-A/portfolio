@@ -46,3 +46,36 @@ h5,
 h6 {
   font-family: var(--font-moderat-medium);
 }
+
+b, strong {
+  font-family: var(--font-moderat-medium);
+}
+
+/* Shiki syntax highlighting styles */
+.shiki {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.shiki code {
+  display: block;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.shiki .line {
+  white-space: pre;
+}
+
+/* Fallback code blocks (when highlighting fails) */
+pre code {
+  white-space: pre;
+  tab-size: 2;
+  display: block;
+}

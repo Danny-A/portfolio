@@ -32,6 +32,15 @@ export default function Header() {
           Werk
         </Link>
         <Link
+          href="/artikelen"
+          className={cn('hover:underline', {
+            'text-secondary underline': pathname === '/artikelen',
+            'text-primary': pathname !== '/artikelen',
+          })}
+          aria-current={pathname === '/artikelen' ? 'page' : undefined}>
+          Artikelen
+        </Link>
+        <Link
           href="/contact"
           className={cn('hover:underline', {
             'text-secondary underline': pathname === '/contact',

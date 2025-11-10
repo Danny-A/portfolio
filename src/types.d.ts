@@ -108,6 +108,36 @@ export interface ContactPageFields {
 
 export type ContactPageEntry = ContentfulEntry<ContactPageFields>;
 
+// Page Blog Overview
+export interface BlogOverviewFields {
+  internalName: string;
+  title: string;
+  description?: Document;
+  seoFields: SEOEntry;
+}
+
+export type BlogOverviewEntry = ContentfulEntry<BlogOverviewFields>;
+
+// Page Blog Post
+export interface BlogPostFields {
+  internalName: string;
+  slug: string;
+  title: string;
+  shortDescription?: string;
+  publishedDate: string;
+  featuredImage: ContentfulAsset;
+  content: Document;
+  author?: ContentfulEntry<{
+    name?: string;
+    bio?: Document;
+    avatar?: ContentfulAsset;
+  }>;
+  relatedBlogPosts?: BlogPostEntry[];
+  seoFields?: SEOEntry;
+}
+
+export type BlogPostEntry = ContentfulEntry<BlogPostFields>;
+
 // Contentful Collection Response
 export interface ContentfulCollection<T> {
   total: number;
