@@ -1,3 +1,5 @@
+import type { Node } from '@contentful/rich-text-types';
+
 /**
  * Language utilities for code highlighting
  */
