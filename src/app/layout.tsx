@@ -22,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={`${moderatRegular.variable} ${moderatMedium.variable}`}>{children}</body>
+      <body className={`${moderatRegular.variable} ${moderatMedium.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

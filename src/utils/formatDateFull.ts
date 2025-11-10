@@ -1,12 +1,12 @@
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
 
-export const formatDate = (dateStr: string, formatString: string = 'MMMM yyyy') => {
+export const formatDateFull = (dateStr: string) => {
   const date = new Date(dateStr);
-  // Just ensure consistent formatting with explicit locale
   return isNaN(date.getTime())
     ? ''
-    : format(date, formatString, {
+    : format(date, 'd MMMM yyyy', {
         locale: nl,
       });
 };
+
