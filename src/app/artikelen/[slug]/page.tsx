@@ -5,6 +5,7 @@ import BlogPostPage from '~/components/pages/BlogPost';
 import {
   fetchAllBlogPostSlugsCached,
   fetchBlogPostBySlugCached,
+  fetchSEOFieldsInLocale,
   findAlternativeLocales,
   parseSlug,
 } from '~/lib/contentful/blogPosts';
@@ -33,8 +34,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
+  // Fetch SEO fields in the correct locale if they exist
+  let seoFields = entry.fields.seoFields;
+  if (seoFields?.sys?.id) {
+    // Check if seoFields is in the correct locale
+    const seoFieldsLocale = seoFields.sys.locale;
+    if (seoFieldsLocale !== locale) {
+      // Fetch seoFields in the correct locale
+      const localizedSeoFields = await fetchSEOFieldsInLocale(seoFields.sys.id, locale, false);
+      if (localizedSeoFields) {
+        seoFields = localizedSeoFields;
+      }
+    }
+  }
+
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dannyarntz.nl';
-  const metadata = generatePageMetadata(entry.fields.seoFields || undefined, {
+  const metadata = generatePageMetadata(seoFields || undefined, {
     title: String(entry.fields.title || 'Blog Post'),
     description: entry.fields.shortDescription || 'Blog post',
   });
