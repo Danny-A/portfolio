@@ -1,6 +1,6 @@
 import type { EntrySkeletonType } from 'contentful';
 
-import type { BlogPostEntry, BlogPostFields } from '~/types';
+import type { BlogPostEntry, BlogPostFields, SEOEntry } from '~/types';
 
 import contentfulClient from './contentful';
 
@@ -18,8 +18,29 @@ export const fetchBlogPostById = async ({
   const client = contentfulClient({ preview });
 
   try {
-    const entry = await client.getEntry<BlogPostSkeleton>(entryId, { locale } as any);
+    const entry = await client.getEntry<BlogPostSkeleton>(entryId, { 
+      locale,
+      include: 2, // Include linked entries (seoFields, author, etc.) up to 2 levels deep
+    } as any);
     return entry as BlogPostEntry;
+  } catch {
+    return null;
+  }
+};
+
+// Fetch SEO fields entry in the correct locale
+export const fetchSEOFieldsInLocale = async (
+  seoEntryId: string | undefined,
+  locale: string,
+  preview: boolean,
+): Promise<SEOEntry | null> => {
+  if (!seoEntryId) return null;
+
+  const client = contentfulClient({ preview });
+
+  try {
+    const entry = await client.getEntry(seoEntryId, { locale } as any);
+    return entry as SEOEntry;
   } catch {
     return null;
   }
@@ -66,6 +87,7 @@ export const fetchBlogPostBySlug = async ({
       content_type: 'pageBlogPost',
       'fields.slug': slug,
       ...(locale && { locale }),
+      include: 2, // Include linked entries (seoFields, author, etc.) up to 2 levels deep
       limit: 1,
     } as any);
 
@@ -80,6 +102,7 @@ export const fetchBlogPostBySlug = async ({
       const entries = await client.getEntries<BlogPostSkeleton>({
         content_type: 'pageBlogPost',
         'fields.slug': slug,
+        include: 2,
         limit: 1,
       } as any);
 
