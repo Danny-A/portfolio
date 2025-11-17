@@ -1,12 +1,14 @@
 import type { MetadataRoute } from 'next';
+import type { EntrySkeletonType } from 'contentful';
 
-import { fetchBlogPostsCached } from '~/lib/contentful/blogPosts';
+import type { BlogPostFields } from '~/types';
+import contentfulClient from '~/lib/contentful/contentful';
+
+type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, 'pageBlogPost'>;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dannyarntz.nl';
-
-  // Fetch all blog posts
-  const blogPosts = await fetchBlogPostsCached({ preview: false });
+  const client = contentfulClient({ preview: false });
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -36,13 +38,56 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Dynamic blog post pages
-  const blogPostPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/artikelen/${post.fields.slug}`,
-    lastModified: post.fields.publishedDate ? new Date(post.fields.publishedDate) : new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
+  // Fetch blog posts from both locales
+  const blogPostPages: MetadataRoute.Sitemap = [];
+
+  // Fetch Dutch blog posts
+  try {
+    const nlPosts = await client.getEntries<BlogPostSkeleton>({
+      content_type: 'pageBlogPost',
+      locale: 'nl',
+      limit: 1000,
+    });
+
+    nlPosts.items.forEach((post) => {
+      if (post.fields.slug) {
+        blogPostPages.push({
+          url: `${baseUrl}/artikelen/${post.fields.slug}`,
+          lastModified: post.fields.publishedDate ? new Date(post.fields.publishedDate) : new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+        });
+      }
+    });
+  } catch {
+    // nl locale might not exist
+  }
+
+  // Fetch English blog posts
+  const enLocales = ['en-US', 'en', 'en-GB'];
+  for (const locale of enLocales) {
+    try {
+      const enPosts = await client.getEntries<BlogPostSkeleton>({
+        content_type: 'pageBlogPost',
+        locale,
+        limit: 1000,
+      });
+
+      enPosts.items.forEach((post) => {
+        if (post.fields.slug) {
+          blogPostPages.push({
+            url: `${baseUrl}/artikelen/${post.fields.slug}`,
+            lastModified: post.fields.publishedDate ? new Date(post.fields.publishedDate) : new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+        }
+      });
+      break; // Success, stop trying other locales
+    } catch {
+      continue;
+    }
+  }
 
   return [...staticPages, ...blogPostPages];
 }
