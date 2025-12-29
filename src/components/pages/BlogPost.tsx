@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import DOMPurify from "isomorphic-dompurify";
+import striptags from 'striptags';
 
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
@@ -13,16 +13,24 @@ type Props = {
   currentLocale: string;
 };
 
+// Helper to sanitize text by stripping all HTML tags
+const sanitizeText = (text: string | undefined): string | undefined => {
+  if (!text) return text;
+  return striptags(text);
+};
+
 export default function BlogPostPage({ blogPostEntry, alternatives, currentLocale }: Props) {
   const { fields } = blogPostEntry;
+
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": fields.title,
+    "headline": sanitizeText(fields.title),
     "datePublished": fields.publishedDate,
     "author": {
       "@type": "Person",
-      "name": fields.author?.fields?.name,
+      "name": sanitizeText(fields.author?.fields?.name),
     },
   };
 
@@ -60,7 +68,7 @@ export default function BlogPostPage({ blogPostEntry, alternatives, currentLocal
           )}
         </div>
         <article lang={currentLocale === 'en-US' || currentLocale === 'en' || currentLocale === 'en-GB' ? 'en' : 'nl'} className="flex flex-col gap-8">
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(JSON.stringify(jsonLd)) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
           {fields.title && (
             <div className="flex flex-col gap-4">
               <Heading as="h1" size="3xl">
