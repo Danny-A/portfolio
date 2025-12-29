@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import sanitizeHtml from 'sanitize-html';
+import striptags from 'striptags';
 
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
@@ -13,15 +13,12 @@ type Props = {
   currentLocale: string;
 };
 
-  // Helper to sanitize text by stripping all HTML tags
-  const sanitizeText = (text: string | undefined): string | undefined => {
-    if (!text) return text;
-    return sanitizeHtml(text, {
-      allowedTags: [],
-      allowedAttributes: {},
-    });
-  };
-  
+// Helper to sanitize text by stripping all HTML tags
+const sanitizeText = (text: string | undefined): string | undefined => {
+  if (!text) return text;
+  return striptags(text);
+};
+
 export default function BlogPostPage({ blogPostEntry, alternatives, currentLocale }: Props) {
   const { fields } = blogPostEntry;
 
