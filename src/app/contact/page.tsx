@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return generatePageMetadata(modifiedSeoFields, {
     title: 'Contact & Beschikbaarheid | Danny Arntz | Freelance Front-end Developer',
-    description: `Beschikbaar vanaf ${formatDate(availableFrom)}. Freelance senior front-end developer voor React, Next.js en TypeScript projecten. Lead developer, team mentoring of lange termijn opdrachten. Utrecht, Amsterdam, Rotterdam en remote.`,
+    description: 'Freelance senior front-end developer voor React, Next.js en TypeScript projecten. Lead developer, team mentoring of lange termijn opdrachten. Utrecht, Amsterdam, Rotterdam en remote.',
   });
 }
 
