@@ -20,7 +20,9 @@ export default function HomePage({ entry, siteSettings }: Props) {
           {siteSettings.fields.availableFrom && (
             <div className="flex">
               <p className="rounded-sm bg-green-200 px-2 py-1 text-xs text-green-800">
-                Beschikbaar vanaf {formatDate(siteSettings.fields.availableFrom)}
+                {new Date(siteSettings.fields.availableFrom) <= new Date()
+                  ? 'Beschikbaar'
+                  : `Beschikbaar vanaf ${formatDate(siteSettings.fields.availableFrom)}`}
               </p>
             </div>
           )}
