@@ -22,7 +22,7 @@
     "next": "^16.2.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "shiki": "^3.21.0",
+    "shiki": "^4.0.2",
     "striptags": "^3.2.0",
     "tailwind-merge": "^3.5.0",
     "tailwind-variants": "^3.2.2",
