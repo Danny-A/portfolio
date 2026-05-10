@@ -11,7 +11,6 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@calcom/embed-react": "^1.5.3",
     "@contentful/rich-text-react-renderer": "^16.2.1",
     "@contentful/rich-text-types": "^17.2.7",
     "@tailwindcss/postcss": "^4.2.2",
