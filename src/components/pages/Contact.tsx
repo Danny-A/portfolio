@@ -4,7 +4,6 @@ import Text from '~/components/Text';
 import { getAssetUrl } from '~/lib/contentful/contentful';
 import type { ContactPageEntry } from '~/types';
 
-import CalEmbed from '../CalEmbed';
 import RichText from '../RichText';
 
 type Props = {
@@ -37,7 +36,13 @@ export default function ContactPage({ entry }: Props) {
               Plan een gesprek
             </Text>
             <div className="mt-2">
-              <CalEmbed />
+              <a
+                href="https://cal.eu/dannyarntz/15min"
+                className="inline-flex rounded-sm bg-gray-900 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700"
+                target="_blank"
+                rel="noreferrer noopener">
+                Boek een 15 minuten meeting
+              </a>
             </div>
           </div>
 

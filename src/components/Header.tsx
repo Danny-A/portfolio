@@ -50,7 +50,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Backdrop (mobile only) */}
       {isOpen && (
         <div
           className="fixed inset-0 z-10 md:hidden"
@@ -59,7 +58,6 @@ export default function Header() {
         />
       )}
 
-      {/* Menu (mobile only) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -75,7 +73,7 @@ export default function Header() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="bg-navigation shadow-elevation-high flex flex-col rounded-xl px-2 py-2 backdrop-blur-lg"
+              className="bg-navigation shadow-elevation-high flex flex-col rounded-md px-2 py-2 backdrop-blur-lg"
               role="navigation"
               aria-label="Main navigation"
             >
@@ -97,11 +95,10 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      {/* Pill bar */}
       <header
-        className="bg-navigation shadow-elevation-high fixed bottom-6 left-1/2 z-20 flex h-14 -translate-x-1/2 items-center rounded-full backdrop-blur-lg"
+        className="bg-navigation shadow-elevation-high fixed bottom-6 left-1/2 z-20 flex h-14 -translate-x-1/2 items-center rounded-md backdrop-blur-lg"
         role="banner">
-        {/* Mobile: avatar + hamburger */}
+        
         <div className="flex items-center gap-3 px-3 md:hidden">
           <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-full">
             <span className="text-xs tracking-wide text-white">DA</span>
@@ -125,7 +122,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Desktop: inline nav */}
         <nav className="hidden items-center gap-8 px-8 md:flex" role="navigation" aria-label="Main navigation">
           {links.map(({ href, label }) => (
             <Link
