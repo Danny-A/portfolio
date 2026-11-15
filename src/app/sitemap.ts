@@ -1,8 +1,8 @@
-import type { MetadataRoute } from 'next';
 import type { EntrySkeletonType } from 'contentful';
+import type { MetadataRoute } from 'next';
 
-import type { BlogPostFields } from '~/types';
 import contentfulClient from '~/lib/contentful/contentful';
+import type { BlogPostFields } from '~/types';
 
 type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, 'pageBlogPost'>;
 
@@ -55,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       limit: 1000,
     });
 
-    nlPosts.items.forEach((post) => {
+    nlPosts.items.forEach(post => {
       if (post.fields.slug) {
         blogPostPages.push({
           url: `${baseUrl}/artikelen/${post.fields.slug}`,
@@ -79,7 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         limit: 1000,
       });
 
-      enPosts.items.forEach((post) => {
+      enPosts.items.forEach(post => {
         if (post.fields.slug) {
           blogPostPages.push({
             url: `${baseUrl}/artikelen/${post.fields.slug}`,

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { cn } from '~/utils/tailwindmerge';
 
@@ -42,21 +42,18 @@ const itemVariants = {
 
 export default function Header() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  // The menu is open only for the pathname it was opened on, so navigating closes it
+  // without syncing state in an effect (the Header persists across navigations).
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
+  const isOpen = openedOn === pathname;
+  const setIsOpen = (open: boolean | ((prev: boolean) => boolean)) => {
+    const next = typeof open === 'function' ? open(isOpen) : open;
+    setOpenedOn(next ? pathname : null);
+  };
 
   return (
     <>
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-10 md:hidden"
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {isOpen && <div className="fixed inset-0 z-10 md:hidden" onClick={() => setIsOpen(false)} aria-hidden="true" />}
 
       <AnimatePresence>
         {isOpen && (
@@ -66,17 +63,15 @@ export default function Header() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed bottom-22 left-1/2 z-20 -translate-x-1/2 md:hidden"
-          >
+            className="fixed bottom-22 left-1/2 z-20 -translate-x-1/2 md:hidden">
             <motion.nav
               variants={listVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="bg-navigation shadow-elevation-high flex flex-col rounded-md px-2 py-2 backdrop-blur-lg"
+              className="flex flex-col rounded-md bg-navigation px-2 py-2 shadow-elevation-high backdrop-blur-lg"
               role="navigation"
-              aria-label="Main navigation"
-            >
+              aria-label="Main navigation">
               {links.map(({ href, label }) => (
                 <motion.div key={href} variants={itemVariants}>
                   <Link
@@ -96,11 +91,10 @@ export default function Header() {
       </AnimatePresence>
 
       <header
-        className="bg-navigation shadow-elevation-high fixed bottom-6 left-1/2 z-20 flex h-14 -translate-x-1/2 items-center rounded-md backdrop-blur-lg"
+        className="fixed bottom-6 left-1/2 z-20 flex h-14 -translate-x-1/2 items-center rounded-md bg-navigation shadow-elevation-high backdrop-blur-lg"
         role="banner">
-        
         <div className="flex items-center gap-3 px-3 md:hidden">
-          <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-full">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary">
             <span className="text-xs tracking-wide text-white">DA</span>
           </div>
           <button
@@ -112,12 +106,12 @@ export default function Header() {
             <motion.span
               animate={isOpen ? { rotate: 45, y: 3 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.18, ease: 'easeInOut' as const }}
-              className="bg-primary block h-px w-5 origin-center"
+              className="block h-px w-5 origin-center bg-primary"
             />
             <motion.span
               animate={isOpen ? { rotate: -45, y: -3 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.18, ease: 'easeInOut' as const }}
-              className="bg-primary block h-px w-5 origin-center"
+              className="block h-px w-5 origin-center bg-primary"
             />
           </button>
         </div>

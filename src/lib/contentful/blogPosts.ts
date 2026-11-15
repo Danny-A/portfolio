@@ -1,4 +1,5 @@
 import type { EntrySkeletonType } from 'contentful';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { BlogPostEntry, BlogPostFields, SEOEntry } from '~/types';
 
@@ -18,7 +19,7 @@ export const fetchBlogPostById = async ({
   const client = contentfulClient({ preview });
 
   try {
-    const entry = await client.getEntry<BlogPostSkeleton>(entryId, { 
+    const entry = await client.getEntry<BlogPostSkeleton>(entryId, {
       locale,
       include: 2, // Include linked entries (seoFields, author, etc.) up to 2 levels deep
     } as any);
@@ -65,14 +66,11 @@ export const fetchBlogPosts = async ({ preview }: FetchBlogPostsOptions): Promis
 
 // Cached version with tags
 export const fetchBlogPostsCached = async ({ preview }: FetchBlogPostsOptions): Promise<BlogPostEntry[]> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('blogposts', 'page');
 
-  const cachedFetch = unstable_cache(async () => fetchBlogPosts({ preview }), ['blogposts'], {
-    tags: ['blogposts', 'page'],
-    revalidate: preview ? 0 : 3600,
-  });
-
-  return cachedFetch();
+  return fetchBlogPosts({ preview });
 };
 
 export const fetchBlogPostBySlug = async ({
@@ -118,18 +116,11 @@ export const fetchBlogPostBySlugCached = async ({
   preview,
   locale,
 }: FetchBlogPostsOptions & { slug: string; locale?: string }): Promise<BlogPostEntry | null> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('blogposts', 'page', `blogpost-${slug}`);
 
-  const cachedFetch = unstable_cache(
-    async () => fetchBlogPostBySlug({ slug, preview, locale }),
-    [`blogpost-${slug}-${locale || 'default'}`],
-    {
-      tags: ['blogposts', 'page', `blogpost-${slug}`],
-      revalidate: preview ? 0 : 3600,
-    },
-  );
-
-  return cachedFetch();
+  return fetchBlogPostBySlug({ slug, preview, locale });
 };
 
 // Find alternative locales for a blog post by checking the same entry ID in other locales
@@ -138,45 +129,34 @@ export const findAlternativeLocales = async (
   entry: BlogPostEntry,
   preview: boolean,
 ): Promise<{ locale: string; slug: string }[]> => {
-  const alternatives: { locale: string; slug: string }[] = [];
+  'use cache';
+  cacheLife('hours');
+  cacheTag('blogposts', 'page', `blogpost-${entry.fields.slug}`);
+
   const entryId = entry.sys.id;
   const currentLocale = entry.sys.locale || 'nl';
-
-  // Always check for Dutch version
-  try {
-    const nlEntry = await fetchBlogPostById({ entryId, locale: 'nl', preview });
-    if (nlEntry) {
-      alternatives.push({ locale: 'nl', slug: nlEntry.fields.slug });
-    } else if (currentLocale === 'nl') {
-      // If we're already on Dutch and fetch failed, use current entry
-      alternatives.push({ locale: 'nl', slug: entry.fields.slug });
-    }
-  } catch {
-    // If fetch fails but we're on Dutch, use current entry
-    if (currentLocale === 'nl') {
-      alternatives.push({ locale: 'nl', slug: entry.fields.slug });
-    }
-  }
-
-  // Always check for English version (try common locale codes)
+  const isEnglish = ['en-US', 'en', 'en-GB'].includes(currentLocale);
   const enLocales = ['en-US', 'en', 'en-GB'];
-  let englishFound = false;
-  
-  for (const locale of enLocales) {
-    try {
-      const enEntry = await fetchBlogPostById({ entryId, locale, preview });
-      if (enEntry) {
-        alternatives.push({ locale: 'en-US', slug: enEntry.fields.slug });
-        englishFound = true;
-        break;
-      }
-    } catch {
-      continue;
-    }
+
+  // Look up all locale variants in parallel
+  const [nlEntry, ...enEntries] = await Promise.all([
+    fetchBlogPostById({ entryId, locale: 'nl', preview }),
+    ...enLocales.map(locale => fetchBlogPostById({ entryId, locale, preview })),
+  ]);
+
+  const alternatives: { locale: string; slug: string }[] = [];
+
+  if (nlEntry) {
+    alternatives.push({ locale: 'nl', slug: nlEntry.fields.slug });
+  } else if (currentLocale === 'nl') {
+    alternatives.push({ locale: 'nl', slug: entry.fields.slug });
   }
 
-  // If we're on English and didn't find it via fetch, use current entry
-  if (!englishFound && (currentLocale === 'en-US' || currentLocale === 'en' || currentLocale === 'en-GB')) {
+  // Prefer the first English locale code that resolves, in priority order
+  const enEntry = enEntries.find(Boolean);
+  if (enEntry) {
+    alternatives.push({ locale: 'en-US', slug: enEntry.fields.slug });
+  } else if (isEnglish) {
     alternatives.push({ locale: 'en-US', slug: entry.fields.slug });
   }
 
@@ -196,7 +176,7 @@ export const fetchAllBlogPostSlugs = async ({ preview }: FetchBlogPostsOptions):
       locale: 'nl',
       limit: 1000,
     });
-    slugs.push(...nlEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]);
+    slugs.push(...(nlEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]));
   } catch {
     // nl locale might not exist
   }
@@ -211,7 +191,7 @@ export const fetchAllBlogPostSlugs = async ({ preview }: FetchBlogPostsOptions):
         locale,
         limit: 1000,
       });
-      slugs.push(...enEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]);
+      slugs.push(...(enEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]));
       break; // Success, stop trying
     } catch {
       continue;
@@ -223,13 +203,9 @@ export const fetchAllBlogPostSlugs = async ({ preview }: FetchBlogPostsOptions):
 
 // Cached version with tags
 export const fetchAllBlogPostSlugsCached = async ({ preview }: FetchBlogPostsOptions): Promise<string[]> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('blogposts', 'page');
 
-  const cachedFetch = unstable_cache(async () => fetchAllBlogPostSlugs({ preview }), ['blogpost-slugs'], {
-    tags: ['blogposts', 'page'],
-    revalidate: preview ? 0 : 3600,
-  });
-
-  return cachedFetch();
+  return fetchAllBlogPostSlugs({ preview });
 };
-

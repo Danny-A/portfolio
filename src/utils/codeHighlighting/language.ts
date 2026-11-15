@@ -25,7 +25,7 @@ export const normalizeLanguage = (lang: string): string => {
 /**
  * Fallback language detection - should only be used when CMS doesn't provide language.
  * Best practice: Store language in Contentful (e.g., in node.data.language or custom field).
- * 
+ *
  * For proper code blocks (BLOCKS.CODE), Contentful supports node.data.language.
  * For code-marked paragraphs, consider using Contentful's custom fields or extensions.
  */
@@ -39,8 +39,18 @@ export const detectLanguage = (code: string): string => {
   if (trimmed.match(/^#!\/.*\b(bash|sh)\b/)) return 'bash';
 
   // TypeScript/JavaScript (check TS first as it's a superset)
-  if (trimmed.includes('import ') || trimmed.includes('export ') || trimmed.includes('async function') || (trimmed.includes('const ') && trimmed.includes('=>'))) {
-    if (trimmed.includes(': string') || trimmed.includes(': number') || trimmed.includes('interface ') || trimmed.includes('type ')) {
+  if (
+    trimmed.includes('import ') ||
+    trimmed.includes('export ') ||
+    trimmed.includes('async function') ||
+    (trimmed.includes('const ') && trimmed.includes('=>'))
+  ) {
+    if (
+      trimmed.includes(': string') ||
+      trimmed.includes(': number') ||
+      trimmed.includes('interface ') ||
+      trimmed.includes('type ')
+    ) {
       return 'typescript';
     }
     return 'javascript';
@@ -63,9 +73,14 @@ export const detectLanguage = (code: string): string => {
  * Priority: 1) CMS metadata, 2) Detection fallback
  */
 export const getLanguageFromNode = (node: Node, code: string): string => {
-  if ('data' in node && node.data && typeof node.data === 'object' && 'language' in node.data && typeof node.data.language === 'string') {
+  if (
+    'data' in node &&
+    node.data &&
+    typeof node.data === 'object' &&
+    'language' in node.data &&
+    typeof node.data.language === 'string'
+  ) {
     return node.data.language;
   }
   return detectLanguage(code);
 };
-

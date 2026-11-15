@@ -1,8 +1,9 @@
 import { BLOCKS, Document, Node } from '@contentful/rich-text-types';
 
-import { detectLanguage, getLanguageFromNode } from '~/utils/codeHighlighting/language';
 import { hashCode } from '~/utils/codeHighlighting/hashing';
+import { detectLanguage, getLanguageFromNode } from '~/utils/codeHighlighting/language';
 import { normalizeCodeIndentation } from '~/utils/codeHighlighting/normalize';
+
 import { isParagraphNode, isTextNode, hasCodeMark } from './typeGuards';
 
 export interface CodeBlock {
@@ -30,7 +31,7 @@ export const getCodeFromParagraph = (node: Node): { code: string; lang: string }
   // Note: Contentful may split code across multiple text nodes, so we join them
   // The whitespace within each node is preserved, but we need to ensure
   // proper handling of whitespace between nodes if Contentful inserts any
-  const code = textNodes.map((node) => node.value || '').join('');
+  const code = textNodes.map(node => node.value || '').join('');
   if (!code.trim()) return null;
 
   // Normalize indentation (tabs to spaces) while preserving structure
@@ -48,9 +49,10 @@ export const getCodeFromParagraph = (node: Node): { code: string; lang: string }
 export const getCodeFromBlock = (node: Node): { code: string; lang: string } | null => {
   if (node.nodeType !== 'code') return null;
 
-  const code = 'content' in node && Array.isArray(node.content) && node.content[0] && isTextNode(node.content[0])
-    ? node.content[0].value || ''
-    : '';
+  const code =
+    'content' in node && Array.isArray(node.content) && node.content[0] && isTextNode(node.content[0])
+      ? node.content[0].value || ''
+      : '';
 
   if (!code) return null;
 
@@ -102,4 +104,3 @@ export const findCodeBlocks = (document: Document): CodeBlock[] => {
 
   return blocks;
 };
-

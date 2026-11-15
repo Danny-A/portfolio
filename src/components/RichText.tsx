@@ -1,13 +1,12 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document, BLOCKS, INLINES, MARKS, Node } from '@contentful/rich-text-types';
-import type { BundledLanguage } from 'shiki';
-import { codeToHtml } from 'shiki';
 
+import { hashCode } from '~/utils/codeHighlighting/hashing';
+import { highlightCode } from '~/utils/codeHighlighting/highlight';
+import { normalizeLanguage } from '~/utils/codeHighlighting/language';
+import { escapeHtml } from '~/utils/html';
 import { findCodeBlocks, getCodeFromParagraph, getCodeFromBlock } from '~/utils/richText/codeBlocks';
 import { hasOnlyParagraphChildren, isTextNode } from '~/utils/richText/typeGuards';
-import { normalizeLanguage } from '~/utils/codeHighlighting/language';
-import { hashCode } from '~/utils/codeHighlighting/hashing';
-import { escapeHtml } from '~/utils/html';
 
 interface RichTextProps {
   document?: Document;
@@ -34,19 +33,36 @@ const createRenderOptions = (highlightedCode: Map<string, string>) => ({
         }
 
         return (
-          <pre className="my-4 overflow-x-auto rounded-md bg-gray-100 p-4" role="region" aria-label={`Code block: ${codeBlock.lang}`}>
-            <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">{escapeHtml(codeBlock.code)}</code>
+          <pre
+            className="my-4 overflow-x-auto rounded-md bg-gray-100 p-4"
+            role="region"
+            aria-label={`Code block: ${codeBlock.lang}`}>
+            <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">
+              {escapeHtml(codeBlock.code)}
+            </code>
           </pre>
         );
       }
       return <p className="mb-4 last:mb-0">{children}</p>;
     },
-    [BLOCKS.HEADING_1]: (_node: Node, children: React.ReactNode) => <h1 className="mb-4 text-3xl font-bold">{children}</h1>,
-    [BLOCKS.HEADING_2]: (_node: Node, children: React.ReactNode) => <h2 className="mb-3 text-2xl font-bold">{children}</h2>,
-    [BLOCKS.HEADING_3]: (_node: Node, children: React.ReactNode) => <h3 className="mb-3 text-xl font-bold">{children}</h3>,
-    [BLOCKS.HEADING_4]: (_node: Node, children: React.ReactNode) => <h4 className="mb-2 text-lg font-bold">{children}</h4>,
-    [BLOCKS.HEADING_5]: (_node: Node, children: React.ReactNode) => <h5 className="mb-2 text-base font-bold">{children}</h5>,
-    [BLOCKS.HEADING_6]: (_node: Node, children: React.ReactNode) => <h6 className="mb-2 text-sm font-bold">{children}</h6>,
+    [BLOCKS.HEADING_1]: (_node: Node, children: React.ReactNode) => (
+      <h1 className="mb-4 text-3xl font-bold">{children}</h1>
+    ),
+    [BLOCKS.HEADING_2]: (_node: Node, children: React.ReactNode) => (
+      <h2 className="mb-3 text-2xl font-bold">{children}</h2>
+    ),
+    [BLOCKS.HEADING_3]: (_node: Node, children: React.ReactNode) => (
+      <h3 className="mb-3 text-xl font-bold">{children}</h3>
+    ),
+    [BLOCKS.HEADING_4]: (_node: Node, children: React.ReactNode) => (
+      <h4 className="mb-2 text-lg font-bold">{children}</h4>
+    ),
+    [BLOCKS.HEADING_5]: (_node: Node, children: React.ReactNode) => (
+      <h5 className="mb-2 text-base font-bold">{children}</h5>
+    ),
+    [BLOCKS.HEADING_6]: (_node: Node, children: React.ReactNode) => (
+      <h6 className="mb-2 text-sm font-bold">{children}</h6>
+    ),
     [BLOCKS.UL_LIST]: (_node: Node, children: React.ReactNode) => (
       <ul className="mb-4 list-outside list-disc space-y-1 pl-5">{children}</ul>
     ),
@@ -62,11 +78,15 @@ const createRenderOptions = (highlightedCode: Map<string, string>) => ({
                   <span key={index}>
                     {documentToReactComponents(child, {
                       renderNode: {
-                        [BLOCKS.PARAGRAPH]: (_paragraphNode: Node, paragraphChildren: React.ReactNode) => <>{paragraphChildren}</>,
+                        [BLOCKS.PARAGRAPH]: (_paragraphNode: Node, paragraphChildren: React.ReactNode) => (
+                          <>{paragraphChildren}</>
+                        ),
                       },
                       renderMark: {
                         [MARKS.CODE]: (text: React.ReactNode) => (
-                          <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">{text}</code>
+                          <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">
+                            {text}
+                          </code>
                         ),
                         [MARKS.BOLD]: (text: React.ReactNode) => <strong>{text}</strong>,
                         [MARKS.ITALIC]: (text: React.ReactNode) => <em>{text}</em>,
@@ -87,7 +107,7 @@ const createRenderOptions = (highlightedCode: Map<string, string>) => ({
     ['code']: (node: Node) => {
       // BLOCKS.CODE nodes support node.data.language - this is the preferred way
       const codeBlock = getCodeFromBlock(node);
-      
+
       if (!codeBlock) {
         return (
           <pre className="my-4 overflow-x-auto rounded-md bg-gray-100 p-4">
@@ -111,22 +131,28 @@ const createRenderOptions = (highlightedCode: Map<string, string>) => ({
       }
 
       return (
-        <pre className="my-4 overflow-x-auto rounded-md bg-gray-100 p-4" role="region" aria-label={`Code block: ${codeBlock.lang}`}>
-          <code  className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">{escapeHtml(codeBlock.code)}</code>
+        <pre
+          className="my-4 overflow-x-auto rounded-md bg-gray-100 p-4"
+          role="region"
+          aria-label={`Code block: ${codeBlock.lang}`}>
+          <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">
+            {escapeHtml(codeBlock.code)}
+          </code>
         </pre>
       );
     },
     [INLINES.HYPERLINK]: (node: Node, children: React.ReactNode) => {
-      const uri = 'data' in node && node.data && typeof node.data === 'object' && 'uri' in node.data && typeof node.data.uri === 'string'
-        ? node.data.uri
-        : '#';
+      const uri =
+        'data' in node &&
+        node.data &&
+        typeof node.data === 'object' &&
+        'uri' in node.data &&
+        typeof node.data.uri === 'string'
+          ? node.data.uri
+          : '#';
 
       return (
-        <a
-          href={uri}
-          className="text-blue-600 underline hover:text-blue-800"
-          target="_blank"
-          rel="noopener noreferrer">
+        <a href={uri} className="text-blue-600 underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">
           {children}
         </a>
       );
@@ -141,7 +167,6 @@ const createRenderOptions = (highlightedCode: Map<string, string>) => ({
   },
 });
 
-
 export default async function RichText({ document, className = '' }: RichTextProps) {
   if (!document) return null;
 
@@ -153,15 +178,15 @@ export default async function RichText({ document, className = '' }: RichTextPro
     codeBlocks.map(async ({ code, lang, key }) => {
       try {
         const normalizedLang = normalizeLanguage(lang);
-        const html = await codeToHtml(code, {
-          lang: normalizedLang as BundledLanguage,
-          theme: 'github-dark',
-        });
+        const html = await highlightCode(code, normalizedLang);
         return { key, html };
       } catch (error) {
         // Log error in development, silent in production
         if (process.env.NODE_ENV === 'development') {
-          console.warn(`[RichText] Failed to highlight code block (${lang}):`, error instanceof Error ? error.message : error);
+          console.warn(
+            `[RichText] Failed to highlight code block (${lang}):`,
+            error instanceof Error ? error.message : error,
+          );
         }
         // Return fallback HTML
         const escaped = escapeHtml(code);
@@ -174,15 +199,11 @@ export default async function RichText({ document, className = '' }: RichTextPro
   );
 
   // Populate map with results
-  results.forEach((result) => {
+  results.forEach(result => {
     if (result.status === 'fulfilled') {
       highlightedCode.set(result.value.key, result.value.html);
     }
   });
 
-  return (
-    <div className={className}>
-      {documentToReactComponents(document, createRenderOptions(highlightedCode))}
-    </div>
-  );
+  return <div className={className}>{documentToReactComponents(document, createRenderOptions(highlightedCode))}</div>;
 }

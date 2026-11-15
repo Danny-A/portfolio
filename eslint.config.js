@@ -1,10 +1,6 @@
-import { FlatCompat } from '@eslint/eslintrc';
+import nextConfig from 'eslint-config-next';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-});
 
 const baseConfig = [
   {
@@ -33,9 +29,8 @@ const baseConfig = [
 ];
 
 const eslintConfig = [
-  ...compat.config({
-    extends: ['next', 'prettier'],
-  }),
+  ...nextConfig,
+  { ignores: ['.next/**', 'node_modules/**', 'next-env.d.ts', 'coverage/**'] },
   ...baseConfig,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,

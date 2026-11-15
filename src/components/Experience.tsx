@@ -19,7 +19,7 @@ const ExperienceBlock = ({ role, location, startdate, enddate, title, descriptio
   const formattedEndDate = enddate ? formatDate(enddate) : 'Nu';
 
   return (
-    <section className="shadow-elevation-high rounded-md bg-white p-8">
+    <section className="rounded-md bg-white p-8 shadow-elevation-high">
       <Heading as="h1" size="3xl">
         {title}
       </Heading>

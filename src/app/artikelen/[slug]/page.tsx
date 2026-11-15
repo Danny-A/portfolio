@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 import BlogPostPage from '~/components/pages/BlogPost';
 import {
@@ -11,8 +13,6 @@ import {
 } from '~/lib/contentful/blogPosts';
 import { generatePageMetadata } from '~/lib/seo';
 
-export const revalidate = 3600; // Revalidate every hour
-
 export async function generateStaticParams() {
   const slugs = await fetchAllBlogPostSlugsCached({ preview: false });
 
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 
 type Props = {
   params: Promise<{ slug: string }>;
-};  
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -73,7 +73,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return metadata;
 }
 
-export default async function Page({ params }: Props) {
+export default function Page({ params }: Props) {
+  return (
+    <Suspense fallback={<BlogPostSkeleton />}>
+      <Post params={params} />
+    </Suspense>
+  );
+}
+
+async function Post({ params }: Props) {
   const { slug } = await params;
   const { locale } = parseSlug(slug);
   const entry = await fetchBlogPostBySlugCached({ slug, preview: false, locale });
@@ -82,9 +90,29 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  // Find alternative locales for language switcher
   const alternatives = await findAlternativeLocales(entry, false);
 
   return <BlogPostPage blogPostEntry={entry} alternatives={alternatives} currentLocale={locale} />;
 }
 
+function BlogPostSkeleton() {
+  return (
+    <div className="mx-auto max-w-2xl px-4" aria-busy="true">
+      <div className="mb-6">
+        <Link
+          href="/artikelen"
+          className="inline-flex items-center text-sm text-primary transition hover:text-secondary hover:underline">
+          ← Terug naar overzicht
+        </Link>
+      </div>
+      <div className="flex animate-pulse flex-col gap-8">
+        <div className="flex flex-col gap-4">
+          <div className="h-10 w-3/4 rounded-md bg-gray-200" />
+          <div className="h-6 w-full rounded-md bg-gray-200" />
+          <div className="h-4 w-1/3 rounded-md bg-gray-200" />
+        </div>
+        <div className="h-96 rounded-md bg-white shadow-elevation-high" />
+      </div>
+    </div>
+  );
+}

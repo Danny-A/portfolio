@@ -13,10 +13,11 @@ export const isTextNode = (node: Node): node is Text => {
 };
 
 export const hasCodeMark = (node: Text): boolean => {
-  return node.marks?.some((mark) => mark.type === 'code') ?? false;
+  return node.marks?.some(mark => mark.type === 'code') ?? false;
 };
 
 export const hasOnlyParagraphChildren = (node: Node): boolean => {
-  return 'content' in node && Array.isArray(node.content) && node.content.every((child) => child.nodeType === BLOCKS.PARAGRAPH);
+  return (
+    'content' in node && Array.isArray(node.content) && node.content.every(child => child.nodeType === BLOCKS.PARAGRAPH)
+  );
 };
-

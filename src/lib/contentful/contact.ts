@@ -1,4 +1,5 @@
 import type { EntrySkeletonType } from 'contentful';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { ContactPageEntry, ContactPageFields } from '~/types';
 
@@ -25,12 +26,9 @@ export const fetchContactPage = async ({ preview }: FetchContactPageOptions): Pr
 
 // Cached version with tags
 export const fetchContactPageCached = async ({ preview }: FetchContactPageOptions): Promise<ContactPageEntry> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('contactpage', 'page');
 
-  const cachedFetch = unstable_cache(async () => fetchContactPage({ preview }), ['contactpage'], {
-    tags: ['contactpage', 'page'],
-    revalidate: preview ? 0 : 3600,
-  });
-
-  return cachedFetch();
+  return fetchContactPage({ preview });
 };

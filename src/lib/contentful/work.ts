@@ -1,4 +1,5 @@
 import type { EntrySkeletonType } from 'contentful';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { WorkPageEntry, WorkPageFields } from '~/types';
 
@@ -27,12 +28,9 @@ export const fetchWorkPage = async ({ preview }: FetchWorkPageOptions): Promise<
 
 // Cached version with tags
 export const fetchWorkPageCached = async ({ preview }: FetchWorkPageOptions): Promise<WorkPageEntry> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('workpage', 'page');
 
-  const cachedFetch = unstable_cache(async () => fetchWorkPage({ preview }), ['workpage'], {
-    tags: ['workpage', 'page'],
-    revalidate: preview ? 0 : 3600,
-  });
-
-  return cachedFetch();
+  return fetchWorkPage({ preview });
 };

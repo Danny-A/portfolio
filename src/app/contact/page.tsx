@@ -1,17 +1,15 @@
 import { Metadata } from 'next';
 
 import ContactPageComponent from '~/components/pages/Contact';
-import { fetchContactPage } from '~/lib/contentful/contact';
-import { fetchSiteSettings } from '~/lib/contentful/siteSettings';
+import { fetchContactPageCached } from '~/lib/contentful/contact';
+import { fetchSiteSettingsCached } from '~/lib/contentful/siteSettings';
 import { generatePageMetadata } from '~/lib/seo';
 import { formatDate } from '~/utils/formatDate';
 
-export const revalidate = 3600; // Revalidate every hour
-
 export async function generateMetadata(): Promise<Metadata> {
   const [entry, siteSettings] = await Promise.all([
-    fetchContactPage({ preview: false }),
-    fetchSiteSettings({ preview: false }),
+    fetchContactPageCached({ preview: false }),
+    fetchSiteSettingsCached({ preview: false }),
   ]);
   const availableFrom = siteSettings.fields.availableFrom || '';
 
@@ -31,12 +29,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return generatePageMetadata(modifiedSeoFields, {
     title: 'Contact & Beschikbaarheid | Danny Arntz | Freelance Front-end Developer',
-    description: 'Freelance senior front-end developer voor React, Next.js en TypeScript projecten. Lead developer, team mentoring of lange termijn opdrachten. Utrecht, Amsterdam, Rotterdam en remote.',
+    description:
+      'Freelance senior front-end developer voor React, Next.js en TypeScript projecten. Lead developer, team mentoring of lange termijn opdrachten. Utrecht, Amsterdam, Rotterdam en remote.',
   });
 }
 
 export default async function Page() {
-  const entry = await fetchContactPage({ preview: false });
+  const entry = await fetchContactPageCached({ preview: false });
 
   return <ContactPageComponent entry={entry} />;
 }
