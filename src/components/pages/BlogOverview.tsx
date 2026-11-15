@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import Heading from '~/components/Heading';
-import Layout from '~/components/Layout';
 import RichText from '~/components/RichText';
 import type { BlogOverviewEntry, BlogPostEntry } from '~/types';
 import { formatDate } from '~/utils/formatDate';
@@ -13,7 +12,6 @@ type Props = {
 
 export default function BlogOverviewPage({ blogOverviewEntry, blogPostEntries }: Props) {
   return (
-    <Layout>
       <div className="mx-auto max-w-xl px-4">
         <div className="flex flex-col gap-8">
           {blogOverviewEntry.fields.title && (
@@ -43,7 +41,6 @@ export default function BlogOverviewPage({ blogOverviewEntry, blogPostEntries }:
           </div>
         </div>
       </div>
-    </Layout>
   );
 }
 

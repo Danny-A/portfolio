@@ -2,7 +2,6 @@ import Link from 'next/link';
 import striptags from 'striptags';
 
 import Heading from '~/components/Heading';
-import Layout from '~/components/Layout';
 import RichText from '~/components/RichText';
 import type { BlogPostEntry } from '~/types';
 import { formatDateFull } from '~/utils/formatDateFull';
@@ -43,7 +42,6 @@ export default function BlogPostPage({ blogPostEntry, alternatives, currentLocal
   });
   
   return (
-    <Layout>
       <div className="mx-auto max-w-2xl px-4">
         <div className="mb-6 flex items-center justify-between">
           <Link
@@ -98,7 +96,6 @@ export default function BlogPostPage({ blogPostEntry, alternatives, currentLocal
           )}
         </article>
       </div>
-    </Layout>
   );
 }
 

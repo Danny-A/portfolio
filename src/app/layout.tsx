@@ -1,6 +1,8 @@
 import localFont from 'next/font/local';
 import Script from 'next/script';
 
+import Layout from '~/components/Layout';
+
 import '~/app/globals.css';
 
 const moderatRegular = localFont({ src: '../public/fonts/Moderat-Regular.woff2', variable: '--font-moderat-regular' });
@@ -23,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${moderatRegular.variable} ${moderatMedium.variable}`}>
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

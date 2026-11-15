@@ -1,6 +1,5 @@
 import ExperienceBlock from '~/components/Experience';
 import Heading from '~/components/Heading';
-import Layout from '~/components/Layout';
 import RichText from '~/components/RichText';
 import type { WorkPageEntry, WorkItemEntry } from '~/types';
 
@@ -11,7 +10,6 @@ type Props = {
 
 export default function WerkPage({ workPageEntry, workItemEntries }: Props) {
   return (
-    <Layout>
       <div className="mx-auto max-w-xl px-4">
         <div className="flex flex-col gap-8">
           {workPageEntry.fields.title && (
@@ -39,6 +37,5 @@ export default function WerkPage({ workPageEntry, workItemEntries }: Props) {
           ))}
         </div>
       </div>
-    </Layout>
   );
 }

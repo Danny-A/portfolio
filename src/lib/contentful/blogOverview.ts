@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from 'next/cache';
 import type { EntrySkeletonType } from 'contentful';
 
 import type { BlogOverviewEntry, BlogOverviewFields } from '~/types';
@@ -27,13 +28,10 @@ export const fetchBlogOverview = async ({ preview }: FetchBlogOverviewOptions): 
 
 // Cached version with tags
 export const fetchBlogOverviewCached = async ({ preview }: FetchBlogOverviewOptions): Promise<BlogOverviewEntry> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('blogoverview', 'page');
 
-  const cachedFetch = unstable_cache(async () => fetchBlogOverview({ preview }), ['blogoverview'], {
-    tags: ['blogoverview', 'page'],
-    revalidate: preview ? 0 : 3600,
-  });
-
-  return cachedFetch();
+  return fetchBlogOverview({ preview });
 };
 

@@ -1,24 +1,32 @@
+import { timingSafeEqual } from 'node:crypto';
+
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
-function verifyWebhook(request: NextRequest, body: string): boolean {
+function verifyWebhook(request: NextRequest): boolean {
   const webhookSecret = process.env.CONTENTFUL_WEBHOOK_SECRET;
-  if (!webhookSecret) return true;
+  if (!webhookSecret) {
+    // Fail closed in production; allow unauthenticated calls only in local development
+    return process.env.NODE_ENV !== 'production';
+  }
 
   const signature = request.headers.get('x-contentful-webhook-signature');
   if (!signature) return false;
 
-  // For now, just check if the signature matches the configured secret
-  // In production, implement proper HMAC verification based on Contentful's documentation
-  return signature === webhookSecret;
+  const a = Buffer.from(signature);
+  const b = Buffer.from(webhookSecret);
+  return a.length === b.length && timingSafeEqual(a, b);
 }
+
+// Stale-while-revalidate: serve cached content while it refreshes in the background
+const revalidate = (...tags: string[]) => tags.forEach(tag => revalidateTag(tag, 'max'));
 
 export async function POST(request: NextRequest) {
   try {
     // Read the raw body as text first (you can only read the request body once)
     const rawBody = await request.text();
     // Verify webhook authenticity
-    if (!verifyWebhook(request, rawBody)) {
+    if (!verifyWebhook(request)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -49,30 +57,34 @@ export async function POST(request: NextRequest) {
     // Revalidate based on content type
     switch (contentType) {
       case 'pageLanding':
-        revalidateTag('homepage', 'page');
-        console.log('Revalidated homepage');
+        revalidate('homepage');
         break;
       case 'pageWorkOverview':
-        revalidateTag('workpage', 'page');
-        console.log('Revalidated work page');
+        revalidate('workpage');
         break;
       case 'pageWork':
-        revalidateTag('workitems', 'page');
-        console.log('Revalidated work items');
+        revalidate('workitems');
         break;
       case 'pageContact':
-        revalidateTag('contactpage', 'page');
-        console.log('Revalidated contact page');
+        revalidate('contactpage');
+        break;
+      case 'pageBlogOverview':
+        revalidate('blogoverview');
+        break;
+      case 'pageBlogPost':
+        // Post content, list, slugs and per-post tag (slug may differ per locale)
+        revalidate('blogposts');
+        break;
+      case 'siteSettings':
+        revalidate('sitesettings');
         break;
       case 'componentSeo':
         // SEO component changes might affect multiple pages
-        revalidateTag('homepage', 'page');
-        revalidateTag('workpage', 'page');
-        revalidateTag('contactpage', 'page');
-        console.log('Revalidated all pages due to SEO change');
+        revalidate('homepage', 'workpage', 'contactpage', 'blogoverview', 'blogposts');
         break;
       default:
         console.log(`Unknown content type: ${contentType}`);
+        return NextResponse.json({ message: 'Ignored unknown content type', contentType }, { status: 202 });
     }
 
     return NextResponse.json({

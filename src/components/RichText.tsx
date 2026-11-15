@@ -1,11 +1,10 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document, BLOCKS, INLINES, MARKS, Node } from '@contentful/rich-text-types';
-import type { BundledLanguage } from 'shiki';
-import { codeToHtml } from 'shiki';
 
 import { findCodeBlocks, getCodeFromParagraph, getCodeFromBlock } from '~/utils/richText/codeBlocks';
 import { hasOnlyParagraphChildren, isTextNode } from '~/utils/richText/typeGuards';
 import { normalizeLanguage } from '~/utils/codeHighlighting/language';
+import { highlightCode } from '~/utils/codeHighlighting/highlight';
 import { hashCode } from '~/utils/codeHighlighting/hashing';
 import { escapeHtml } from '~/utils/html';
 
@@ -153,10 +152,7 @@ export default async function RichText({ document, className = '' }: RichTextPro
     codeBlocks.map(async ({ code, lang, key }) => {
       try {
         const normalizedLang = normalizeLanguage(lang);
-        const html = await codeToHtml(code, {
-          lang: normalizedLang as BundledLanguage,
-          theme: 'github-dark',
-        });
+        const html = await highlightCode(code, normalizedLang);
         return { key, html };
       } catch (error) {
         // Log error in development, silent in production

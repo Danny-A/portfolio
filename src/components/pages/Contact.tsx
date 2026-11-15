@@ -1,5 +1,4 @@
 import Heading from '~/components/Heading';
-import Layout from '~/components/Layout';
 import Text from '~/components/Text';
 import { getAssetUrl } from '~/lib/contentful/contentful';
 import type { ContactPageEntry } from '~/types';
@@ -14,7 +13,6 @@ export default function ContactPage({ entry }: Props) {
   const { fields } = entry;
 
   return (
-    <Layout>
       <section className="mx-auto max-w-xl px-4">
         <div className="shadow-elevation-high rounded-md bg-white p-8">
           <Heading as="h1" size="3xl">
@@ -77,6 +75,5 @@ export default function ContactPage({ entry }: Props) {
           </div>
         </div>
       </section>
-    </Layout>
   );
 }

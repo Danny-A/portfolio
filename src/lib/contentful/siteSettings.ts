@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from 'next/cache';
 import type { EntrySkeletonType } from 'contentful';
 
 import type { SiteSettingsEntry, SiteSettingsFields } from '~/types';
@@ -23,4 +24,13 @@ export const fetchSiteSettings = async ({ preview }: FetchSiteSettingsOptions): 
   }
 
   return entries.items[0];
+};
+
+// Cached version with tags
+export const fetchSiteSettingsCached = async ({ preview }: FetchSiteSettingsOptions): Promise<SiteSettingsEntry> => {
+  'use cache';
+  cacheLife('hours');
+  cacheTag('sitesettings', 'page');
+
+  return fetchSiteSettings({ preview });
 };

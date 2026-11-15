@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from 'next/cache';
 import type { EntrySkeletonType } from 'contentful';
 
 import type { WorkItemEntry, WorkItemFields } from '~/types';
@@ -27,12 +28,9 @@ export const fetchWorkItems = async ({ preview }: FetchWorkItemsOptions): Promis
 
 // Cached version with tags
 export const fetchWorkItemsCached = async ({ preview }: FetchWorkItemsOptions): Promise<WorkItemEntry[]> => {
-  const { unstable_cache } = await import('next/cache');
+  'use cache';
+  cacheLife('hours');
+  cacheTag('workitems', 'page');
 
-  const cachedFetch = unstable_cache(async () => fetchWorkItems({ preview }), ['workitems'], {
-    tags: ['workitems', 'page'],
-    revalidate: preview ? 0 : 3600,
-  });
-
-  return cachedFetch();
+  return fetchWorkItems({ preview });
 };

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import Heading from '~/components/Heading';
-import Layout from '~/components/Layout';
 import Text from '~/components/Text';
 
 const services = [
@@ -33,7 +32,6 @@ const services = [
 
 export default function DienstenPage() {
   return (
-    <Layout>
       <div className="mx-auto max-w-xl px-4">
         <div className="flex flex-col gap-8">
           <div className="shadow-elevation-high rounded-md bg-white p-8">
@@ -79,6 +77,5 @@ export default function DienstenPage() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

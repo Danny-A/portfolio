@@ -11,8 +11,6 @@ import {
 } from '~/lib/contentful/blogPosts';
 import { generatePageMetadata } from '~/lib/seo';
 
-export const revalidate = 3600; // Revalidate every hour
-
 export async function generateStaticParams() {
   const slugs = await fetchAllBlogPostSlugsCached({ preview: false });
 
