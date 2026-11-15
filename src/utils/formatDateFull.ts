@@ -9,4 +9,3 @@ export const formatDateFull = (dateStr: string) => {
         locale: nl,
       });
 };
-

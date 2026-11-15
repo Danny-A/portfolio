@@ -10,4 +10,3 @@ export const hashCode = (str: string): string => {
   }
   return Math.abs(hash).toString(36);
 };
-

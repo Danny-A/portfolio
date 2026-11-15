@@ -32,50 +32,51 @@ const services = [
 
 export default function DienstenPage() {
   return (
-      <div className="mx-auto max-w-xl px-4">
-        <div className="flex flex-col gap-8">
-          <div className="shadow-elevation-high rounded-md bg-white p-8">
-            <Heading as="h1" size="3xl">
-              Diensten
-            </Heading>
-            <div className="mt-4">
-              <Text>
-                Ik ben een freelance lead front-end developer gevestigd in regio Utrecht. Ik bouw snelle, toegankelijke webapplicaties
-                met React en Next.js, begeleid front-end teams en ontwikkel component libraries en design systems.
-              </Text>
-            </div>
+    <div className="mx-auto max-w-xl px-4">
+      <div className="flex flex-col gap-8">
+        <div className="rounded-md bg-white p-8 shadow-elevation-high">
+          <Heading as="h1" size="3xl">
+            Diensten
+          </Heading>
+          <div className="mt-4">
+            <Text>
+              Ik ben een freelance lead front-end developer gevestigd in regio Utrecht. Ik bouw snelle, toegankelijke
+              webapplicaties met React en Next.js, begeleid front-end teams en ontwikkel component libraries en design
+              systems.
+            </Text>
           </div>
+        </div>
 
-          {services.map(service => (
-            <section key={service.title} className="shadow-elevation-high rounded-md bg-white p-8">
-              <Heading as="h2" size="2xl">
-                {service.title}
-              </Heading>
-              <Text className="mt-4">{service.description}</Text>              
-              <div className="mt-4 flex flex-wrap gap-2">
-                {service.tags.map(tag => (
-                  <span key={tag} className="rounded-sm bg-gray-100 px-2 py-1 text-xs text-gray-600">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </section>
-          ))}
-
-          <div className="shadow-elevation-high rounded-md bg-white p-8">
-            <span>
-              <Text color="secondary" size="sm">
-                Beschikbaar voor
-              </Text>
-              <Text>Freelance opdrachten · Interim lead posities · Langlopende projecten</Text>
-            </span>
-            <div className="mt-6">
-              <Link href="/contact" className="underline hover:text-gray-500">
-                Plan een gesprek →
-              </Link>
+        {services.map(service => (
+          <section key={service.title} className="rounded-md bg-white p-8 shadow-elevation-high">
+            <Heading as="h2" size="2xl">
+              {service.title}
+            </Heading>
+            <Text className="mt-4">{service.description}</Text>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {service.tags.map(tag => (
+                <span key={tag} className="rounded-sm bg-gray-100 px-2 py-1 text-xs text-gray-600">
+                  {tag}
+                </span>
+              ))}
             </div>
+          </section>
+        ))}
+
+        <div className="rounded-md bg-white p-8 shadow-elevation-high">
+          <span>
+            <Text color="secondary" size="sm">
+              Beschikbaar voor
+            </Text>
+            <Text>Freelance opdrachten · Interim lead posities · Langlopende projecten</Text>
+          </span>
+          <div className="mt-6">
+            <Link href="/contact" className="underline hover:text-gray-500">
+              Plan een gesprek →
+            </Link>
           </div>
         </div>
       </div>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
-import { cacheLife, cacheTag } from 'next/cache';
 import type { EntrySkeletonType } from 'contentful';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { BlogPostEntry, BlogPostFields, SEOEntry } from '~/types';
 
@@ -19,7 +19,7 @@ export const fetchBlogPostById = async ({
   const client = contentfulClient({ preview });
 
   try {
-    const entry = await client.getEntry<BlogPostSkeleton>(entryId, { 
+    const entry = await client.getEntry<BlogPostSkeleton>(entryId, {
       locale,
       include: 2, // Include linked entries (seoFields, author, etc.) up to 2 levels deep
     } as any);
@@ -176,7 +176,7 @@ export const fetchAllBlogPostSlugs = async ({ preview }: FetchBlogPostsOptions):
       locale: 'nl',
       limit: 1000,
     });
-    slugs.push(...nlEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]);
+    slugs.push(...(nlEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]));
   } catch {
     // nl locale might not exist
   }
@@ -191,7 +191,7 @@ export const fetchAllBlogPostSlugs = async ({ preview }: FetchBlogPostsOptions):
         locale,
         limit: 1000,
       });
-      slugs.push(...enEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]);
+      slugs.push(...(enEntries.items.map(item => item.fields.slug).filter(Boolean) as string[]));
       break; // Success, stop trying
     } catch {
       continue;
@@ -209,4 +209,3 @@ export const fetchAllBlogPostSlugsCached = async ({ preview }: FetchBlogPostsOpt
 
   return fetchAllBlogPostSlugs({ preview });
 };
-

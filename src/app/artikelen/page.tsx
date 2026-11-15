@@ -22,4 +22,3 @@ export default async function Page() {
 
   return <BlogOverviewPage blogOverviewEntry={blogOverviewEntry} blogPostEntries={blogPostEntries} />;
 }
-

@@ -1,5 +1,5 @@
-import { cacheLife, cacheTag } from 'next/cache';
 import type { EntrySkeletonType } from 'contentful';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { SiteSettingsEntry, SiteSettingsFields } from '~/types';
 

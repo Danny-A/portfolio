@@ -1,5 +1,5 @@
-import { cacheLife, cacheTag } from 'next/cache';
 import type { EntrySkeletonType } from 'contentful';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import type { BlogOverviewEntry, BlogOverviewFields } from '~/types';
 
@@ -34,4 +34,3 @@ export const fetchBlogOverviewCached = async ({ preview }: FetchBlogOverviewOpti
 
   return fetchBlogOverview({ preview });
 };
-
